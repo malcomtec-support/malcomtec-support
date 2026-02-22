@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MalcomTec · Business Portal</title>
+    <title>MalcomTec · Complete Business Support</title>
     <style>
         * {
             margin: 0;
@@ -54,7 +54,6 @@
             margin-bottom: 2rem;
         }
 
-        /* Custom MalcomTec Logo */
         .company-logo {
             width: 70px;
             height: 70px;
@@ -68,7 +67,6 @@
             color: white;
             box-shadow: 0 10px 25px rgba(42,125,225,0.4);
             border: 2px solid rgba(255,255,255,0.2);
-            text-transform: uppercase;
         }
 
         .company-name-container {
@@ -81,8 +79,6 @@
             font-size: 1.9rem;
             color: white;
             letter-spacing: 1px;
-            line-height: 1.2;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .company-tagline {
@@ -90,7 +86,6 @@
             color: #a0c4ff;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            margin-top: 2px;
         }
 
         .brand-message {
@@ -108,7 +103,6 @@
             margin-bottom: 2rem;
             border-left: 3px solid #2a7de1;
             padding-left: 1rem;
-            font-style: italic;
         }
 
         .support-badge {
@@ -121,11 +115,6 @@
             color: #c2dfff;
             border: 1px solid rgba(255,255,255,0.1);
             margin-top: auto;
-            backdrop-filter: blur(5px);
-        }
-
-        .support-badge i {
-            color: #ffd966;
         }
 
         .forms-panel {
@@ -179,8 +168,6 @@
             font-size: 0.85rem;
             font-weight: 500;
             margin-left: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .input-wrapper {
@@ -190,15 +177,9 @@
             border: 1.5px solid rgba(255,255,255,0.08);
             border-radius: 60px;
             padding: 0.1rem 1.2rem;
-            transition: 0.2s;
         }
 
-        .input-wrapper:focus-within {
-            border-color: #2a7de1;
-            background: rgba(0,30,60,0.5);
-        }
-
-        .input-wrapper input, .input-wrapper textarea, .input-wrapper select {
+        .input-wrapper input {
             width: 100%;
             background: none;
             border: none;
@@ -229,14 +210,10 @@
             cursor: pointer;
             transition: 0.15s;
             border: 1px solid rgba(255,255,255,0.2);
-            font-size: 1.1rem;
-            letter-spacing: 0.5px;
         }
 
         .btn-primary:hover {
             background: #1f64b8;
-            transform: scale(1.01);
-            box-shadow: 0 10px 25px -5px #1d4f8b;
         }
 
         .btn-success {
@@ -261,6 +238,15 @@
 
         .btn-danger {
             background: #dc3545;
+            border: none;
+            border-radius: 60px;
+            padding: 0.5rem 1rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .btn-info {
+            background: #17a2b8;
             border: none;
             border-radius: 60px;
             padding: 0.5rem 1rem;
@@ -308,7 +294,6 @@
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
-            box-shadow: 0 5px 15px rgba(42,125,225,0.3);
         }
 
         .dashboard-logo-text {
@@ -320,7 +305,6 @@
             font-weight: 800;
             font-size: 1.4rem;
             color: #0b1a2e;
-            letter-spacing: 0.5px;
         }
 
         .dashboard-logo-tagline {
@@ -363,17 +347,49 @@
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
-            transition: 0.15s;
         }
 
-        .logout-btn:hover {
-            background: #bb2d3b;
+        /* Dashboard Navigation */
+        .dashboard-nav {
+            background: white;
+            padding: 0.5rem 2rem;
+            border-bottom: 1px solid #e9ecef;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            color: #5a6f88;
+            font-weight: 500;
+            border-radius: 50px;
+            transition: 0.2s;
+        }
+
+        .nav-item:hover {
+            background: #f0f4f8;
+            color: #2a7de1;
+        }
+
+        .nav-item.active {
+            background: #2a7de1;
+            color: white;
         }
 
         .dashboard-content {
             max-width: 1400px;
             margin: 2rem auto;
             padding: 0 2rem;
+        }
+
+        /* Dashboard Sections */
+        .dashboard-section {
+            display: none;
+        }
+
+        .dashboard-section.active {
+            display: block;
         }
 
         .welcome-card {
@@ -385,11 +401,7 @@
             border-left: 5px solid #2a7de1;
         }
 
-        .welcome-card h1 {
-            color: #0b1a2e;
-            margin-bottom: 0.5rem;
-        }
-
+        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -402,20 +414,12 @@
             border-radius: 20px;
             padding: 1.5rem;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            transition: 0.2s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .stat-card h3 {
             color: #5a6f88;
             font-size: 0.9rem;
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
         }
 
         .stat-card .number {
@@ -424,6 +428,50 @@
             font-weight: 700;
         }
 
+        .stat-card .trend {
+            font-size: 0.8rem;
+            color: #28a745;
+            margin-top: 0.5rem;
+        }
+
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .chart-card h3 {
+            color: #0b1a2e;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .chart-bar {
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .chart-fill {
+            height: 100%;
+            background: #2a7de1;
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        /* Support Sections */
         .support-section {
             background: white;
             border-radius: 20px;
@@ -440,6 +488,7 @@
             padding-bottom: 0.5rem;
         }
 
+        /* Ticket List */
         .ticket-list {
             margin-top: 1rem;
         }
@@ -483,21 +532,169 @@
             color: white;
         }
 
-        .priority-high {
-            color: #dc3545;
-            font-weight: 600;
+        /* Customer List */
+        .customer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .priority-medium {
-            color: #ffc107;
-            font-weight: 600;
+        .customer-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid #e9ecef;
         }
 
-        .priority-low {
-            color: #28a745;
-            font-weight: 600;
+        .customer-card h3 {
+            color: #0b1a2e;
+            margin-bottom: 0.5rem;
         }
 
+        .customer-card p {
+            color: #5a6f88;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .customer-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Knowledge Base */
+        .knowledge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .knowledge-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #e9ecef;
+        }
+
+        .knowledge-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-color: #2a7de1;
+        }
+
+        .knowledge-card h3 {
+            color: #2a7de1;
+            margin-bottom: 0.5rem;
+        }
+
+        .knowledge-card p {
+            color: #5a6f88;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: #8fa3bb;
+        }
+
+        /* Live Chat */
+        .chat-container {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1rem;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-message.support {
+            align-items: flex-start;
+        }
+
+        .chat-message.customer {
+            align-items: flex-end;
+        }
+
+        .message-bubble {
+            max-width: 70%;
+            padding: 0.75rem 1rem;
+            border-radius: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .chat-message.support .message-bubble {
+            background: #e3f2fd;
+        }
+
+        .chat-message.customer .message-bubble {
+            background: #2a7de1;
+            color: white;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            color: #8fa3bb;
+            margin-top: 0.25rem;
+            margin-left: 0.5rem;
+        }
+
+        .chat-input {
+            display: flex;
+            gap: 0.5rem;
+            padding: 1rem;
+            background: white;
+            border-radius: 60px;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            border: none;
+            padding: 0.5rem;
+            outline: none;
+        }
+
+        /* Template Responses */
+        .templates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .template-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            cursor: pointer;
+            border: 1px solid #e9ecef;
+            transition: 0.2s;
+        }
+
+        .template-card:hover {
+            background: #e3f2fd;
+            border-color: #2a7de1;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -537,43 +734,7 @@
             color: #5a6f88;
         }
 
-        .ticket-detail {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .message-item {
-            padding: 0.75rem;
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-        }
-
-        .message-sender {
-            font-weight: 600;
-            color: #2a7de1;
-        }
-
-        .message-sender.admin {
-            color: #dc3545;
-        }
-
-        .message-time {
-            font-size: 0.8rem;
-            color: #5a6f88;
-            margin-left: 0.5rem;
-        }
-
-        .customer-info {
-            background: #e3f2fd;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
+        /* Toast */
         .toast {
             position: fixed;
             top: 20px;
@@ -592,20 +753,6 @@
         .toast.show {
             display: flex;
         }
-
-        /* Footer brand */
-        .brand-footer {
-            text-align: center;
-            margin-top: 2rem;
-            font-size: 0.8rem;
-            color: #8fa3bb;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 1rem;
-        }
-
-        .brand-footer i {
-            color: #ffd966;
-        }
     </style>
 </head>
 <body>
@@ -615,26 +762,19 @@
             <div class="brand-panel">
                 <div>
                     <div class="logo-area">
-                        <!-- MalcomTec Custom Logo with Tagline -->
-                        <div class="company-logo">
-                            MT
-                        </div>
+                        <div class="company-logo">MT</div>
                         <div class="company-name-container">
-                            <div class="company-name">
-                                MALCOMTEC
-                            </div>
-                            <div class="company-tagline">
-                                innovate · connect · inspire
-                            </div>
+                            <div class="company-name">MALCOMTEC</div>
+                            <div class="company-tagline">innovate · connect · inspire</div>
                         </div>
                     </div>
                     <div class="brand-message">
-                        <h2>customer portal</h2>
-                        <p>Secure business support system for MalcomTec customers. We're here to help you innovate, connect, and inspire.</p>
+                        <h2>complete business support</h2>
+                        <p>All-in-one customer support system with ticketing, knowledge base, live chat, and analytics.</p>
                     </div>
                 </div>
                 <div class="support-badge">
-                    <i>⭐</i> 24/7 business support · enterprise ready
+                    ⭐ enterprise ready · 24/7 support
                 </div>
             </div>
 
@@ -644,7 +784,6 @@
                     <button class="tab-btn" onclick="showForm('signup')">📝 Sign up</button>
                 </div>
 
-                <!-- Login Form -->
                 <form id="loginForm" class="auth-form active-form" onsubmit="handleLogin(event)">
                     <div class="input-group">
                         <label>📧 EMAIL</label>
@@ -663,13 +802,8 @@
                         <label>keep me signed in</label>
                     </div>
                     <button type="submit" class="btn-primary">Access dashboard →</button>
-                    
-                    <div class="brand-footer">
-                        <i>⚡</i> innovate · connect · inspire <i>⚡</i>
-                    </div>
                 </form>
 
-                <!-- Signup Form -->
                 <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
                     <div class="input-group">
                         <label>👤 FULL NAME</label>
@@ -693,11 +827,7 @@
                         <input type="checkbox" id="terms" required> 
                         <label>I accept the terms & privacy</label>
                     </div>
-                    <button type="submit" class="btn-primary">Register & sync to support →</button>
-                    
-                    <div class="brand-footer">
-                        <i>⚡</i> innovate · connect · inspire <i>⚡</i>
-                    </div>
+                    <button type="submit" class="btn-primary">Register →</button>
                 </form>
             </div>
         </div>
@@ -707,16 +837,10 @@
     <div id="dashboardContainer" class="dashboard-container">
         <div class="dashboard-header">
             <div class="dashboard-logo">
-                <div class="dashboard-logo-icon">
-                    MT
-                </div>
+                <div class="dashboard-logo-icon">MT</div>
                 <div class="dashboard-logo-text">
-                    <div class="dashboard-logo-main">
-                        MALCOMTEC SUPPORT
-                    </div>
-                    <div class="dashboard-logo-tagline">
-                        innovate · connect · inspire
-                    </div>
+                    <div class="dashboard-logo-main">MALCOMTEC SUPPORT</div>
+                    <div class="dashboard-logo-tagline">innovate · connect · inspire</div>
                 </div>
                 <span id="roleBadge" class="role-badge">Customer</span>
             </div>
@@ -725,67 +849,106 @@
                 <button class="logout-btn" onclick="logout()">Logout</button>
             </div>
         </div>
+
+        <!-- Navigation -->
+        <div class="dashboard-nav" id="dashboardNav">
+            <div class="nav-item active" onclick="switchSection('overview')">📊 Overview</div>
+            <div class="nav-item" onclick="switchSection('tickets')">🎫 Tickets</div>
+            <div class="nav-item" onclick="switchSection('customers')">👥 Customers</div>
+            <div class="nav-item" onclick="switchSection('knowledge')">📚 Knowledge Base</div>
+            <div class="nav-item" onclick="switchSection('chat')">💬 Live Chat</div>
+            <div class="nav-item" onclick="switchSection('analytics')">📈 Analytics</div>
+            <div class="nav-item" onclick="switchSection('team')">👑 Team</div>
+        </div>
         
         <div class="dashboard-content">
-            <div class="welcome-card">
-                <h1 id="welcomeUserName">Welcome back!</h1>
-                <p id="welcomeMessage">Your business support dashboard is ready. We're here to help you innovate, connect, and inspire.</p>
-            </div>
+            <!-- Overview Section -->
+            <div id="overviewSection" class="dashboard-section active">
+                <div class="welcome-card">
+                    <h1 id="welcomeUserName">Welcome back!</h1>
+                    <p id="welcomeMessage">Your complete business support dashboard is ready.</p>
+                </div>
 
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>TOTAL TICKETS</h3>
-                    <div class="number" id="totalTicketsCount">0</div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>TOTAL TICKETS</h3>
+                        <div class="number" id="totalTicketsCount">0</div>
+                        <div class="trend">↑ 12% this week</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>OPEN TICKETS</h3>
+                        <div class="number" id="openTicketsCount">0</div>
+                        <div class="trend">↓ 5% from yesterday</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>AVG RESPONSE</h3>
+                        <div class="number" id="avgResponseTime">2.4h</div>
+                        <div class="trend">↓ 30min improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>SATISFACTION</h3>
+                        <div class="number" id="satisfactionRate">98%</div>
+                        <div class="trend">⭐ 4.8/5 rating</div>
+                    </div>
                 </div>
-                <div class="stat-card">
-                    <h3>OPEN TICKETS</h3>
-                    <div class="number" id="openTicketsCount">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>IN PROGRESS</h3>
-                    <div class="number" id="progressTicketsCount">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>RESOLVED</h3>
-                    <div class="number" id="resolvedTicketsCount">0</div>
-                </div>
-            </div>
 
-            <!-- Admin Section - Only visible to admin -->
-            <div id="adminSection" style="display: none;">
-                <div class="support-section">
-                    <h2>👑 Admin Panel - All Customer Tickets</h2>
-                    <div class="ticket-list" id="adminTicketList">
-                        <!-- Admin tickets will be loaded here -->
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Tickets by Status</h3>
+                        <div class="chart-bar"><div class="chart-fill" style="width: 45%" id="openChart"></div></div>
+                        <div class="chart-bar"><div class="chart-fill" style="width: 35%" id="progressChart"></div></div>
+                        <div class="chart-bar"><div class="chart-fill" style="width: 20%" id="resolvedChart"></div></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Recent Activity</h3>
+                        <div id="recentActivity">Loading...</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Customer Section - Only visible to customers -->
-            <div id="customerSection">
+            <!-- Tickets Section -->
+            <div id="ticketsSection" class="dashboard-section">
                 <div class="support-section">
-                    <h2>Create New Support Ticket</h2>
+                    <h2>Create New Ticket</h2>
                     <form onsubmit="createTicket(event)">
                         <div class="input-group" style="margin-bottom: 1rem;">
                             <label>📌 TITLE</label>
                             <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <input type="text" id="ticketTitle" placeholder="Brief description of issue" required style="color: #0b1a2e;">
+                                <input type="text" id="ticketTitle" placeholder="Brief description" required style="color: #0b1a2e;">
                             </div>
                         </div>
                         <div class="input-group" style="margin-bottom: 1rem;">
                             <label>📝 DESCRIPTION</label>
                             <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <textarea id="ticketDescription" placeholder="Provide details about your issue..." required style="color: #0b1a2e;"></textarea>
+                                <textarea id="ticketDescription" placeholder="Details..." required style="color: #0b1a2e; min-height: 100px;"></textarea>
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-bottom: 1rem;">
+                            <label>📎 ATTACHMENTS</label>
+                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
+                                <input type="file" id="ticketAttachment" style="color: #0b1a2e; padding: 0.5rem;">
+                            </div>
+                        </div>
+                        <div class="input-group" style="margin-bottom: 1rem;">
+                            <label>🔧 CATEGORY</label>
+                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
+                                <select id="ticketCategory" style="color: #0b1a2e;">
+                                    <option>Technical Support</option>
+                                    <option>Billing</option>
+                                    <option>Sales</option>
+                                    <option>Account</option>
+                                    <option>Other</option>
+                                </select>
                             </div>
                         </div>
                         <div class="input-group" style="margin-bottom: 1rem;">
                             <label>🔧 PRIORITY</label>
                             <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
                                 <select id="ticketPriority" style="color: #0b1a2e;">
-                                    <option value="Low">Low</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="High">High</option>
-                                    <option value="Critical">Critical</option>
+                                    <option>Low</option>
+                                    <option selected>Medium</option>
+                                    <option>High</option>
+                                    <option>Critical</option>
                                 </select>
                             </div>
                         </div>
@@ -794,10 +957,93 @@
                 </div>
 
                 <div class="support-section">
-                    <h2>Your Support Tickets</h2>
-                    <div class="ticket-list" id="customerTicketList">
-                        <!-- Customer tickets will be loaded here -->
+                    <h2>Ticket List</h2>
+                    <div class="ticket-list" id="ticketList"></div>
+                </div>
+            </div>
+
+            <!-- Customers Section -->
+            <div id="customersSection" class="dashboard-section">
+                <div class="support-section">
+                    <h2>Customer Management</h2>
+                    <div class="customer-grid" id="customerGrid"></div>
+                </div>
+            </div>
+
+            <!-- Knowledge Base Section -->
+            <div id="knowledgeSection" class="dashboard-section">
+                <div class="support-section">
+                    <h2>Knowledge Base</h2>
+                    <div class="knowledge-grid" id="knowledgeGrid"></div>
+                </div>
+                
+                <div class="support-section">
+                    <h2>Template Responses</h2>
+                    <div class="templates-grid" id="templatesGrid"></div>
+                </div>
+            </div>
+
+            <!-- Live Chat Section -->
+            <div id="chatSection" class="dashboard-section">
+                <div class="support-section">
+                    <h2>Live Support Chat</h2>
+                    <div class="chat-container" id="chatContainer">
+                        <div class="chat-messages" id="chatMessages"></div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
+                            <button class="btn-primary" onclick="sendChatMessage()">Send</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analyticsSection" class="dashboard-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>TICKET VOLUME</h3>
+                        <div class="number" id="ticketVolume">156</div>
+                        <div class="trend">↑ 23% this month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>RESPONSE TIME</h3>
+                        <div class="number" id="responseTimeMetric">2.4h</div>
+                        <div class="trend">↓ 15% improvement</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>RESOLUTION RATE</h3>
+                        <div class="number" id="resolutionRate">94%</div>
+                        <div class="trend">↑ 5% from last month</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>CSAT SCORE</h3>
+                        <div class="number" id="csatScore">4.8</div>
+                        <div class="trend">⭐ out of 5</div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Tickets by Day</h3>
+                        <canvas id="ticketChart" style="width:100%; height:200px;"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Top Categories</h3>
+                        <div id="categoryStats"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Team Section (Admin Only) -->
+            <div id="teamSection" class="dashboard-section">
+                <div class="support-section">
+                    <h2>Team Management</h2>
+                    <div class="customer-grid" id="teamGrid"></div>
+                </div>
+                
+                <div class="support-section">
+                    <h2>Audit Logs</h2>
+                    <div class="ticket-list" id="auditLogs"></div>
                 </div>
             </div>
         </div>
@@ -808,38 +1054,32 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeTicketModal()">&times;</span>
             <h2 id="modalTicketTitle">Ticket Details</h2>
-            
-            <!-- Customer Info (visible to admin only) -->
             <div id="modalCustomerInfo" class="customer-info" style="display: none;"></div>
-            
             <div id="modalTicketContent"></div>
             
-            <!-- Admin Controls -->
             <div id="adminControls" style="display: none; margin: 1rem 0;">
                 <h3>Update Status</h3>
-                <select id="ticketStatusSelect" style="padding: 0.5rem; border-radius: 10px; border: 1px solid #dee2e6; margin-right: 0.5rem;">
-                    <option value="Open">Open</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Resolved">Resolved</option>
+                <select id="ticketStatusSelect" style="padding: 0.5rem; border-radius: 10px; margin-right: 0.5rem;">
+                    <option>Open</option>
+                    <option>In Progress</option>
+                    <option>Resolved</option>
                 </select>
-                <button class="btn-warning" onclick="updateTicketStatus()">Update Status</button>
+                <button class="btn-warning" onclick="updateTicketStatus()">Update</button>
             </div>
             
-            <h3 style="margin: 1rem 0;">Add Reply</h3>
+            <h3>Add Reply</h3>
             <form onsubmit="addTicketReply(event)">
                 <div class="input-group">
                     <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
                         <textarea id="replyMessage" placeholder="Type your reply..." required style="color: #0b1a2e; min-height: 80px;"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">Send Reply</button>
+                <button type="submit" class="btn-primary">Send Reply</button>
             </form>
-            
-            <button class="btn-danger" style="margin-top: 1rem;" onclick="closeTicketModal()">Close</button>
         </div>
     </div>
 
-    <!-- Toast Notification -->
+    <!-- Toast -->
     <div id="toast" class="toast">
         <span id="toastMessage"></span>
     </div>
@@ -856,24 +1096,37 @@
             password: 'Camera@02'
         };
 
-        // Current user and selected ticket
         let currentUser = null;
         let selectedTicketId = null;
         let isAdmin = false;
 
-        // Show toast message
+        // Knowledge Base Articles
+        const knowledgeBase = [
+            { title: 'Getting Started Guide', category: 'Basics', views: 1234, helpful: 95 },
+            { title: 'How to Reset Password', category: 'Account', views: 3456, helpful: 98 },
+            { title: 'Network Setup Guide', category: 'Technical', views: 2341, helpful: 92 },
+            { title: 'Billing FAQ', category: 'Billing', views: 1876, helpful: 96 },
+            { title: 'VPN Configuration', category: 'Technical', views: 987, helpful: 94 },
+            { title: 'Contact Support', category: 'Support', views: 4567, helpful: 99 }
+        ];
+
+        // Template Responses
+        const templates = [
+            { title: 'Welcome Message', content: 'Thank you for contacting MalcomTec support...' },
+            { title: 'Password Reset', content: 'To reset your password, please follow these steps...' },
+            { title: 'Technical Issue', content: 'We are investigating your technical issue...' },
+            { title: 'Billing Inquiry', content: 'Regarding your billing question...' }
+        ];
+
         function showToast(message, isSuccess = true) {
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toastMessage');
             toastMsg.innerHTML = message;
             toast.style.borderLeftColor = isSuccess ? '#2a7de1' : '#dc3545';
             toast.classList.add('show');
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            setTimeout(() => toast.classList.remove('show'), 3000);
         }
 
-        // Switch between login and signup forms
         function showForm(form) {
             const loginForm = document.getElementById('loginForm');
             const signupForm = document.getElementById('signupForm');
@@ -892,7 +1145,6 @@
             }
         }
 
-        // Handle signup
         function handleSignup(event) {
             event.preventDefault();
             
@@ -902,40 +1154,30 @@
             const terms = document.getElementById('terms').checked;
 
             if (!name || !email || !password || !terms) {
-                showToast('⚠️ Please fill all fields', false);
+                showToast('Please fill all fields', false);
                 return;
             }
 
             if (password.length < 8) {
-                showToast('🔐 Password must be at least 8 characters', false);
+                showToast('Password must be 8+ characters', false);
                 return;
             }
 
-            const user = {
-                name: name,
-                email: email,
-                password: password,
-                role: 'customer',
-                registeredAt: new Date().toISOString()
-            };
-
+            const user = { name, email, password, role: 'customer', registeredAt: new Date().toISOString() };
             let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             
             if (users.some(u => u.email === email)) {
-                showToast('📧 Email already registered. Please login.', false);
+                showToast('Email already registered', false);
                 return;
             }
 
             users.push(user);
             localStorage.setItem('malcomtec_users', JSON.stringify(users));
-            
-            showToast(`✅ Registration successful! Please login.`);
-            
+            showToast('Registration successful! Please login.');
             document.getElementById('signupForm').reset();
             showForm('login');
         }
 
-        // Handle login
         function handleLogin(event) {
             event.preventDefault();
             
@@ -944,33 +1186,25 @@
             const remember = document.getElementById('remember').checked;
 
             if (!email || !password) {
-                showToast('📧 Please enter email and password', false);
+                showToast('Please enter email and password', false);
                 return;
             }
 
-            // Check admin
+            // Admin login
             if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-                loginUser({
-                    name: 'Support Admin',
-                    email: ADMIN_EMAIL,
-                    role: 'admin'
-                }, remember);
+                loginUser({ name: 'Support Admin', email: ADMIN_EMAIL, role: 'admin' }, remember);
                 return;
             }
 
-            // Check demo customer
+            // Demo customer
             if (email === DEMO_CUSTOMER.email && password === DEMO_CUSTOMER.password) {
                 let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
                 let demoUser = users.find(u => u.email === DEMO_CUSTOMER.email);
                 
                 if (!demoUser) {
-                    demoUser = {
-                        name: DEMO_CUSTOMER.name,
-                        email: DEMO_CUSTOMER.email,
-                        password: DEMO_CUSTOMER.password,
-                        role: 'customer',
-                        registeredAt: new Date().toISOString()
-                    };
+                    demoUser = DEMO_CUSTOMER;
+                    demoUser.role = 'customer';
+                    demoUser.registeredAt = new Date().toISOString();
                     users.push(demoUser);
                     localStorage.setItem('malcomtec_users', JSON.stringify(users));
                 }
@@ -979,18 +1213,17 @@
                 return;
             }
 
-            // Check regular users
+            // Regular users
             const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             const user = users.find(u => u.email === email && u.password === password);
 
             if (user) {
                 loginUser(user, remember);
             } else {
-                showToast('❌ Invalid email or password', false);
+                showToast('Invalid email or password', false);
             }
         }
 
-        // Login user and show dashboard
         function loginUser(user, remember = false) {
             currentUser = user;
             isAdmin = user.role === 'admin';
@@ -1003,97 +1236,53 @@
             
             document.getElementById('loginEmail').value = '';
             document.getElementById('loginPassword').value = '';
-            document.getElementById('remember').checked = false;
             
             document.getElementById('userEmailDisplay').textContent = user.email;
             document.getElementById('welcomeUserName').textContent = `Welcome, ${user.name}!`;
             
             const roleBadge = document.getElementById('roleBadge');
-            const adminSection = document.getElementById('adminSection');
-            const customerSection = document.getElementById('customerSection');
-            const welcomeMessage = document.getElementById('welcomeMessage');
+            roleBadge.textContent = isAdmin ? 'Admin' : 'Customer';
+            roleBadge.classList.toggle('admin', isAdmin);
             
-            if (isAdmin) {
-                roleBadge.textContent = 'Admin';
-                roleBadge.classList.add('admin');
-                adminSection.style.display = 'block';
-                customerSection.style.display = 'none';
-                welcomeMessage.textContent = 'Welcome to the Admin Panel. You can view and respond to all customer tickets.';
-                loadAllTickets();
-            } else {
-                roleBadge.textContent = 'Customer';
-                roleBadge.classList.remove('admin');
-                adminSection.style.display = 'none';
-                customerSection.style.display = 'block';
-                welcomeMessage.textContent = 'Your business support dashboard is ready. We\'re here to help you innovate, connect, and inspire.';
-                loadCustomerTickets();
+            // Hide team section for non-admins
+            if (!isAdmin) {
+                document.querySelectorAll('.nav-item')[6].style.display = 'none';
             }
             
             document.getElementById('authContainer').style.display = 'none';
             document.getElementById('dashboardContainer').classList.add('active');
             
-            showToast(`🔓 Welcome ${user.name}!`);
+            loadAllData();
+            showToast(`Welcome ${user.name}!`);
         }
 
-        // Load all tickets (admin)
-        function loadAllTickets() {
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const adminTicketList = document.getElementById('adminTicketList');
-            
-            document.getElementById('totalTicketsCount').textContent = tickets.length;
-            document.getElementById('openTicketsCount').textContent = tickets.filter(t => t.status === 'Open').length;
-            document.getElementById('progressTicketsCount').textContent = tickets.filter(t => t.status === 'In Progress').length;
-            document.getElementById('resolvedTicketsCount').textContent = tickets.filter(t => t.status === 'Resolved').length;
-            
-            if (tickets.length === 0) {
-                adminTicketList.innerHTML = '<p style="color: #5a6f88; text-align: center;">No tickets in the system.</p>';
-                return;
-            }
-            
-            adminTicketList.innerHTML = '';
-            tickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = document.createElement('div');
-                ticketEl.className = 'ticket-item';
-                ticketEl.onclick = () => openTicketModal(ticket.id);
-                
-                const statusClass = ticket.status === 'Open' ? 'status-open' : 
-                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
-                
-                ticketEl.innerHTML = `
-                    <div>
-                        <strong>${ticket.title}</strong>
-                        <div style="color: #5a6f88; font-size: 0.9rem;">
-                            Customer: ${ticket.createdByName} · ${new Date(ticket.createdAt).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <span class="ticket-status ${statusClass}">${ticket.status}</span>
-                `;
-                
-                adminTicketList.appendChild(ticketEl);
-            });
+        function loadAllData() {
+            loadTickets();
+            loadCustomers();
+            loadKnowledgeBase();
+            loadTemplates();
+            loadChat();
+            updateAnalytics();
         }
 
-        // Load customer tickets
-        function loadCustomerTickets() {
-            if (!currentUser || isAdmin) return;
-            
+        function loadTickets() {
             const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const userTickets = tickets.filter(t => t.createdBy === currentUser.email);
+            const userTickets = isAdmin ? tickets : tickets.filter(t => t.createdBy === currentUser?.email);
             
-            const customerTicketList = document.getElementById('customerTicketList');
+            const ticketList = document.getElementById('ticketList');
+            if (!ticketList) return;
             
+            // Update stats
             document.getElementById('totalTicketsCount').textContent = userTickets.length;
             document.getElementById('openTicketsCount').textContent = userTickets.filter(t => t.status === 'Open').length;
-            document.getElementById('progressTicketsCount').textContent = userTickets.filter(t => t.status === 'In Progress').length;
-            document.getElementById('resolvedTicketsCount').textContent = userTickets.filter(t => t.status === 'Resolved').length;
             
             if (userTickets.length === 0) {
-                customerTicketList.innerHTML = '<p style="color: #5a6f88; text-align: center;">No tickets yet. Create your first support ticket above!</p>';
+                ticketList.innerHTML = '<p style="color: #5a6f88;">No tickets found.</p>';
                 return;
             }
             
-            customerTicketList.innerHTML = '';
-            userTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
+            ticketList.innerHTML = '';
+            userTickets.forEach(ticket => {
                 const ticketEl = document.createElement('div');
                 ticketEl.className = 'ticket-item';
                 ticketEl.onclick = () => openTicketModal(ticket.id);
@@ -1105,17 +1294,115 @@
                     <div>
                         <strong>${ticket.title}</strong>
                         <div style="color: #5a6f88; font-size: 0.9rem;">
-                            ${new Date(ticket.createdAt).toLocaleDateString()} · Priority: ${ticket.priority}
+                            ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
                         </div>
                     </div>
-                    <span class="ticket-status ${statusClass}">${ticket.status}</span>
+                    <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
                 `;
                 
-                customerTicketList.appendChild(ticketEl);
+                ticketList.appendChild(ticketEl);
             });
         }
 
-        // Create new ticket
+        function loadCustomers() {
+            if (!isAdmin) return;
+            
+            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+            const customerGrid = document.getElementById('customerGrid');
+            
+            if (!customerGrid) return;
+            
+            customerGrid.innerHTML = '';
+            users.forEach(user => {
+                if (user.role !== 'admin') {
+                    const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
+                    const userTickets = tickets.filter(t => t.createdBy === user.email);
+                    
+                    const card = document.createElement('div');
+                    card.className = 'customer-card';
+                    card.innerHTML = `
+                        <h3>${user.name}</h3>
+                        <p>${user.email}</p>
+                        <div class="customer-stats">
+                            <span>🎫 ${userTickets.length} tickets</span>
+                            <span>📅 ${new Date(user.registeredAt).toLocaleDateString()}</span>
+                        </div>
+                    `;
+                    customerGrid.appendChild(card);
+                }
+            });
+        }
+
+        function loadKnowledgeBase() {
+            const knowledgeGrid = document.getElementById('knowledgeGrid');
+            if (!knowledgeGrid) return;
+            
+            knowledgeGrid.innerHTML = '';
+            knowledgeBase.forEach(article => {
+                const card = document.createElement('div');
+                card.className = 'knowledge-card';
+                card.onclick = () => showToast(`Opening: ${article.title}`);
+                card.innerHTML = `
+                    <h3>${article.title}</h3>
+                    <p>${article.category}</p>
+                    <div class="article-meta">
+                        👁️ ${article.views} views · 👍 ${article.helpful}% helpful
+                    </div>
+                `;
+                knowledgeGrid.appendChild(card);
+            });
+        }
+
+        function loadTemplates() {
+            const templatesGrid = document.getElementById('templatesGrid');
+            if (!templatesGrid) return;
+            
+            templatesGrid.innerHTML = '';
+            templates.forEach(template => {
+                const card = document.createElement('div');
+                card.className = 'template-card';
+                card.onclick = () => {
+                    document.getElementById('replyMessage').value = template.content;
+                    showToast('Template loaded');
+                };
+                card.innerHTML = `<strong>${template.title}</strong>`;
+                templatesGrid.appendChild(card);
+            });
+        }
+
+        function loadChat() {
+            const chatMessages = document.getElementById('chatMessages');
+            if (!chatMessages) return;
+            
+            chatMessages.innerHTML = `
+                <div class="chat-message support">
+                    <div class="message-bubble">Welcome to MalcomTec Support! How can we help?</div>
+                    <div class="message-time">Just now</div>
+                </div>
+            `;
+        }
+
+        function updateAnalytics() {
+            document.getElementById('avgResponseTime').textContent = '2.4h';
+            document.getElementById('satisfactionRate').textContent = '98%';
+            document.getElementById('ticketVolume').textContent = '156';
+            document.getElementById('responseTimeMetric').textContent = '2.4h';
+            document.getElementById('resolutionRate').textContent = '94%';
+            document.getElementById('csatScore').textContent = '4.8';
+            
+            // Update charts
+            document.getElementById('openChart').style.width = '45%';
+            document.getElementById('progressChart').style.width = '35%';
+            document.getElementById('resolvedChart').style.width = '20%';
+            
+            // Recent activity
+            document.getElementById('recentActivity').innerHTML = `
+                <div>✅ Ticket #123 resolved</div>
+                <div>💬 New message from John</div>
+                <div>📊 5 new tickets today</div>
+            `;
+        }
+
         function createTicket(event) {
             event.preventDefault();
             
@@ -1123,13 +1410,15 @@
             
             const title = document.getElementById('ticketTitle').value;
             const description = document.getElementById('ticketDescription').value;
+            const category = document.getElementById('ticketCategory').value;
             const priority = document.getElementById('ticketPriority').value;
             
             const ticket = {
                 id: Date.now(),
-                title: title,
-                description: description,
-                priority: priority,
+                title,
+                description,
+                category,
+                priority,
                 status: 'Open',
                 createdBy: currentUser.email,
                 createdByName: currentUser.name,
@@ -1149,11 +1438,10 @@
             document.getElementById('ticketTitle').value = '';
             document.getElementById('ticketDescription').value = '';
             
-            showToast('✅ Ticket created successfully!');
-            loadCustomerTickets();
+            showToast('Ticket created successfully!');
+            loadTickets();
         }
 
-        // Open ticket modal
         function openTicketModal(ticketId) {
             selectedTicketId = ticketId;
             const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
@@ -1164,30 +1452,13 @@
             document.getElementById('modalTicketTitle').textContent = ticket.title;
             
             const adminControls = document.getElementById('adminControls');
-            const customerInfo = document.getElementById('modalCustomerInfo');
-            
-            if (isAdmin) {
-                adminControls.style.display = 'block';
-                document.getElementById('ticketStatusSelect').value = ticket.status;
-                
-                customerInfo.style.display = 'block';
-                customerInfo.innerHTML = `
-                    <strong>Customer Information:</strong><br>
-                    Name: ${ticket.createdByName}<br>
-                    Email: ${ticket.createdBy}<br>
-                    Created: ${new Date(ticket.createdAt).toLocaleString()}
-                `;
-            } else {
-                adminControls.style.display = 'none';
-                customerInfo.style.display = 'none';
-            }
+            adminControls.style.display = isAdmin ? 'block' : 'none';
             
             let messagesHtml = '';
             ticket.messages.forEach(msg => {
-                const senderClass = msg.senderRole === 'admin' ? 'admin' : '';
                 messagesHtml += `
                     <div class="message-item">
-                        <span class="message-sender ${senderClass}">${msg.sender} ${msg.senderRole === 'admin' ? '👑' : ''}</span>
+                        <span class="message-sender ${msg.senderRole === 'admin' ? 'admin' : ''}">${msg.sender}</span>
                         <span class="message-time">${new Date(msg.timestamp).toLocaleString()}</span>
                         <p>${msg.message}</p>
                     </div>
@@ -1197,8 +1468,9 @@
             document.getElementById('modalTicketContent').innerHTML = `
                 <div class="ticket-detail">
                     <p><strong>Status:</strong> ${ticket.status}</p>
-                    <p><strong>Priority:</strong> ${ticket.priority}</p>
-                    <hr style="margin: 1rem 0;">
+                    <p><strong>Category:</strong> ${ticket.category || 'General'}</p>
+                    <p><strong>Priority:</strong> ${ticket.priority || 'Medium'}</p>
+                    <hr>
                     <h4>Conversation</h4>
                     ${messagesHtml}
                 </div>
@@ -1207,32 +1479,6 @@
             document.getElementById('ticketModal').classList.add('active');
         }
 
-        // Update ticket status
-        function updateTicketStatus() {
-            if (!isAdmin || !selectedTicketId) return;
-            
-            const newStatus = document.getElementById('ticketStatusSelect').value;
-            
-            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const ticketIndex = tickets.findIndex(t => t.id === selectedTicketId);
-            
-            if (ticketIndex === -1) return;
-            
-            tickets[ticketIndex].status = newStatus;
-            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
-            
-            showToast('✅ Ticket status updated');
-            openTicketModal(selectedTicketId);
-            loadAllTickets();
-        }
-
-        // Close ticket modal
-        function closeTicketModal() {
-            document.getElementById('ticketModal').classList.remove('active');
-            selectedTicketId = null;
-        }
-
-        // Add reply to ticket
         function addTicketReply(event) {
             event.preventDefault();
             
@@ -1255,33 +1501,97 @@
             localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
             
             document.getElementById('replyMessage').value = '';
-            showToast('✅ Reply sent');
+            showToast('Reply sent');
             openTicketModal(selectedTicketId);
         }
 
-        // Logout function
+        function updateTicketStatus() {
+            if (!isAdmin || !selectedTicketId) return;
+            
+            const newStatus = document.getElementById('ticketStatusSelect').value;
+            
+            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
+            const ticketIndex = tickets.findIndex(t => t.id === selectedTicketId);
+            
+            if (ticketIndex === -1) return;
+            
+            tickets[ticketIndex].status = newStatus;
+            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
+            
+            showToast('Status updated');
+            openTicketModal(selectedTicketId);
+            loadTickets();
+        }
+
+        function closeTicketModal() {
+            document.getElementById('ticketModal').classList.remove('active');
+            selectedTicketId = null;
+        }
+
+        function switchSection(section) {
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Show selected section
+            document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(section + 'Section').classList.add('active');
+        }
+
+        function sendChatMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chat-message customer';
+            userMsg.innerHTML = `
+                <div class="message-bubble">${message}</div>
+                <div class="message-time">Just now</div>
+            `;
+            chatMessages.appendChild(userMsg);
+            
+            // Auto-reply
+            setTimeout(() => {
+                const supportMsg = document.createElement('div');
+                supportMsg.className = 'chat-message support';
+                supportMsg.innerHTML = `
+                    <div class="message-bubble">Thank you for your message. A support agent will respond shortly.</div>
+                    <div class="message-time">Just now</div>
+                `;
+                chatMessages.appendChild(supportMsg);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1000);
+            
+            input.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function handleChatKeyPress(event) {
+            if (event.key === 'Enter') {
+                sendChatMessage();
+            }
+        }
+
         function logout() {
             localStorage.removeItem('currentUser');
             sessionStorage.removeItem('currentUser');
-            
-            document.getElementById('loginEmail').value = '';
-            document.getElementById('loginPassword').value = '';
-            document.getElementById('remember').checked = false;
+            currentUser = null;
             
             document.getElementById('authContainer').style.display = 'flex';
             document.getElementById('dashboardContainer').classList.remove('active');
-            
-            showToast('👋 Logged out successfully');
+            showToast('Logged out successfully');
         }
 
-        // Check if user is already logged in
         function checkLoggedIn() {
             const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
-            
             if (savedUser) {
                 try {
-                    const user = JSON.parse(savedUser);
-                    loginUser(user, false);
+                    loginUser(JSON.parse(savedUser), false);
                 } catch (e) {
                     localStorage.removeItem('currentUser');
                     sessionStorage.removeItem('currentUser');
@@ -1289,7 +1599,6 @@
             }
         }
 
-        // Setup demo data
         function setupDemoData() {
             if (!localStorage.getItem('malcomtec_users')) {
                 localStorage.setItem('malcomtec_users', JSON.stringify([{
@@ -1301,31 +1610,21 @@
                 }]));
             }
             
-            // Create demo tickets if none exist
             if (!localStorage.getItem('malcomtec_tickets')) {
                 const demoTickets = [
                     {
                         id: 1,
                         title: 'Network connectivity issue',
-                        description: 'Unable to connect to company VPN',
+                        description: 'Unable to connect to VPN',
+                        category: 'Technical Support',
                         priority: 'High',
                         status: 'In Progress',
                         createdBy: 'rockygyagenda@gmail.com',
                         createdByName: 'rockygyagenda',
                         createdAt: new Date().toISOString(),
                         messages: [
-                            {
-                                sender: 'rockygyagenda',
-                                senderRole: 'customer',
-                                message: 'Unable to connect to company VPN.',
-                                timestamp: new Date(Date.now() - 7200000).toISOString()
-                            },
-                            {
-                                sender: 'Support Admin',
-                                senderRole: 'admin',
-                                message: 'We are looking into this issue.',
-                                timestamp: new Date(Date.now() - 3600000).toISOString()
-                            }
+                            { sender: 'rockygyagenda', senderRole: 'customer', message: 'VPN not working', timestamp: new Date(Date.now() - 7200000).toISOString() },
+                            { sender: 'Support Admin', senderRole: 'admin', message: 'Checking now', timestamp: new Date(Date.now() - 3600000).toISOString() }
                         ]
                     }
                 ];
@@ -1333,7 +1632,6 @@
             }
         }
 
-        // Run on page load
         window.onload = function() {
             setupDemoData();
             checkLoggedIn();
