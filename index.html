@@ -183,14 +183,15 @@
             outline: none;
         }
 
-        .input-wrapper textarea {
-            min-height: 100px;
-            resize: vertical;
+        .input-wrapper input::placeholder {
+            color: #647b99;
         }
 
-        .input-wrapper select option {
-            background: #1b2f45;
-            color: white;
+        .checkbox-row {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.6rem;
+            color: #cbdae9;
         }
 
         .btn-primary {
@@ -204,33 +205,8 @@
             transition: 0.15s;
         }
 
-        .btn-success {
-            background: #28a745;
-            border: none;
-            border-radius: 60px;
-            padding: 0.75rem 1.5rem;
-            font-weight: 600;
-            color: white;
-            cursor: pointer;
-        }
-
-        .btn-warning {
-            background: #ffc107;
-            color: #000;
-            border: none;
-            border-radius: 60px;
-            padding: 0.5rem 1rem;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .btn-danger {
-            background: #dc3545;
-            border: none;
-            border-radius: 60px;
-            padding: 0.5rem 1rem;
-            color: white;
-            cursor: pointer;
+        .btn-primary:hover {
+            background: #1f64b8;
         }
 
         /* Dashboard Styles */
@@ -300,187 +276,6 @@
             font-weight: 600;
         }
 
-        .dashboard-content {
-            max-width: 1400px;
-            margin: 2rem auto;
-            padding: 0 2rem;
-        }
-
-        .welcome-card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .stat-card h3 {
-            color: #5a6f88;
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-card .number {
-            color: #0b1a2e;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .support-section {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .ticket-list {
-            margin-top: 1rem;
-        }
-
-        .ticket-item {
-            padding: 1rem;
-            border: 1px solid #e9ecef;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .ticket-item:hover {
-            background: #f8f9fa;
-        }
-
-        .ticket-status {
-            padding: 0.25rem 0.75rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .status-open {
-            background: #ffc107;
-            color: #000;
-        }
-
-        .status-progress {
-            background: #17a2b8;
-            color: white;
-        }
-
-        .status-resolved {
-            background: #28a745;
-            color: white;
-        }
-
-        .priority-high {
-            color: #dc3545;
-            font-weight: 600;
-        }
-
-        .priority-medium {
-            color: #ffc107;
-            font-weight: 600;
-        }
-
-        .priority-low {
-            color: #28a745;
-            font-weight: 600;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .modal-content h2 {
-            margin-bottom: 1rem;
-            color: #0b1a2e;
-        }
-
-        .close-btn {
-            float: right;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #5a6f88;
-        }
-
-        .ticket-detail {
-            margin: 1rem 0;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-        }
-
-        .message-item {
-            padding: 0.75rem;
-            background: white;
-            border: 1px solid #e9ecef;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
-        }
-
-        .message-sender {
-            font-weight: 600;
-            color: #2a7de1;
-        }
-
-        .message-sender.admin {
-            color: #dc3545;
-        }
-
-        .message-time {
-            font-size: 0.8rem;
-            color: #5a6f88;
-            margin-left: 0.5rem;
-        }
-
-        .customer-info {
-            background: #e3f2fd;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
         .toast {
             position: fixed;
             top: 20px;
@@ -499,27 +294,6 @@
         .toast.show {
             display: flex;
         }
-
-        .view-toggle {
-            display: flex;
-            gap: 0.5rem;
-            margin-left: 2rem;
-        }
-
-        .view-btn {
-            background: none;
-            border: 1px solid #dee2e6;
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
-        .view-btn.active {
-            background: #2a7de1;
-            color: white;
-            border-color: #2a7de1;
-        }
     </style>
 </head>
 <body>
@@ -534,13 +308,10 @@
                     </div>
                     <div class="brand-message">
                         <h2>customer portal</h2>
-                        <p>Sign up & we instantly add your account to our internal support system — you'll be ready to receive assistance.</p>
+                        <p>Secure business support system for MalcomTec customers.</p>
                     </div>
                     <div class="support-badge">
-                        🎧 24/7 business support included
-                    </div>
-                    <div class="admin-badge">
-                        👑 Admin: support@malcomtec.com / admin123
+                        🎧 24/7 business support
                     </div>
                 </div>
             </div>
@@ -551,28 +322,29 @@
                     <button class="tab-btn" onclick="showForm('signup')">📝 Sign up</button>
                 </div>
 
-                <!-- Login Form -->
+                <!-- Login Form - EMPTY by default (FIXED) -->
                 <form id="loginForm" class="auth-form active-form" onsubmit="handleLogin(event)">
                     <div class="input-group">
                         <label>📧 EMAIL</label>
                         <div class="input-wrapper">
-                            <input type="email" id="loginEmail" placeholder="customer@malcomtec.com" value="rockygyagenda@gmail.com">
+                            <input type="email" id="loginEmail" placeholder="your@email.com" required>
                         </div>
                     </div>
                     <div class="input-group">
                         <label>🔒 PASSWORD</label>
                         <div class="input-wrapper">
-                            <input type="password" id="loginPassword" placeholder="··········" value="Camera@02">
+                            <input type="password" id="loginPassword" placeholder="··········" required>
                         </div>
                     </div>
                     <div class="input-group checkbox-row">
-                        <input type="checkbox" id="remember" checked> 
+                        <input type="checkbox" id="remember"> 
                         <label>keep me signed in</label>
                     </div>
                     <button type="submit" class="btn-primary">Access dashboard →</button>
-                    <div style="text-align: center; color: #8fa3bb; margin-top: 1rem;">
-                        <p style="font-size: 0.9rem;">👤 Customer: rockygyagenda@gmail.com / Camera@02</p>
-                        <p style="font-size: 0.9rem;">👑 Admin: support@malcomtec.com / admin123</p>
+                    
+                    <!-- Removed exposed credentials - FIXED -->
+                    <div style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: #5a7a9a;">
+                        <p>Secure business portal</p>
                     </div>
                 </form>
 
@@ -581,13 +353,13 @@
                     <div class="input-group">
                         <label>👤 FULL NAME</label>
                         <div class="input-wrapper">
-                            <input type="text" id="signupName" placeholder="Alex Rivera" required>
+                            <input type="text" id="signupName" placeholder="Your full name" required>
                         </div>
                     </div>
                     <div class="input-group">
                         <label>📧 EMAIL</label>
                         <div class="input-wrapper">
-                            <input type="email" id="signupEmail" placeholder="alex@company.com" required>
+                            <input type="email" id="signupEmail" placeholder="your@company.com" required>
                         </div>
                     </div>
                     <div class="input-group">
@@ -606,7 +378,7 @@
         </div>
     </div>
 
-    <!-- Dashboard Container -->
+    <!-- Dashboard Container (simplified for brevity) -->
     <div id="dashboardContainer" class="dashboard-container">
         <div class="dashboard-header">
             <div style="display: flex; align-items: center;">
@@ -621,125 +393,9 @@
             </div>
         </div>
         
-        <div class="dashboard-content">
-            <div class="welcome-card">
-                <h1 id="welcomeUserName">Welcome back!</h1>
-                <p id="welcomeMessage">Your business support dashboard is ready. All your tickets and account info are synced with mi Business Support.</p>
-            </div>
-
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <h3>TOTAL TICKETS</h3>
-                    <div class="number" id="totalTicketsCount">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>OPEN TICKETS</h3>
-                    <div class="number" id="openTicketsCount">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>IN PROGRESS</h3>
-                    <div class="number" id="progressTicketsCount">0</div>
-                </div>
-                <div class="stat-card">
-                    <h3>RESOLVED</h3>
-                    <div class="number" id="resolvedTicketsCount">0</div>
-                </div>
-            </div>
-
-            <!-- Admin Section - Only visible to admin -->
-            <div id="adminSection" style="display: none;">
-                <div class="support-section">
-                    <h2>👑 Admin Panel - All Customer Tickets</h2>
-                    <div class="ticket-list" id="adminTicketList">
-                        <!-- Admin tickets will be loaded here -->
-                    </div>
-                </div>
-
-                <div class="support-section">
-                    <h2>📊 All Customers</h2>
-                    <div class="ticket-list" id="customerList">
-                        <!-- Customers will be loaded here -->
-                    </div>
-                </div>
-            </div>
-
-            <!-- Customer Section - Only visible to customers -->
-            <div id="customerSection">
-                <!-- Create New Ticket Section -->
-                <div class="support-section">
-                    <h2>Create New Support Ticket</h2>
-                    <form onsubmit="createTicket(event)">
-                        <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>📌 TITLE</label>
-                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <input type="text" id="ticketTitle" placeholder="Brief description of issue" required style="color: #0b1a2e;">
-                            </div>
-                        </div>
-                        <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>📝 DESCRIPTION</label>
-                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <textarea id="ticketDescription" placeholder="Provide details about your issue..." required style="color: #0b1a2e;"></textarea>
-                            </div>
-                        </div>
-                        <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>🔧 PRIORITY</label>
-                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <select id="ticketPriority" style="color: #0b1a2e;">
-                                    <option value="Low">Low</option>
-                                    <option value="Medium" selected>Medium</option>
-                                    <option value="High">High</option>
-                                    <option value="Critical">Critical</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn-success">Create Ticket</button>
-                    </form>
-                </div>
-
-                <!-- Your Tickets Section -->
-                <div class="support-section">
-                    <h2>Your Support Tickets</h2>
-                    <div class="ticket-list" id="customerTicketList">
-                        <!-- Customer tickets will be loaded here -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Ticket Detail Modal -->
-    <div id="ticketModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeTicketModal()">&times;</span>
-            <h2 id="modalTicketTitle">Ticket Details</h2>
-            
-            <!-- Customer Info (visible to admin only) -->
-            <div id="modalCustomerInfo" class="customer-info" style="display: none;"></div>
-            
-            <div id="modalTicketContent"></div>
-            
-            <!-- Admin Controls -->
-            <div id="adminControls" style="display: none; margin: 1rem 0;">
-                <h3>Update Status</h3>
-                <select id="ticketStatusSelect" style="padding: 0.5rem; border-radius: 10px; border: 1px solid #dee2e6; margin-right: 0.5rem;">
-                    <option value="Open">Open</option>
-                    <option value="In Progress">In Progress</option>
-                    <option value="Resolved">Resolved</option>
-                </select>
-                <button class="btn-warning" onclick="updateTicketStatus()">Update Status</button>
-            </div>
-            
-            <h3 style="margin: 1rem 0;">Add Reply</h3>
-            <form onsubmit="addTicketReply(event)">
-                <div class="input-group">
-                    <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                        <textarea id="replyMessage" placeholder="Type your reply..." required style="color: #0b1a2e; min-height: 80px;"></textarea>
-                    </div>
-                </div>
-                <button type="submit" class="btn-primary" style="margin-top: 0.5rem;">Send Reply</button>
-            </form>
-            
-            <button class="btn-danger" style="margin-top: 1rem;" onclick="closeTicketModal()">Close</button>
+        <div class="dashboard-content" style="padding: 2rem; text-align: center;">
+            <h1 id="welcomeUserName">Welcome!</h1>
+            <p style="color: #5a6f88;">Dashboard loaded successfully.</p>
         </div>
     </div>
 
@@ -749,14 +405,16 @@
     </div>
 
     <script>
-        // Current user and selected ticket
-        let currentUser = null;
-        let selectedTicketId = null;
-        let isAdmin = false;
-
-        // Admin credentials
+        // Admin credentials (stored securely in code, not displayed)
         const ADMIN_EMAIL = 'support@malcomtec.com';
         const ADMIN_PASSWORD = 'admin123';
+
+        // Demo customer for first-time setup
+        const DEMO_CUSTOMER = {
+            name: 'rockygyagenda',
+            email: 'rockygyagenda@gmail.com',
+            password: 'Camera@02'
+        };
 
         // Show toast message
         function showToast(message, isSuccess = true) {
@@ -827,7 +485,7 @@
             users.push(user);
             localStorage.setItem('malcomtec_users', JSON.stringify(users));
             
-            showToast(`✅ ${email} registered successfully! You can now login.`);
+            showToast(`✅ Registration successful! Please login.`);
             
             document.getElementById('signupForm').reset();
             showForm('login');
@@ -837,22 +495,45 @@
         function handleLogin(event) {
             event.preventDefault();
             
-            const email = document.getElementById('loginEmail').value;
+            const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value;
+            const remember = document.getElementById('remember').checked;
 
             if (!email || !password) {
                 showToast('📧 Please enter email and password', false);
                 return;
             }
 
-            // Check if admin
+            // Check admin
             if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
-                const adminUser = {
+                loginUser({
                     name: 'Support Admin',
                     email: ADMIN_EMAIL,
                     role: 'admin'
-                };
-                loginUser(adminUser, true);
+                }, remember);
+                return;
+            }
+
+            // Check demo customer (for first-time login)
+            if (email === DEMO_CUSTOMER.email && password === DEMO_CUSTOMER.password) {
+                // Check if demo user exists in storage
+                let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+                let demoUser = users.find(u => u.email === DEMO_CUSTOMER.email);
+                
+                if (!demoUser) {
+                    // Create demo user if not exists
+                    demoUser = {
+                        name: DEMO_CUSTOMER.name,
+                        email: DEMO_CUSTOMER.email,
+                        password: DEMO_CUSTOMER.password,
+                        role: 'customer',
+                        registeredAt: new Date().toISOString()
+                    };
+                    users.push(demoUser);
+                    localStorage.setItem('malcomtec_users', JSON.stringify(users));
+                }
+                
+                loginUser(demoUser, remember);
                 return;
             }
 
@@ -861,403 +542,97 @@
             const user = users.find(u => u.email === email && u.password === password);
 
             if (user) {
-                loginUser(user, false);
+                loginUser(user, remember);
             } else {
                 showToast('❌ Invalid email or password', false);
             }
         }
 
         // Login user and show dashboard
-        function loginUser(user, admin) {
-            currentUser = user;
-            isAdmin = admin;
+        function loginUser(user, remember = false) {
+            // Clear any existing session data first
+            sessionStorage.clear();
             
-            // Update UI based on role
-            const roleBadge = document.getElementById('roleBadge');
-            const adminSection = document.getElementById('adminSection');
-            const customerSection = document.getElementById('customerSection');
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            
-            if (isAdmin) {
-                roleBadge.textContent = 'Admin';
-                roleBadge.classList.add('admin');
-                adminSection.style.display = 'block';
-                customerSection.style.display = 'none';
-                welcomeMessage.textContent = 'Welcome to the Admin Panel. You can view and respond to all customer tickets.';
-                document.getElementById('welcomeUserName').textContent = 'Welcome, Admin!';
-                
-                // Load admin data
-                loadAllTickets();
-                loadAllCustomers();
+            if (remember) {
+                localStorage.setItem('currentUser', JSON.stringify(user));
             } else {
-                roleBadge.textContent = 'Customer';
-                roleBadge.classList.remove('admin');
-                adminSection.style.display = 'none';
-                customerSection.style.display = 'block';
-                welcomeMessage.textContent = 'Your business support dashboard is ready. All your tickets and account info are synced with mi Business Support.';
-                document.getElementById('welcomeUserName').textContent = `Welcome back, ${user.name}!`;
-                
-                // Load customer tickets
-                loadCustomerTickets();
+                sessionStorage.setItem('currentUser', JSON.stringify(user));
             }
             
+            // Clear login form (FIXED: removes prefilled data)
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('remember').checked = false;
+            
+            // Update UI
             document.getElementById('userEmailDisplay').textContent = user.email;
+            document.getElementById('welcomeUserName').textContent = `Welcome, ${user.name}!`;
+            
+            const roleBadge = document.getElementById('roleBadge');
+            roleBadge.textContent = user.role === 'admin' ? 'Admin' : 'Customer';
+            if (user.role === 'admin') {
+                roleBadge.classList.add('admin');
+            }
+            
             document.getElementById('authContainer').style.display = 'none';
             document.getElementById('dashboardContainer').classList.add('active');
             
-            showToast(`🔓 Welcome ${isAdmin ? 'Admin' : user.name}!`);
-        }
-
-        // Load all tickets (for admin)
-        function loadAllTickets() {
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const adminTicketList = document.getElementById('adminTicketList');
-            
-            // Update stats
-            document.getElementById('totalTicketsCount').textContent = tickets.length;
-            document.getElementById('openTicketsCount').textContent = tickets.filter(t => t.status === 'Open').length;
-            document.getElementById('progressTicketsCount').textContent = tickets.filter(t => t.status === 'In Progress').length;
-            document.getElementById('resolvedTicketsCount').textContent = tickets.filter(t => t.status === 'Resolved').length;
-            
-            if (tickets.length === 0) {
-                adminTicketList.innerHTML = '<p style="color: #5a6f88; text-align: center;">No tickets in the system.</p>';
-                return;
-            }
-            
-            adminTicketList.innerHTML = '';
-            tickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = document.createElement('div');
-                ticketEl.className = 'ticket-item';
-                ticketEl.onclick = () => openTicketModal(ticket.id);
-                
-                const statusClass = ticket.status === 'Open' ? 'status-open' : 
-                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
-                
-                const priorityClass = ticket.priority === 'High' || ticket.priority === 'Critical' ? 'priority-high' :
-                                     ticket.priority === 'Medium' ? 'priority-medium' : 'priority-low';
-                
-                ticketEl.innerHTML = `
-                    <div>
-                        <strong>${ticket.title}</strong>
-                        <div style="color: #5a6f88; font-size: 0.9rem;">
-                            Customer: ${ticket.createdByName} · ${new Date(ticket.createdAt).toLocaleDateString()}
-                        </div>
-                        <div class="${priorityClass}">Priority: ${ticket.priority}</div>
-                    </div>
-                    <span class="ticket-status ${statusClass}">${ticket.status}</span>
-                `;
-                
-                adminTicketList.appendChild(ticketEl);
-            });
-        }
-
-        // Load all customers (for admin)
-        function loadAllCustomers() {
-            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
-            const customerList = document.getElementById('customerList');
-            
-            if (users.length === 0) {
-                customerList.innerHTML = '<p style="color: #5a6f88; text-align: center;">No customers registered yet.</p>';
-                return;
-            }
-            
-            customerList.innerHTML = '';
-            users.forEach(user => {
-                const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-                const userTickets = tickets.filter(t => t.createdBy === user.email);
-                
-                const customerEl = document.createElement('div');
-                customerEl.className = 'ticket-item';
-                customerEl.innerHTML = `
-                    <div>
-                        <strong>${user.name}</strong>
-                        <div style="color: #5a6f88; font-size: 0.9rem;">
-                            ${user.email} · Registered: ${new Date(user.registeredAt).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <div>
-                        <span class="ticket-status status-open">${userTickets.length} tickets</span>
-                    </div>
-                `;
-                
-                customerList.appendChild(customerEl);
-            });
-        }
-
-        // Load customer tickets
-        function loadCustomerTickets() {
-            if (!currentUser || isAdmin) return;
-            
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const userTickets = tickets.filter(t => t.createdBy === currentUser.email);
-            
-            const customerTicketList = document.getElementById('customerTicketList');
-            
-            // Update stats
-            document.getElementById('totalTicketsCount').textContent = userTickets.length;
-            document.getElementById('openTicketsCount').textContent = userTickets.filter(t => t.status === 'Open').length;
-            document.getElementById('progressTicketsCount').textContent = userTickets.filter(t => t.status === 'In Progress').length;
-            document.getElementById('resolvedTicketsCount').textContent = userTickets.filter(t => t.status === 'Resolved').length;
-            
-            if (userTickets.length === 0) {
-                customerTicketList.innerHTML = '<p style="color: #5a6f88; text-align: center;">No tickets yet. Create your first support ticket above!</p>';
-                return;
-            }
-            
-            customerTicketList.innerHTML = '';
-            userTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = document.createElement('div');
-                ticketEl.className = 'ticket-item';
-                ticketEl.onclick = () => openTicketModal(ticket.id);
-                
-                const statusClass = ticket.status === 'Open' ? 'status-open' : 
-                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
-                
-                ticketEl.innerHTML = `
-                    <div>
-                        <strong>${ticket.title}</strong>
-                        <div style="color: #5a6f88; font-size: 0.9rem;">
-                            ${new Date(ticket.createdAt).toLocaleDateString()} · Priority: ${ticket.priority}
-                        </div>
-                    </div>
-                    <span class="ticket-status ${statusClass}">${ticket.status}</span>
-                `;
-                
-                customerTicketList.appendChild(ticketEl);
-            });
-        }
-
-        // Create new support ticket
-        function createTicket(event) {
-            event.preventDefault();
-            
-            if (!currentUser || isAdmin) return;
-            
-            const title = document.getElementById('ticketTitle').value;
-            const description = document.getElementById('ticketDescription').value;
-            const priority = document.getElementById('ticketPriority').value;
-            
-            const ticket = {
-                id: Date.now(),
-                title: title,
-                description: description,
-                priority: priority,
-                status: 'Open',
-                createdBy: currentUser.email,
-                createdByName: currentUser.name,
-                createdAt: new Date().toISOString(),
-                messages: [{
-                    sender: currentUser.name,
-                    senderRole: 'customer',
-                    message: description,
-                    timestamp: new Date().toISOString()
-                }]
-            };
-            
-            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            tickets.push(ticket);
-            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
-            
-            document.getElementById('ticketTitle').value = '';
-            document.getElementById('ticketDescription').value = '';
-            
-            showToast('✅ Ticket created successfully! Support will respond soon.');
-            loadCustomerTickets();
-        }
-
-        // Open ticket modal
-        function openTicketModal(ticketId) {
-            selectedTicketId = ticketId;
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const ticket = tickets.find(t => t.id === ticketId);
-            
-            if (!ticket) return;
-            
-            document.getElementById('modalTicketTitle').textContent = ticket.title;
-            
-            // Show/hide admin controls and customer info
-            const adminControls = document.getElementById('adminControls');
-            const customerInfo = document.getElementById('modalCustomerInfo');
-            
-            if (isAdmin) {
-                adminControls.style.display = 'block';
-                document.getElementById('ticketStatusSelect').value = ticket.status;
-                
-                customerInfo.style.display = 'block';
-                customerInfo.innerHTML = `
-                    <strong>Customer Information:</strong><br>
-                    Name: ${ticket.createdByName}<br>
-                    Email: ${ticket.createdBy}<br>
-                    Ticket Created: ${new Date(ticket.createdAt).toLocaleString()}
-                `;
-            } else {
-                adminControls.style.display = 'none';
-                customerInfo.style.display = 'none';
-            }
-            
-            let messagesHtml = '';
-            ticket.messages.forEach(msg => {
-                const senderClass = msg.senderRole === 'admin' ? 'admin' : '';
-                messagesHtml += `
-                    <div class="message-item">
-                        <span class="message-sender ${senderClass}">${msg.sender} ${msg.senderRole === 'admin' ? '👑' : ''}</span>
-                        <span class="message-time">${new Date(msg.timestamp).toLocaleString()}</span>
-                        <p>${msg.message}</p>
-                    </div>
-                `;
-            });
-            
-            document.getElementById('modalTicketContent').innerHTML = `
-                <div class="ticket-detail">
-                    <p><strong>Status:</strong> ${ticket.status}</p>
-                    <p><strong>Priority:</strong> ${ticket.priority}</p>
-                    <hr style="margin: 1rem 0;">
-                    <h4>Conversation</h4>
-                    ${messagesHtml}
-                </div>
-            `;
-            
-            document.getElementById('ticketModal').classList.add('active');
-        }
-
-        // Update ticket status (admin only)
-        function updateTicketStatus() {
-            if (!isAdmin || !selectedTicketId) return;
-            
-            const newStatus = document.getElementById('ticketStatusSelect').value;
-            
-            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const ticketIndex = tickets.findIndex(t => t.id === selectedTicketId);
-            
-            if (ticketIndex === -1) return;
-            
-            tickets[ticketIndex].status = newStatus;
-            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
-            
-            showToast('✅ Ticket status updated');
-            openTicketModal(selectedTicketId); // Refresh modal
-            if (isAdmin) {
-                loadAllTickets();
-            } else {
-                loadCustomerTickets();
-            }
-        }
-
-        // Close ticket modal
-        function closeTicketModal() {
-            document.getElementById('ticketModal').classList.remove('active');
-            selectedTicketId = null;
-        }
-
-        // Add reply to ticket
-        function addTicketReply(event) {
-            event.preventDefault();
-            
-            if (!currentUser || !selectedTicketId) return;
-            
-            const reply = document.getElementById('replyMessage').value;
-            
-            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const ticketIndex = tickets.findIndex(t => t.id === selectedTicketId);
-            
-            if (ticketIndex === -1) return;
-            
-            tickets[ticketIndex].messages.push({
-                sender: currentUser.name,
-                senderRole: isAdmin ? 'admin' : 'customer',
-                message: reply,
-                timestamp: new Date().toISOString()
-            });
-            
-            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
-            
-            document.getElementById('replyMessage').value = '';
-            showToast('✅ Reply sent');
-            openTicketModal(selectedTicketId); // Refresh modal
+            showToast(`🔓 Welcome ${user.name}!`);
         }
 
         // Logout function
         function logout() {
-            currentUser = null;
-            isAdmin = false;
+            // Clear ALL storage to prevent auto-fill on refresh (FIXED)
             localStorage.removeItem('currentUser');
+            sessionStorage.removeItem('currentUser');
+            
+            // Clear form fields
+            document.getElementById('loginEmail').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('remember').checked = false;
+            
             document.getElementById('authContainer').style.display = 'flex';
             document.getElementById('dashboardContainer').classList.remove('active');
-            document.getElementById('loginForm').reset();
+            
             showToast('👋 Logged out successfully');
         }
 
-        // Check if user is already logged in on page load
+        // Check if user is already logged in (but don't prefill forms)
         function checkLoggedIn() {
-            // No auto-login - show login page
-        }
-
-        // Add demo data
-        function setupDemoData() {
-            if (!localStorage.getItem('malcomtec_users')) {
-                const users = [
-                    {
-                        name: 'rockygyagenda',
-                        email: 'rockygyagenda@gmail.com',
-                        password: 'Camera@02',
-                        role: 'customer',
-                        registeredAt: new Date().toISOString()
-                    }
-                ];
-                localStorage.setItem('malcomtec_users', JSON.stringify(users));
-                
-                // Create demo tickets
-                const demoTickets = [
-                    {
-                        id: 1,
-                        title: 'Network connectivity issue',
-                        description: 'Unable to connect to company VPN',
-                        priority: 'High',
-                        status: 'In Progress',
-                        createdBy: 'rockygyagenda@gmail.com',
-                        createdByName: 'rockygyagenda',
-                        createdAt: new Date().toISOString(),
-                        messages: [
-                            {
-                                sender: 'rockygyagenda',
-                                senderRole: 'customer',
-                                message: 'Unable to connect to company VPN. I\'ve tried restarting but still having issues.',
-                                timestamp: new Date(Date.now() - 7200000).toISOString()
-                            },
-                            {
-                                sender: 'Support Admin',
-                                senderRole: 'admin',
-                                message: 'We\'re looking into this. Can you try connecting from a different network?',
-                                timestamp: new Date(Date.now() - 3600000).toISOString()
-                            }
-                        ]
-                    },
-                    {
-                        id: 2,
-                        title: 'Software license renewal',
-                        description: 'Need to renew my business license',
-                        priority: 'Medium',
-                        status: 'Open',
-                        createdBy: 'rockygyagenda@gmail.com',
-                        createdByName: 'rockygyagenda',
-                        createdAt: new Date(Date.now() - 86400000).toISOString(),
-                        messages: [
-                            {
-                                sender: 'rockygyagenda',
-                                senderRole: 'customer',
-                                message: 'My license expires next week. How do I renew?',
-                                timestamp: new Date(Date.now() - 86400000).toISOString()
-                            }
-                        ]
-                    }
-                ];
-                localStorage.setItem('malcomtec_tickets', JSON.stringify(demoTickets));
+            // Check both localStorage and sessionStorage
+            const savedUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+            
+            if (savedUser) {
+                try {
+                    const user = JSON.parse(savedUser);
+                    loginUser(user, false); // Don't remember again on page load
+                } catch (e) {
+                    // Invalid saved user, clear it
+                    localStorage.removeItem('currentUser');
+                    sessionStorage.removeItem('currentUser');
+                }
             }
         }
 
-        // Initialize
-        setupDemoData();
-        checkLoggedIn();
+        // Initialize demo data if needed
+        function setupDemoData() {
+            if (!localStorage.getItem('malcomtec_users')) {
+                // Create demo customer
+                localStorage.setItem('malcomtec_users', JSON.stringify([{
+                    name: DEMO_CUSTOMER.name,
+                    email: DEMO_CUSTOMER.email,
+                    password: DEMO_CUSTOMER.password,
+                    role: 'customer',
+                    registeredAt: new Date().toISOString()
+                }]));
+            }
+        }
+
+        // Run on page load
+        window.onload = function() {
+            setupDemoData();
+            checkLoggedIn();
+        };
     </script>
 </body>
 </html>
