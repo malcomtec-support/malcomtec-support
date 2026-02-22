@@ -66,7 +66,6 @@
             font-weight: bold;
             color: white;
             box-shadow: 0 10px 25px rgba(42,125,225,0.4);
-            border: 2px solid rgba(255,255,255,0.2);
         }
 
         .company-name-container {
@@ -78,7 +77,6 @@
             font-weight: 800;
             font-size: 1.9rem;
             color: white;
-            letter-spacing: 1px;
         }
 
         .company-tagline {
@@ -103,6 +101,39 @@
             margin-bottom: 2rem;
             border-left: 3px solid #2a7de1;
             padding-left: 1rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            background: rgba(255,255,255,0.1);
+            border-radius: 50px;
+            padding: 0.5rem 1rem;
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+
+        .social-link:hover {
+            background: #2a7de1;
+            transform: translateY(-2px);
+        }
+
+        .social-link.whatsapp:hover {
+            background: #25D366;
+        }
+
+        .social-link.tiktok:hover {
+            background: #000000;
         }
 
         .support-badge {
@@ -179,7 +210,7 @@
             padding: 0.1rem 1.2rem;
         }
 
-        .input-wrapper input {
+        .input-wrapper input, .input-wrapper textarea, .input-wrapper select {
             width: 100%;
             background: none;
             border: none;
@@ -356,6 +387,7 @@
             border-bottom: 1px solid #e9ecef;
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .nav-item {
@@ -383,7 +415,6 @@
             padding: 0 2rem;
         }
 
-        /* Dashboard Sections */
         .dashboard-section {
             display: none;
         }
@@ -532,7 +563,7 @@
             color: white;
         }
 
-        /* Customer List */
+        /* Customer Grid */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -564,6 +595,41 @@
             font-size: 0.9rem;
         }
 
+        /* File Upload */
+        .file-upload {
+            border: 2px dashed #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .file-upload:hover {
+            border-color: #2a7de1;
+            background: #f8f9fa;
+        }
+
+        .file-list {
+            margin-top: 1rem;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+
+        .file-item a {
+            color: #2a7de1;
+            text-decoration: none;
+            flex-grow: 1;
+        }
+
         /* Knowledge Base */
         .knowledge-grid {
             display: grid;
@@ -590,12 +656,6 @@
         .knowledge-card h3 {
             color: #2a7de1;
             margin-bottom: 0.5rem;
-        }
-
-        .knowledge-card p {
-            color: #5a6f88;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
         }
 
         .article-meta {
@@ -654,7 +714,6 @@
             font-size: 0.7rem;
             color: #8fa3bb;
             margin-top: 0.25rem;
-            margin-left: 0.5rem;
         }
 
         .chat-input {
@@ -670,28 +729,6 @@
             border: none;
             padding: 0.5rem;
             outline: none;
-        }
-
-        /* Template Responses */
-        .templates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .template-card {
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 1rem;
-            cursor: pointer;
-            border: 1px solid #e9ecef;
-            transition: 0.2s;
-        }
-
-        .template-card:hover {
-            background: #e3f2fd;
-            border-color: #2a7de1;
         }
 
         /* Modal */
@@ -770,11 +807,21 @@
                     </div>
                     <div class="brand-message">
                         <h2>complete business support</h2>
-                        <p>All-in-one customer support system with ticketing, knowledge base, live chat, and analytics.</p>
+                        <p>24/7 customer support with ticketing, file sharing, and instant messaging.</p>
+                    </div>
+                    
+                    <!-- Social Links - Added WhatsApp & TikTok -->
+                    <div class="social-links">
+                        <a href="https://wa.me/message/3IK4Q2ZGA7B2L1" target="_blank" class="social-link whatsapp">
+                            📱 WhatsApp
+                        </a>
+                        <a href="https://lite.tiktok.com/t/ZS9eDk3xxfg8V-SidA7/" target="_blank" class="social-link tiktok">
+                            🎵 TikTok
+                        </a>
                     </div>
                 </div>
                 <div class="support-badge">
-                    ⭐ enterprise ready · 24/7 support
+                    ⭐ file sharing · instant support
                 </div>
             </div>
 
@@ -859,6 +906,7 @@
             <div class="nav-item" onclick="switchSection('chat')">💬 Live Chat</div>
             <div class="nav-item" onclick="switchSection('analytics')">📈 Analytics</div>
             <div class="nav-item" onclick="switchSection('team')">👑 Team</div>
+            <div class="nav-item" onclick="openContactModal()">📞 Contact Us</div>
         </div>
         
         <div class="dashboard-content">
@@ -881,14 +929,14 @@
                         <div class="trend">↓ 5% from yesterday</div>
                     </div>
                     <div class="stat-card">
-                        <h3>AVG RESPONSE</h3>
-                        <div class="number" id="avgResponseTime">2.4h</div>
-                        <div class="trend">↓ 30min improvement</div>
+                        <h3>FILES SHARED</h3>
+                        <div class="number" id="filesSharedCount">0</div>
+                        <div class="trend">📎 including invoices</div>
                     </div>
                     <div class="stat-card">
-                        <h3>SATISFACTION</h3>
-                        <div class="number" id="satisfactionRate">98%</div>
-                        <div class="trend">⭐ 4.8/5 rating</div>
+                        <h3>RESPONSE TIME</h3>
+                        <div class="number" id="avgResponseTime">2.4h</div>
+                        <div class="trend">↓ 30min improvement</div>
                     </div>
                 </div>
 
@@ -924,17 +972,19 @@
                             </div>
                         </div>
                         <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>📎 ATTACHMENTS</label>
-                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <input type="file" id="ticketAttachment" style="color: #0b1a2e; padding: 0.5rem;">
+                            <label>📎 ATTACH FILES (PDF, Images)</label>
+                            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                                Click to upload or drag files here
+                                <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFileSelect(event)">
                             </div>
+                            <div id="fileList" class="file-list"></div>
                         </div>
                         <div class="input-group" style="margin-bottom: 1rem;">
                             <label>🔧 CATEGORY</label>
                             <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
                                 <select id="ticketCategory" style="color: #0b1a2e;">
                                     <option>Technical Support</option>
-                                    <option>Billing</option>
+                                    <option>Billing/Invoice</option>
                                     <option>Sales</option>
                                     <option>Account</option>
                                     <option>Other</option>
@@ -976,18 +1026,13 @@
                     <h2>Knowledge Base</h2>
                     <div class="knowledge-grid" id="knowledgeGrid"></div>
                 </div>
-                
-                <div class="support-section">
-                    <h2>Template Responses</h2>
-                    <div class="templates-grid" id="templatesGrid"></div>
-                </div>
             </div>
 
             <!-- Live Chat Section -->
             <div id="chatSection" class="dashboard-section">
                 <div class="support-section">
                     <h2>Live Support Chat</h2>
-                    <div class="chat-container" id="chatContainer">
+                    <div class="chat-container">
                         <div class="chat-messages" id="chatMessages"></div>
                         <div class="chat-input">
                             <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="handleChatKeyPress(event)">
@@ -1016,20 +1061,9 @@
                         <div class="trend">↑ 5% from last month</div>
                     </div>
                     <div class="stat-card">
-                        <h3>CSAT SCORE</h3>
-                        <div class="number" id="csatScore">4.8</div>
-                        <div class="trend">⭐ out of 5</div>
-                    </div>
-                </div>
-
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h3>Tickets by Day</h3>
-                        <canvas id="ticketChart" style="width:100%; height:200px;"></canvas>
-                    </div>
-                    <div class="chart-card">
-                        <h3>Top Categories</h3>
-                        <div id="categoryStats"></div>
+                        <h3>FILES SHARED</h3>
+                        <div class="number" id="filesSharedMetric">45</div>
+                        <div class="trend">📎 invoices & screenshots</div>
                     </div>
                 </div>
             </div>
@@ -1067,15 +1101,43 @@
                 <button class="btn-warning" onclick="updateTicketStatus()">Update</button>
             </div>
             
-            <h3>Add Reply</h3>
+            <h3>Add Reply with File Attachment</h3>
             <form onsubmit="addTicketReply(event)">
                 <div class="input-group">
                     <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
                         <textarea id="replyMessage" placeholder="Type your reply..." required style="color: #0b1a2e; min-height: 80px;"></textarea>
                     </div>
                 </div>
-                <button type="submit" class="btn-primary">Send Reply</button>
+                <div class="input-group" style="margin: 1rem 0;">
+                    <label>📎 Attach File (PDF, Invoice, Image)</label>
+                    <div class="file-upload" onclick="document.getElementById('replyFileInput').click()">
+                        Click to upload file
+                        <input type="file" id="replyFileInput" style="display: none;" onchange="handleReplyFileSelect(event)">
+                    </div>
+                    <div id="replyFileList" class="file-list"></div>
+                </div>
+                <button type="submit" class="btn-primary">Send Reply with File</button>
             </form>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeContactModal()">&times;</span>
+            <h2>Contact Us</h2>
+            <div style="text-align: center; padding: 2rem;">
+                <h3>Quick Support Channels</h3>
+                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
+                    <a href="https://wa.me/message/3IK4Q2ZGA7B2L1" target="_blank" class="btn-success" style="text-decoration: none; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        📱 WhatsApp Business
+                    </a>
+                    <a href="https://lite.tiktok.com/t/ZS9eDk3xxfg8V-SidA7/" target="_blank" class="btn-primary" style="text-decoration: none; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #000000;">
+                        🎵 TikTok Support
+                    </a>
+                    <p style="color: #5a6f88; margin-top: 1rem;">Or continue using the ticket system above</p>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -1099,23 +1161,16 @@
         let currentUser = null;
         let selectedTicketId = null;
         let isAdmin = false;
+        let selectedFiles = [];
+        let replyFiles = [];
 
         // Knowledge Base Articles
         const knowledgeBase = [
-            { title: 'Getting Started Guide', category: 'Basics', views: 1234, helpful: 95 },
-            { title: 'How to Reset Password', category: 'Account', views: 3456, helpful: 98 },
-            { title: 'Network Setup Guide', category: 'Technical', views: 2341, helpful: 92 },
-            { title: 'Billing FAQ', category: 'Billing', views: 1876, helpful: 96 },
-            { title: 'VPN Configuration', category: 'Technical', views: 987, helpful: 94 },
-            { title: 'Contact Support', category: 'Support', views: 4567, helpful: 99 }
-        ];
-
-        // Template Responses
-        const templates = [
-            { title: 'Welcome Message', content: 'Thank you for contacting MalcomTec support...' },
-            { title: 'Password Reset', content: 'To reset your password, please follow these steps...' },
-            { title: 'Technical Issue', content: 'We are investigating your technical issue...' },
-            { title: 'Billing Inquiry', content: 'Regarding your billing question...' }
+            { title: 'How to Pay Invoices Online', category: 'Billing', views: 1234 },
+            { title: 'Understanding Your Statement', category: 'Billing', views: 3456 },
+            { title: 'Network Setup Guide', category: 'Technical', views: 2341 },
+            { title: 'WhatsApp Support Guide', category: 'Support', views: 1876 },
+            { title: 'TikTok Business Tools', category: 'Social', views: 987 }
         ];
 
         function showToast(message, isSuccess = true) {
@@ -1163,7 +1218,16 @@
                 return;
             }
 
-            const user = { name, email, password, role: 'customer', registeredAt: new Date().toISOString() };
+            const user = { 
+                name, 
+                email, 
+                password, 
+                role: 'customer', 
+                registeredAt: new Date().toISOString(),
+                totalTickets: 0,
+                lastActive: new Date().toISOString()
+            };
+            
             let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             
             if (users.some(u => u.email === email)) {
@@ -1196,24 +1260,7 @@
                 return;
             }
 
-            // Demo customer
-            if (email === DEMO_CUSTOMER.email && password === DEMO_CUSTOMER.password) {
-                let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
-                let demoUser = users.find(u => u.email === DEMO_CUSTOMER.email);
-                
-                if (!demoUser) {
-                    demoUser = DEMO_CUSTOMER;
-                    demoUser.role = 'customer';
-                    demoUser.registeredAt = new Date().toISOString();
-                    users.push(demoUser);
-                    localStorage.setItem('malcomtec_users', JSON.stringify(users));
-                }
-                
-                loginUser(demoUser, remember);
-                return;
-            }
-
-            // Regular users
+            // Check users in localStorage
             const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             const user = users.find(u => u.email === email && u.password === password);
 
@@ -1244,11 +1291,6 @@
             roleBadge.textContent = isAdmin ? 'Admin' : 'Customer';
             roleBadge.classList.toggle('admin', isAdmin);
             
-            // Hide team section for non-admins
-            if (!isAdmin) {
-                document.querySelectorAll('.nav-item')[6].style.display = 'none';
-            }
-            
             document.getElementById('authContainer').style.display = 'none';
             document.getElementById('dashboardContainer').classList.add('active');
             
@@ -1258,11 +1300,10 @@
 
         function loadAllData() {
             loadTickets();
-            loadCustomers();
+            loadCustomers(); // This will now show all customers including new signups
             loadKnowledgeBase();
-            loadTemplates();
-            loadChat();
             updateAnalytics();
+            loadChat();
         }
 
         function loadTickets() {
@@ -1272,9 +1313,18 @@
             const ticketList = document.getElementById('ticketList');
             if (!ticketList) return;
             
-            // Update stats
             document.getElementById('totalTicketsCount').textContent = userTickets.length;
             document.getElementById('openTicketsCount').textContent = userTickets.filter(t => t.status === 'Open').length;
+            
+            // Count files
+            let fileCount = 0;
+            userTickets.forEach(t => {
+                if (t.files) fileCount += t.files.length;
+                t.messages?.forEach(m => {
+                    if (m.files) fileCount += m.files.length;
+                });
+            });
+            document.getElementById('filesSharedCount').textContent = fileCount;
             
             if (userTickets.length === 0) {
                 ticketList.innerHTML = '<p style="color: #5a6f88;">No tickets found.</p>';
@@ -1282,7 +1332,7 @@
             }
             
             ticketList.innerHTML = '';
-            userTickets.forEach(ticket => {
+            userTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
                 const ticketEl = document.createElement('div');
                 ticketEl.className = 'ticket-item';
                 ticketEl.onclick = () => openTicketModal(ticket.id);
@@ -1290,9 +1340,11 @@
                 const statusClass = ticket.status === 'Open' ? 'status-open' : 
                                    ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
                 
+                const hasFiles = (ticket.files?.length > 0 || ticket.messages?.some(m => m.files?.length > 0)) ? '📎 ' : '';
+                
                 ticketEl.innerHTML = `
                     <div>
-                        <strong>${ticket.title}</strong>
+                        <strong>${hasFiles}${ticket.title}</strong>
                         <div style="color: #5a6f88; font-size: 0.9rem;">
                             ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
                         </div>
@@ -1305,31 +1357,40 @@
         }
 
         function loadCustomers() {
-            if (!isAdmin) return;
-            
-            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             const customerGrid = document.getElementById('customerGrid');
-            
             if (!customerGrid) return;
             
+            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
+            
             customerGrid.innerHTML = '';
-            users.forEach(user => {
-                if (user.role !== 'admin') {
-                    const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-                    const userTickets = tickets.filter(t => t.createdBy === user.email);
-                    
-                    const card = document.createElement('div');
-                    card.className = 'customer-card';
-                    card.innerHTML = `
-                        <h3>${user.name}</h3>
-                        <p>${user.email}</p>
-                        <div class="customer-stats">
-                            <span>🎫 ${userTickets.length} tickets</span>
-                            <span>📅 ${new Date(user.registeredAt).toLocaleDateString()}</span>
-                        </div>
-                    `;
-                    customerGrid.appendChild(card);
-                }
+            
+            // Show all customers (filter out admin)
+            const customers = users.filter(u => u.role !== 'admin');
+            
+            if (customers.length === 0) {
+                customerGrid.innerHTML = '<p style="color: #5a6f88;">No customers registered yet.</p>';
+                return;
+            }
+            
+            customers.forEach(user => {
+                const userTickets = tickets.filter(t => t.createdBy === user.email);
+                const openTickets = userTickets.filter(t => t.status === 'Open').length;
+                
+                const card = document.createElement('div');
+                card.className = 'customer-card';
+                card.innerHTML = `
+                    <h3>${user.name}</h3>
+                    <p>${user.email}</p>
+                    <div class="customer-stats">
+                        <span>🎫 Total: ${userTickets.length}</span>
+                        <span>🟡 Open: ${openTickets}</span>
+                    </div>
+                    <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #8fa3bb;">
+                        📅 ${new Date(user.registeredAt).toLocaleDateString()}
+                    </div>
+                `;
+                customerGrid.appendChild(card);
             });
         }
 
@@ -1345,28 +1406,9 @@
                 card.innerHTML = `
                     <h3>${article.title}</h3>
                     <p>${article.category}</p>
-                    <div class="article-meta">
-                        👁️ ${article.views} views · 👍 ${article.helpful}% helpful
-                    </div>
+                    <div class="article-meta">👁️ ${article.views} views</div>
                 `;
                 knowledgeGrid.appendChild(card);
-            });
-        }
-
-        function loadTemplates() {
-            const templatesGrid = document.getElementById('templatesGrid');
-            if (!templatesGrid) return;
-            
-            templatesGrid.innerHTML = '';
-            templates.forEach(template => {
-                const card = document.createElement('div');
-                card.className = 'template-card';
-                card.onclick = () => {
-                    document.getElementById('replyMessage').value = template.content;
-                    showToast('Template loaded');
-                };
-                card.innerHTML = `<strong>${template.title}</strong>`;
-                templatesGrid.appendChild(card);
             });
         }
 
@@ -1384,23 +1426,56 @@
 
         function updateAnalytics() {
             document.getElementById('avgResponseTime').textContent = '2.4h';
-            document.getElementById('satisfactionRate').textContent = '98%';
             document.getElementById('ticketVolume').textContent = '156';
             document.getElementById('responseTimeMetric').textContent = '2.4h';
             document.getElementById('resolutionRate').textContent = '94%';
-            document.getElementById('csatScore').textContent = '4.8';
+            document.getElementById('filesSharedMetric').textContent = '45';
             
-            // Update charts
             document.getElementById('openChart').style.width = '45%';
             document.getElementById('progressChart').style.width = '35%';
             document.getElementById('resolvedChart').style.width = '20%';
             
-            // Recent activity
             document.getElementById('recentActivity').innerHTML = `
-                <div>✅ Ticket #123 resolved</div>
-                <div>💬 New message from John</div>
-                <div>📊 5 new tickets today</div>
+                <div>✅ New customer registered</div>
+                <div>📎 Invoice uploaded to ticket #124</div>
+                <div>💬 WhatsApp support request</div>
             `;
+        }
+
+        function handleFileSelect(event) {
+            const files = Array.from(event.target.files);
+            selectedFiles = files;
+            
+            const fileList = document.getElementById('fileList');
+            fileList.innerHTML = '';
+            
+            files.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span>📎 ${file.name}</span>
+                    <span style="color: #5a6f88; font-size: 0.8rem;">${(file.size/1024).toFixed(1)} KB</span>
+                `;
+                fileList.appendChild(fileItem);
+            });
+        }
+
+        function handleReplyFileSelect(event) {
+            const files = Array.from(event.target.files);
+            replyFiles = files;
+            
+            const fileList = document.getElementById('replyFileList');
+            fileList.innerHTML = '';
+            
+            files.forEach(file => {
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span>📎 ${file.name}</span>
+                    <span style="color: #5a6f88; font-size: 0.8rem;">${(file.size/1024).toFixed(1)} KB</span>
+                `;
+                fileList.appendChild(fileItem);
+            });
         }
 
         function createTicket(event) {
@@ -1423,11 +1498,22 @@
                 createdBy: currentUser.email,
                 createdByName: currentUser.name,
                 createdAt: new Date().toISOString(),
+                files: selectedFiles.map(f => ({
+                    name: f.name,
+                    size: f.size,
+                    type: f.type,
+                    lastModified: f.lastModified
+                })),
                 messages: [{
                     sender: currentUser.name,
                     senderRole: 'customer',
                     message: description,
-                    timestamp: new Date().toISOString()
+                    timestamp: new Date().toISOString(),
+                    files: selectedFiles.map(f => ({
+                        name: f.name,
+                        size: f.size,
+                        type: f.type
+                    }))
                 }]
             };
             
@@ -1435,10 +1521,13 @@
             tickets.push(ticket);
             localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
             
+            // Clear form
             document.getElementById('ticketTitle').value = '';
             document.getElementById('ticketDescription').value = '';
+            document.getElementById('fileList').innerHTML = '';
+            selectedFiles = [];
             
-            showToast('Ticket created successfully!');
+            showToast('Ticket created with files!');
             loadTickets();
         }
 
@@ -1456,20 +1545,34 @@
             
             let messagesHtml = '';
             ticket.messages.forEach(msg => {
+                let filesHtml = '';
+                if (msg.files && msg.files.length > 0) {
+                    filesHtml = '<div style="margin-top: 0.5rem;">📎 Attached: ' + 
+                        msg.files.map(f => f.name).join(', ') + '</div>';
+                }
+                
                 messagesHtml += `
                     <div class="message-item">
                         <span class="message-sender ${msg.senderRole === 'admin' ? 'admin' : ''}">${msg.sender}</span>
                         <span class="message-time">${new Date(msg.timestamp).toLocaleString()}</span>
                         <p>${msg.message}</p>
+                        ${filesHtml}
                     </div>
                 `;
             });
+            
+            let ticketFilesHtml = '';
+            if (ticket.files && ticket.files.length > 0) {
+                ticketFilesHtml = '<div style="margin: 1rem 0;"><strong>📎 Attached Files:</strong><br>' + 
+                    ticket.files.map(f => f.name).join('<br>') + '</div>';
+            }
             
             document.getElementById('modalTicketContent').innerHTML = `
                 <div class="ticket-detail">
                     <p><strong>Status:</strong> ${ticket.status}</p>
                     <p><strong>Category:</strong> ${ticket.category || 'General'}</p>
                     <p><strong>Priority:</strong> ${ticket.priority || 'Medium'}</p>
+                    ${ticketFilesHtml}
                     <hr>
                     <h4>Conversation</h4>
                     ${messagesHtml}
@@ -1491,18 +1594,31 @@
             
             if (ticketIndex === -1) return;
             
-            tickets[ticketIndex].messages.push({
+            const replyObj = {
                 sender: currentUser.name,
                 senderRole: isAdmin ? 'admin' : 'customer',
                 message: reply,
                 timestamp: new Date().toISOString()
-            });
+            };
             
+            if (replyFiles.length > 0) {
+                replyObj.files = replyFiles.map(f => ({
+                    name: f.name,
+                    size: f.size,
+                    type: f.type
+                }));
+            }
+            
+            tickets[ticketIndex].messages.push(replyObj);
             localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
             
             document.getElementById('replyMessage').value = '';
-            showToast('Reply sent');
+            document.getElementById('replyFileList').innerHTML = '';
+            replyFiles = [];
+            
+            showToast('Reply sent with ' + (replyObj.files ? replyObj.files.length + ' file(s)' : ''));
             openTicketModal(selectedTicketId);
+            loadTickets();
         }
 
         function updateTicketStatus() {
@@ -1526,14 +1642,21 @@
         function closeTicketModal() {
             document.getElementById('ticketModal').classList.remove('active');
             selectedTicketId = null;
+            replyFiles = [];
+        }
+
+        function openContactModal() {
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function closeContactModal() {
+            document.getElementById('contactModal').classList.remove('active');
         }
 
         function switchSection(section) {
-            // Update navigation
             document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
             event.target.classList.add('active');
             
-            // Show selected section
             document.querySelectorAll('.dashboard-section').forEach(s => s.classList.remove('active'));
             document.getElementById(section + 'Section').classList.add('active');
         }
@@ -1546,7 +1669,6 @@
             
             const chatMessages = document.getElementById('chatMessages');
             
-            // Add user message
             const userMsg = document.createElement('div');
             userMsg.className = 'chat-message customer';
             userMsg.innerHTML = `
@@ -1555,12 +1677,11 @@
             `;
             chatMessages.appendChild(userMsg);
             
-            // Auto-reply
             setTimeout(() => {
                 const supportMsg = document.createElement('div');
                 supportMsg.className = 'chat-message support';
                 supportMsg.innerHTML = `
-                    <div class="message-bubble">Thank you for your message. A support agent will respond shortly.</div>
+                    <div class="message-bubble">Thank you for your message. An agent will respond shortly. For immediate help, try our WhatsApp support.</div>
                     <div class="message-time">Just now</div>
                 `;
                 chatMessages.appendChild(supportMsg);
@@ -1599,32 +1720,42 @@
             }
         }
 
+        // Initialize demo data
         function setupDemoData() {
             if (!localStorage.getItem('malcomtec_users')) {
-                localStorage.setItem('malcomtec_users', JSON.stringify([{
-                    name: DEMO_CUSTOMER.name,
-                    email: DEMO_CUSTOMER.email,
-                    password: DEMO_CUSTOMER.password,
-                    role: 'customer',
-                    registeredAt: new Date().toISOString()
-                }]));
+                const demoUsers = [
+                    {
+                        name: 'rockygyagenda',
+                        email: 'rockygyagenda@gmail.com',
+                        password: 'Camera@02',
+                        role: 'customer',
+                        registeredAt: new Date().toISOString()
+                    }
+                ];
+                localStorage.setItem('malcomtec_users', JSON.stringify(demoUsers));
             }
             
             if (!localStorage.getItem('malcomtec_tickets')) {
                 const demoTickets = [
                     {
                         id: 1,
-                        title: 'Network connectivity issue',
-                        description: 'Unable to connect to VPN',
-                        category: 'Technical Support',
-                        priority: 'High',
+                        title: 'Invoice Payment Question',
+                        description: 'Need help with latest invoice',
+                        category: 'Billing/Invoice',
+                        priority: 'Medium',
                         status: 'In Progress',
                         createdBy: 'rockygyagenda@gmail.com',
                         createdByName: 'rockygyagenda',
                         createdAt: new Date().toISOString(),
+                        files: [{ name: 'invoice-123.pdf', size: 245760, type: 'application/pdf' }],
                         messages: [
-                            { sender: 'rockygyagenda', senderRole: 'customer', message: 'VPN not working', timestamp: new Date(Date.now() - 7200000).toISOString() },
-                            { sender: 'Support Admin', senderRole: 'admin', message: 'Checking now', timestamp: new Date(Date.now() - 3600000).toISOString() }
+                            { 
+                                sender: 'rockygyagenda', 
+                                senderRole: 'customer', 
+                                message: 'Need help with invoice', 
+                                timestamp: new Date(Date.now() - 7200000).toISOString(),
+                                files: [{ name: 'invoice-123.pdf', size: 245760, type: 'application/pdf' }]
+                            }
                         ]
                     }
                 ];
