@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MalcomTec · Complete Business Support</title>
+    <title>MalcomTec · Business Support</title>
     <style>
         * {
             margin: 0;
@@ -65,7 +65,6 @@
             font-size: 1.8rem;
             font-weight: bold;
             color: white;
-            box-shadow: 0 10px 25px rgba(42,125,225,0.4);
         }
 
         .company-name-container {
@@ -103,7 +102,6 @@
             padding-left: 1rem;
         }
 
-        /* Social Links */
         .social-links {
             display: flex;
             gap: 1rem;
@@ -121,11 +119,6 @@
             align-items: center;
             gap: 0.5rem;
             transition: 0.2s;
-        }
-
-        .social-link:hover {
-            background: #2a7de1;
-            transform: translateY(-2px);
         }
 
         .social-link.whatsapp:hover {
@@ -240,7 +233,6 @@
             color: white;
             cursor: pointer;
             transition: 0.15s;
-            border: 1px solid rgba(255,255,255,0.2);
         }
 
         .btn-primary:hover {
@@ -269,15 +261,6 @@
 
         .btn-danger {
             background: #dc3545;
-            border: none;
-            border-radius: 60px;
-            padding: 0.5rem 1rem;
-            color: white;
-            cursor: pointer;
-        }
-
-        .btn-info {
-            background: #17a2b8;
             border: none;
             border-radius: 60px;
             padding: 0.5rem 1rem;
@@ -324,7 +307,6 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
         .dashboard-logo-text {
@@ -380,6 +362,10 @@
             font-weight: 600;
         }
 
+        .logout-btn:hover {
+            background: #bb2d3b;
+        }
+
         /* Dashboard Navigation */
         .dashboard-nav {
             background: white;
@@ -409,6 +395,14 @@
             color: white;
         }
 
+        .admin-only {
+            display: none;
+        }
+
+        .admin-only.visible {
+            display: block;
+        }
+
         .dashboard-content {
             max-width: 1400px;
             margin: 2rem auto;
@@ -432,7 +426,6 @@
             border-left: 5px solid #2a7de1;
         }
 
-        /* Stats Grid */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -459,50 +452,6 @@
             font-weight: 700;
         }
 
-        .stat-card .trend {
-            font-size: 0.8rem;
-            color: #28a745;
-            margin-top: 0.5rem;
-        }
-
-        /* Charts Grid */
-        .charts-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .chart-card {
-            background: white;
-            border-radius: 20px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-
-        .chart-card h3 {
-            color: #0b1a2e;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .chart-bar {
-            height: 10px;
-            background: #e9ecef;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .chart-fill {
-            height: 100%;
-            background: #2a7de1;
-            border-radius: 10px;
-            width: 0%;
-            transition: width 0.3s;
-        }
-
-        /* Support Sections */
         .support-section {
             background: white;
             border-radius: 20px;
@@ -519,7 +468,6 @@
             padding-bottom: 0.5rem;
         }
 
-        /* Ticket List */
         .ticket-list {
             margin-top: 1rem;
         }
@@ -563,7 +511,6 @@
             color: white;
         }
 
-        /* Customer Grid */
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -589,20 +536,12 @@
             margin-bottom: 1rem;
         }
 
-        .customer-stats {
-            display: flex;
-            gap: 1rem;
-            font-size: 0.9rem;
-        }
-
-        /* File Upload */
         .file-upload {
             border: 2px dashed #e9ecef;
             border-radius: 10px;
             padding: 1rem;
             text-align: center;
             cursor: pointer;
-            transition: 0.2s;
         }
 
         .file-upload:hover {
@@ -624,13 +563,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .file-item a {
-            color: #2a7de1;
-            text-decoration: none;
-            flex-grow: 1;
-        }
-
-        /* Knowledge Base */
         .knowledge-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -650,7 +582,6 @@
         .knowledge-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #2a7de1;
         }
 
         .knowledge-card h3 {
@@ -658,12 +589,6 @@
             margin-bottom: 0.5rem;
         }
 
-        .article-meta {
-            font-size: 0.8rem;
-            color: #8fa3bb;
-        }
-
-        /* Live Chat */
         .chat-container {
             background: #f8f9fa;
             border-radius: 15px;
@@ -731,7 +656,6 @@
             outline: none;
         }
 
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -771,7 +695,6 @@
             color: #5a6f88;
         }
 
-        /* Toast */
         .toast {
             position: fixed;
             top: 20px;
@@ -790,6 +713,26 @@
         .toast.show {
             display: flex;
         }
+
+        .toast.error {
+            border-left-color: #dc3545;
+        }
+
+        .admin-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .customer-note {
+            background: #d1ecf1;
+            border-left: 4px solid #17a2b8;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -806,11 +749,10 @@
                         </div>
                     </div>
                     <div class="brand-message">
-                        <h2>complete business support</h2>
-                        <p>24/7 customer support with ticketing, file sharing, and instant messaging.</p>
+                        <h2>customer support portal</h2>
+                        <p>Secure access to your support tickets and account information.</p>
                     </div>
                     
-                    <!-- Social Links - Added WhatsApp & TikTok -->
                     <div class="social-links">
                         <a href="https://wa.me/message/3IK4Q2ZGA7B2L1" target="_blank" class="social-link whatsapp">
                             📱 WhatsApp
@@ -821,7 +763,7 @@
                     </div>
                 </div>
                 <div class="support-badge">
-                    ⭐ file sharing · instant support
+                    ⭐ secure · private · 24/7 support
                 </div>
             </div>
 
@@ -897,67 +839,70 @@
             </div>
         </div>
 
-        <!-- Navigation -->
+        <!-- Navigation - Different for Admin vs Customer -->
         <div class="dashboard-nav" id="dashboardNav">
             <div class="nav-item active" onclick="switchSection('overview')">📊 Overview</div>
-            <div class="nav-item" onclick="switchSection('tickets')">🎫 Tickets</div>
-            <div class="nav-item" onclick="switchSection('customers')">👥 Customers</div>
+            <div class="nav-item" onclick="switchSection('tickets')">🎫 My Tickets</div>
+            <!-- Admin-only navigation items -->
+            <div id="adminCustomersNav" class="nav-item admin-only" onclick="switchSection('customers')">👥 All Customers</div>
+            <div id="adminTeamNav" class="nav-item admin-only" onclick="switchSection('team')">👑 Team Admin</div>
             <div class="nav-item" onclick="switchSection('knowledge')">📚 Knowledge Base</div>
             <div class="nav-item" onclick="switchSection('chat')">💬 Live Chat</div>
-            <div class="nav-item" onclick="switchSection('analytics')">📈 Analytics</div>
-            <div class="nav-item" onclick="switchSection('team')">👑 Team</div>
             <div class="nav-item" onclick="openContactModal()">📞 Contact Us</div>
         </div>
         
         <div class="dashboard-content">
-            <!-- Overview Section -->
+            <!-- Overview Section (Different for Admin vs Customer) -->
             <div id="overviewSection" class="dashboard-section active">
                 <div class="welcome-card">
                     <h1 id="welcomeUserName">Welcome back!</h1>
-                    <p id="welcomeMessage">Your complete business support dashboard is ready.</p>
+                    <p id="welcomeMessage">Your personal support dashboard is ready.</p>
                 </div>
 
                 <div class="stats-grid">
                     <div class="stat-card">
-                        <h3>TOTAL TICKETS</h3>
-                        <div class="number" id="totalTicketsCount">0</div>
-                        <div class="trend">↑ 12% this week</div>
+                        <h3>MY TICKETS</h3>
+                        <div class="number" id="myTicketsCount">0</div>
                     </div>
                     <div class="stat-card">
                         <h3>OPEN TICKETS</h3>
-                        <div class="number" id="openTicketsCount">0</div>
-                        <div class="trend">↓ 5% from yesterday</div>
+                        <div class="number" id="myOpenTicketsCount">0</div>
+                    </div>
+                    <div class="stat-card">
+                        <h3>RESOLVED</h3>
+                        <div class="number" id="myResolvedTicketsCount">0</div>
                     </div>
                     <div class="stat-card">
                         <h3>FILES SHARED</h3>
-                        <div class="number" id="filesSharedCount">0</div>
-                        <div class="trend">📎 including invoices</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>RESPONSE TIME</h3>
-                        <div class="number" id="avgResponseTime">2.4h</div>
-                        <div class="trend">↓ 30min improvement</div>
+                        <div class="number" id="myFilesCount">0</div>
                     </div>
                 </div>
 
-                <div class="charts-grid">
-                    <div class="chart-card">
-                        <h3>Tickets by Status</h3>
-                        <div class="chart-bar"><div class="chart-fill" style="width: 45%" id="openChart"></div></div>
-                        <div class="chart-bar"><div class="chart-fill" style="width: 35%" id="progressChart"></div></div>
-                        <div class="chart-bar"><div class="chart-fill" style="width: 20%" id="resolvedChart"></div></div>
+                <!-- Admin Overview Stats (Hidden from customers) -->
+                <div id="adminOverviewStats" class="admin-only">
+                    <div class="stats-grid" style="margin-top: 1rem;">
+                        <div class="stat-card">
+                            <h3>TOTAL CUSTOMERS</h3>
+                            <div class="number" id="totalCustomersCount">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h3>TOTAL TICKETS</h3>
+                            <div class="number" id="totalTicketsAllCount">0</div>
+                        </div>
                     </div>
-                    <div class="chart-card">
-                        <h3>Recent Activity</h3>
-                        <div id="recentActivity">Loading...</div>
-                    </div>
+                </div>
+
+                <div class="support-section">
+                    <h2>Recent Activity</h2>
+                    <div id="recentActivity">Loading...</div>
                 </div>
             </div>
 
-            <!-- Tickets Section -->
+            <!-- Tickets Section - Customers see ONLY their tickets -->
             <div id="ticketsSection" class="dashboard-section">
-                <div class="support-section">
-                    <h2>Create New Ticket</h2>
+                <!-- Customer Ticket Creation -->
+                <div id="customerTicketCreation" class="support-section">
+                    <h2>Create New Support Ticket</h2>
                     <form onsubmit="createTicket(event)">
                         <div class="input-group" style="margin-bottom: 1rem;">
                             <label>📌 TITLE</label>
@@ -972,9 +917,9 @@
                             </div>
                         </div>
                         <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>📎 ATTACH FILES (PDF, Images)</label>
+                            <label>📎 ATTACH FILES</label>
                             <div class="file-upload" onclick="document.getElementById('fileInput').click()">
-                                Click to upload or drag files here
+                                Click to upload files
                                 <input type="file" id="fileInput" multiple style="display: none;" onchange="handleFileSelect(event)">
                             </div>
                             <div id="fileList" class="file-list"></div>
@@ -985,20 +930,8 @@
                                 <select id="ticketCategory" style="color: #0b1a2e;">
                                     <option>Technical Support</option>
                                     <option>Billing/Invoice</option>
-                                    <option>Sales</option>
                                     <option>Account</option>
                                     <option>Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-group" style="margin-bottom: 1rem;">
-                            <label>🔧 PRIORITY</label>
-                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
-                                <select id="ticketPriority" style="color: #0b1a2e;">
-                                    <option>Low</option>
-                                    <option selected>Medium</option>
-                                    <option>High</option>
-                                    <option>Critical</option>
                                 </select>
                             </div>
                         </div>
@@ -1006,21 +939,46 @@
                     </form>
                 </div>
 
+                <!-- Customer Ticket List (Their tickets only) -->
                 <div class="support-section">
-                    <h2>Ticket List</h2>
-                    <div class="ticket-list" id="ticketList"></div>
+                    <h2>My Tickets</h2>
+                    <div class="ticket-list" id="customerTicketList"></div>
+                </div>
+
+                <!-- Admin Ticket List (All tickets) - Hidden from customers -->
+                <div id="adminTicketSection" class="admin-only">
+                    <div class="support-section">
+                        <h2>All Customer Tickets (Admin)</h2>
+                        <div class="ticket-list" id="adminTicketList"></div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Customers Section -->
-            <div id="customersSection" class="dashboard-section">
+            <!-- Customers Section - ADMIN ONLY -->
+            <div id="customersSection" class="dashboard-section admin-only">
                 <div class="support-section">
-                    <h2>Customer Management</h2>
+                    <h2>All Registered Customers</h2>
                     <div class="customer-grid" id="customerGrid"></div>
                 </div>
             </div>
 
-            <!-- Knowledge Base Section -->
+            <!-- Team Section - ADMIN ONLY -->
+            <div id="teamSection" class="dashboard-section admin-only">
+                <div class="support-section">
+                    <h2>Admin Team Panel</h2>
+                    <div class="admin-note">
+                        <strong>🔒 Admin Only:</strong> This section is only visible to administrators.
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <h3>SYSTEM STATS</h3>
+                            <div class="number" id="systemStats">Active</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Knowledge Base Section (Visible to all) -->
             <div id="knowledgeSection" class="dashboard-section">
                 <div class="support-section">
                     <h2>Knowledge Base</h2>
@@ -1028,7 +986,7 @@
                 </div>
             </div>
 
-            <!-- Live Chat Section -->
+            <!-- Live Chat Section (Visible to all) -->
             <div id="chatSection" class="dashboard-section">
                 <div class="support-section">
                     <h2>Live Support Chat</h2>
@@ -1041,45 +999,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Analytics Section -->
-            <div id="analyticsSection" class="dashboard-section">
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <h3>TICKET VOLUME</h3>
-                        <div class="number" id="ticketVolume">156</div>
-                        <div class="trend">↑ 23% this month</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>RESPONSE TIME</h3>
-                        <div class="number" id="responseTimeMetric">2.4h</div>
-                        <div class="trend">↓ 15% improvement</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>RESOLUTION RATE</h3>
-                        <div class="number" id="resolutionRate">94%</div>
-                        <div class="trend">↑ 5% from last month</div>
-                    </div>
-                    <div class="stat-card">
-                        <h3>FILES SHARED</h3>
-                        <div class="number" id="filesSharedMetric">45</div>
-                        <div class="trend">📎 invoices & screenshots</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Team Section (Admin Only) -->
-            <div id="teamSection" class="dashboard-section">
-                <div class="support-section">
-                    <h2>Team Management</h2>
-                    <div class="customer-grid" id="teamGrid"></div>
-                </div>
-                
-                <div class="support-section">
-                    <h2>Audit Logs</h2>
-                    <div class="ticket-list" id="auditLogs"></div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -1088,11 +1007,15 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeTicketModal()">&times;</span>
             <h2 id="modalTicketTitle">Ticket Details</h2>
-            <div id="modalCustomerInfo" class="customer-info" style="display: none;"></div>
+            
+            <!-- Customer info - Only visible to admin -->
+            <div id="modalCustomerInfo" class="admin-only" style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;"></div>
+            
             <div id="modalTicketContent"></div>
             
-            <div id="adminControls" style="display: none; margin: 1rem 0;">
-                <h3>Update Status</h3>
+            <!-- Admin Controls - Only visible to admin -->
+            <div id="adminControls" class="admin-only" style="margin: 1rem 0;">
+                <h3>Admin: Update Status</h3>
                 <select id="ticketStatusSelect" style="padding: 0.5rem; border-radius: 10px; margin-right: 0.5rem;">
                     <option>Open</option>
                     <option>In Progress</option>
@@ -1101,7 +1024,7 @@
                 <button class="btn-warning" onclick="updateTicketStatus()">Update</button>
             </div>
             
-            <h3>Add Reply with File Attachment</h3>
+            <h3>Add Reply</h3>
             <form onsubmit="addTicketReply(event)">
                 <div class="input-group">
                     <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
@@ -1109,14 +1032,14 @@
                     </div>
                 </div>
                 <div class="input-group" style="margin: 1rem 0;">
-                    <label>📎 Attach File (PDF, Invoice, Image)</label>
+                    <label>📎 Attach File</label>
                     <div class="file-upload" onclick="document.getElementById('replyFileInput').click()">
-                        Click to upload file
+                        Click to upload
                         <input type="file" id="replyFileInput" style="display: none;" onchange="handleReplyFileSelect(event)">
                     </div>
                     <div id="replyFileList" class="file-list"></div>
                 </div>
-                <button type="submit" class="btn-primary">Send Reply with File</button>
+                <button type="submit" class="btn-primary">Send Reply</button>
             </form>
         </div>
     </div>
@@ -1125,17 +1048,15 @@
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeContactModal()">&times;</span>
-            <h2>Contact Us</h2>
+            <h2>Contact Support</h2>
             <div style="text-align: center; padding: 2rem;">
-                <h3>Quick Support Channels</h3>
-                <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                    <a href="https://wa.me/message/3IK4Q2ZGA7B2L1" target="_blank" class="btn-success" style="text-decoration: none; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                    <a href="https://wa.me/message/3IK4Q2ZGA7B2L1" target="_blank" class="btn-success" style="text-decoration: none; padding: 1rem;">
                         📱 WhatsApp Business
                     </a>
-                    <a href="https://lite.tiktok.com/t/ZS9eDk3xxfg8V-SidA7/" target="_blank" class="btn-primary" style="text-decoration: none; padding: 1rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem; background: #000000;">
+                    <a href="https://lite.tiktok.com/t/ZS9eDk3xxfg8V-SidA7/" target="_blank" class="btn-primary" style="text-decoration: none; padding: 1rem; background: #000000;">
                         🎵 TikTok Support
                     </a>
-                    <p style="color: #5a6f88; margin-top: 1rem;">Or continue using the ticket system above</p>
                 </div>
             </div>
         </div>
@@ -1151,26 +1072,17 @@
         const ADMIN_EMAIL = 'support@malcomtec.com';
         const ADMIN_PASSWORD = 'admin123';
 
-        // Demo customer
-        const DEMO_CUSTOMER = {
-            name: 'rockygyagenda',
-            email: 'rockygyagenda@gmail.com',
-            password: 'Camera@02'
-        };
-
         let currentUser = null;
         let selectedTicketId = null;
         let isAdmin = false;
         let selectedFiles = [];
         let replyFiles = [];
 
-        // Knowledge Base Articles
         const knowledgeBase = [
-            { title: 'How to Pay Invoices Online', category: 'Billing', views: 1234 },
-            { title: 'Understanding Your Statement', category: 'Billing', views: 3456 },
+            { title: 'How to Pay Invoices', category: 'Billing', views: 1234 },
             { title: 'Network Setup Guide', category: 'Technical', views: 2341 },
-            { title: 'WhatsApp Support Guide', category: 'Support', views: 1876 },
-            { title: 'TikTok Business Tools', category: 'Social', views: 987 }
+            { title: 'Account Management', category: 'Account', views: 1876 },
+            { title: 'WhatsApp Support', category: 'Contact', views: 987 }
         ];
 
         function showToast(message, isSuccess = true) {
@@ -1223,9 +1135,7 @@
                 email, 
                 password, 
                 role: 'customer', 
-                registeredAt: new Date().toISOString(),
-                totalTickets: 0,
-                lastActive: new Date().toISOString()
+                registeredAt: new Date().toISOString()
             };
             
             let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
@@ -1260,7 +1170,7 @@
                 return;
             }
 
-            // Check users in localStorage
+            // Regular user login
             const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             const user = users.find(u => u.email === email && u.password === password);
 
@@ -1281,9 +1191,11 @@
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
             }
             
+            // Clear login form
             document.getElementById('loginEmail').value = '';
             document.getElementById('loginPassword').value = '';
             
+            // Update UI
             document.getElementById('userEmailDisplay').textContent = user.email;
             document.getElementById('welcomeUserName').textContent = `Welcome, ${user.name}!`;
             
@@ -1291,91 +1203,127 @@
             roleBadge.textContent = isAdmin ? 'Admin' : 'Customer';
             roleBadge.classList.toggle('admin', isAdmin);
             
+            // Show/hide admin-only elements
+            const adminElements = document.querySelectorAll('.admin-only');
+            adminElements.forEach(el => {
+                if (isAdmin) {
+                    el.classList.add('visible');
+                } else {
+                    el.classList.remove('visible');
+                }
+            });
+            
+            // Update welcome message based on role
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            if (isAdmin) {
+                welcomeMessage.textContent = 'Admin Dashboard - You can view and manage all customer tickets.';
+            } else {
+                welcomeMessage.textContent = 'Your personal support dashboard - You can only see your own tickets.';
+            }
+            
             document.getElementById('authContainer').style.display = 'none';
             document.getElementById('dashboardContainer').classList.add('active');
             
-            loadAllData();
+            loadData();
             showToast(`Welcome ${user.name}!`);
         }
 
-        function loadAllData() {
-            loadTickets();
-            loadCustomers(); // This will now show all customers including new signups
+        function loadData() {
+            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
+            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+            
+            if (isAdmin) {
+                // Admin sees all tickets
+                loadAdminTickets(tickets);
+                loadAllCustomers(users, tickets);
+                updateAdminStats(users, tickets);
+            } else {
+                // Customer sees only their tickets
+                const myTickets = tickets.filter(t => t.createdBy === currentUser.email);
+                loadCustomerTickets(myTickets);
+                updateCustomerStats(myTickets);
+            }
+            
             loadKnowledgeBase();
-            updateAnalytics();
             loadChat();
         }
 
-        function loadTickets() {
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            const userTickets = isAdmin ? tickets : tickets.filter(t => t.createdBy === currentUser?.email);
-            
-            const ticketList = document.getElementById('ticketList');
+        function loadCustomerTickets(myTickets) {
+            const ticketList = document.getElementById('customerTicketList');
             if (!ticketList) return;
             
-            document.getElementById('totalTicketsCount').textContent = userTickets.length;
-            document.getElementById('openTicketsCount').textContent = userTickets.filter(t => t.status === 'Open').length;
-            
-            // Count files
-            let fileCount = 0;
-            userTickets.forEach(t => {
-                if (t.files) fileCount += t.files.length;
-                t.messages?.forEach(m => {
-                    if (m.files) fileCount += m.files.length;
-                });
-            });
-            document.getElementById('filesSharedCount').textContent = fileCount;
-            
-            if (userTickets.length === 0) {
-                ticketList.innerHTML = '<p style="color: #5a6f88;">No tickets found.</p>';
+            if (myTickets.length === 0) {
+                ticketList.innerHTML = '<p style="color: #5a6f88;">You have no tickets yet. Create one above!</p>';
                 return;
             }
             
             ticketList.innerHTML = '';
-            userTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = document.createElement('div');
-                ticketEl.className = 'ticket-item';
-                ticketEl.onclick = () => openTicketModal(ticket.id);
-                
-                const statusClass = ticket.status === 'Open' ? 'status-open' : 
-                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
-                
-                const hasFiles = (ticket.files?.length > 0 || ticket.messages?.some(m => m.files?.length > 0)) ? '📎 ' : '';
-                
-                ticketEl.innerHTML = `
-                    <div>
-                        <strong>${hasFiles}${ticket.title}</strong>
-                        <div style="color: #5a6f88; font-size: 0.9rem;">
-                            ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
-                        </div>
-                    </div>
-                    <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
-                `;
-                
+            myTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
+                const ticketEl = createTicketElement(ticket);
                 ticketList.appendChild(ticketEl);
             });
         }
 
-        function loadCustomers() {
-            const customerGrid = document.getElementById('customerGrid');
-            if (!customerGrid) return;
+        function loadAdminTickets(tickets) {
+            const adminTicketList = document.getElementById('adminTicketList');
+            if (!adminTicketList) return;
             
-            const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
-            const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
-            
-            customerGrid.innerHTML = '';
-            
-            // Show all customers (filter out admin)
-            const customers = users.filter(u => u.role !== 'admin');
-            
-            if (customers.length === 0) {
-                customerGrid.innerHTML = '<p style="color: #5a6f88;">No customers registered yet.</p>';
+            if (tickets.length === 0) {
+                adminTicketList.innerHTML = '<p style="color: #5a6f88;">No tickets in system.</p>';
                 return;
             }
             
+            adminTicketList.innerHTML = '';
+            tickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
+                const ticketEl = createTicketElement(ticket, true);
+                adminTicketList.appendChild(ticketEl);
+            });
+        }
+
+        function createTicketElement(ticket, isAdmin = false) {
+            const ticketEl = document.createElement('div');
+            ticketEl.className = 'ticket-item';
+            ticketEl.onclick = () => openTicketModal(ticket.id);
+            
+            const statusClass = ticket.status === 'Open' ? 'status-open' : 
+                               ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
+            
+            let title = ticket.title;
+            if (ticket.files?.length > 0) title = '📎 ' + title;
+            
+            let customerInfo = '';
+            if (isAdmin) {
+                customerInfo = `<div style="color: #2a7de1; font-size: 0.8rem;">Customer: ${ticket.createdByName}</div>`;
+            }
+            
+            ticketEl.innerHTML = `
+                <div>
+                    <strong>${title}</strong>
+                    ${customerInfo}
+                    <div style="color: #5a6f88; font-size: 0.8rem;">
+                        ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
+                    </div>
+                </div>
+                <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
+            `;
+            
+            return ticketEl;
+        }
+
+        function loadAllCustomers(users, tickets) {
+            const customerGrid = document.getElementById('customerGrid');
+            if (!customerGrid) return;
+            
+            const customers = users.filter(u => u.role !== 'admin');
+            
+            if (customers.length === 0) {
+                customerGrid.innerHTML = '<p style="color: #5a6f88;">No customers registered.</p>';
+                return;
+            }
+            
+            customerGrid.innerHTML = '';
             customers.forEach(user => {
                 const userTickets = tickets.filter(t => t.createdBy === user.email);
-                const openTickets = userTickets.filter(t => t.status === 'Open').length;
                 
                 const card = document.createElement('div');
                 card.className = 'customer-card';
@@ -1383,15 +1331,50 @@
                     <h3>${user.name}</h3>
                     <p>${user.email}</p>
                     <div class="customer-stats">
-                        <span>🎫 Total: ${userTickets.length}</span>
-                        <span>🟡 Open: ${openTickets}</span>
-                    </div>
-                    <div style="margin-top: 0.5rem; font-size: 0.8rem; color: #8fa3bb;">
-                        📅 ${new Date(user.registeredAt).toLocaleDateString()}
+                        <span>🎫 Tickets: ${userTickets.length}</span>
+                        <span>📅 ${new Date(user.registeredAt).toLocaleDateString()}</span>
                     </div>
                 `;
                 customerGrid.appendChild(card);
             });
+        }
+
+        function updateCustomerStats(myTickets) {
+            document.getElementById('myTicketsCount').textContent = myTickets.length;
+            document.getElementById('myOpenTicketsCount').textContent = myTickets.filter(t => t.status === 'Open').length;
+            document.getElementById('myResolvedTicketsCount').textContent = myTickets.filter(t => t.status === 'Resolved').length;
+            
+            let fileCount = 0;
+            myTickets.forEach(t => {
+                if (t.files) fileCount += t.files.length;
+                t.messages?.forEach(m => {
+                    if (m.files) fileCount += m.files.length;
+                });
+            });
+            document.getElementById('myFilesCount').textContent = fileCount;
+            
+            updateRecentActivity(myTickets);
+        }
+
+        function updateAdminStats(users, tickets) {
+            document.getElementById('totalCustomersCount').textContent = users.filter(u => u.role !== 'admin').length;
+            document.getElementById('totalTicketsAllCount').textContent = tickets.length;
+            document.getElementById('systemStats').textContent = 'Online';
+        }
+
+        function updateRecentActivity(tickets) {
+            const recentDiv = document.getElementById('recentActivity');
+            if (tickets.length === 0) {
+                recentDiv.innerHTML = '<p>No recent activity</p>';
+                return;
+            }
+            
+            const recent = tickets.slice(0, 3);
+            let html = '';
+            recent.forEach(t => {
+                html += `<div>📌 ${t.title} - ${new Date(t.createdAt).toLocaleDateString()}</div>`;
+            });
+            recentDiv.innerHTML = html;
         }
 
         function loadKnowledgeBase() {
@@ -1406,7 +1389,7 @@
                 card.innerHTML = `
                     <h3>${article.title}</h3>
                     <p>${article.category}</p>
-                    <div class="article-meta">👁️ ${article.views} views</div>
+                    <div style="color: #8fa3bb;">👁️ ${article.views} views</div>
                 `;
                 knowledgeGrid.appendChild(card);
             });
@@ -1418,102 +1401,64 @@
             
             chatMessages.innerHTML = `
                 <div class="chat-message support">
-                    <div class="message-bubble">Welcome to MalcomTec Support! How can we help?</div>
+                    <div class="message-bubble">Welcome! How can we help?</div>
                     <div class="message-time">Just now</div>
                 </div>
             `;
         }
 
-        function updateAnalytics() {
-            document.getElementById('avgResponseTime').textContent = '2.4h';
-            document.getElementById('ticketVolume').textContent = '156';
-            document.getElementById('responseTimeMetric').textContent = '2.4h';
-            document.getElementById('resolutionRate').textContent = '94%';
-            document.getElementById('filesSharedMetric').textContent = '45';
-            
-            document.getElementById('openChart').style.width = '45%';
-            document.getElementById('progressChart').style.width = '35%';
-            document.getElementById('resolvedChart').style.width = '20%';
-            
-            document.getElementById('recentActivity').innerHTML = `
-                <div>✅ New customer registered</div>
-                <div>📎 Invoice uploaded to ticket #124</div>
-                <div>💬 WhatsApp support request</div>
-            `;
-        }
-
         function handleFileSelect(event) {
-            const files = Array.from(event.target.files);
-            selectedFiles = files;
-            
+            selectedFiles = Array.from(event.target.files);
             const fileList = document.getElementById('fileList');
             fileList.innerHTML = '';
-            
-            files.forEach(file => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <span>📎 ${file.name}</span>
-                    <span style="color: #5a6f88; font-size: 0.8rem;">${(file.size/1024).toFixed(1)} KB</span>
-                `;
-                fileList.appendChild(fileItem);
+            selectedFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'file-item';
+                div.innerHTML = `📎 ${file.name}`;
+                fileList.appendChild(div);
             });
         }
 
         function handleReplyFileSelect(event) {
-            const files = Array.from(event.target.files);
-            replyFiles = files;
-            
+            replyFiles = Array.from(event.target.files);
             const fileList = document.getElementById('replyFileList');
             fileList.innerHTML = '';
-            
-            files.forEach(file => {
-                const fileItem = document.createElement('div');
-                fileItem.className = 'file-item';
-                fileItem.innerHTML = `
-                    <span>📎 ${file.name}</span>
-                    <span style="color: #5a6f88; font-size: 0.8rem;">${(file.size/1024).toFixed(1)} KB</span>
-                `;
-                fileList.appendChild(fileItem);
+            replyFiles.forEach(file => {
+                const div = document.createElement('div');
+                div.className = 'file-item';
+                div.innerHTML = `📎 ${file.name}`;
+                fileList.appendChild(div);
             });
         }
 
         function createTicket(event) {
             event.preventDefault();
             
-            if (!currentUser || isAdmin) return;
+            if (isAdmin) {
+                showToast('Admins cannot create tickets. Use customer account.', false);
+                return;
+            }
             
             const title = document.getElementById('ticketTitle').value;
             const description = document.getElementById('ticketDescription').value;
             const category = document.getElementById('ticketCategory').value;
-            const priority = document.getElementById('ticketPriority').value;
             
             const ticket = {
                 id: Date.now(),
                 title,
                 description,
                 category,
-                priority,
                 status: 'Open',
                 createdBy: currentUser.email,
                 createdByName: currentUser.name,
                 createdAt: new Date().toISOString(),
-                files: selectedFiles.map(f => ({
-                    name: f.name,
-                    size: f.size,
-                    type: f.type,
-                    lastModified: f.lastModified
-                })),
+                files: selectedFiles.map(f => ({ name: f.name, size: f.size })),
                 messages: [{
                     sender: currentUser.name,
                     senderRole: 'customer',
                     message: description,
                     timestamp: new Date().toISOString(),
-                    files: selectedFiles.map(f => ({
-                        name: f.name,
-                        size: f.size,
-                        type: f.type
-                    }))
+                    files: selectedFiles.map(f => ({ name: f.name }))
                 }]
             };
             
@@ -1527,8 +1472,8 @@
             document.getElementById('fileList').innerHTML = '';
             selectedFiles = [];
             
-            showToast('Ticket created with files!');
-            loadTickets();
+            showToast('Ticket created!');
+            loadData();
         }
 
         function openTicketModal(ticketId) {
@@ -1538,16 +1483,26 @@
             
             if (!ticket) return;
             
+            // SECURITY: Check if customer owns this ticket
+            if (!isAdmin && ticket.createdBy !== currentUser.email) {
+                showToast('Access denied: You can only view your own tickets', false);
+                return;
+            }
+            
             document.getElementById('modalTicketTitle').textContent = ticket.title;
             
-            const adminControls = document.getElementById('adminControls');
-            adminControls.style.display = isAdmin ? 'block' : 'none';
+            // Show customer info for admin only
+            if (isAdmin) {
+                document.getElementById('modalCustomerInfo').innerHTML = `
+                    <strong>Customer:</strong> ${ticket.createdByName} (${ticket.createdBy})
+                `;
+            }
             
             let messagesHtml = '';
             ticket.messages.forEach(msg => {
                 let filesHtml = '';
                 if (msg.files && msg.files.length > 0) {
-                    filesHtml = '<div style="margin-top: 0.5rem;">📎 Attached: ' + 
+                    filesHtml = '<div style="margin-top: 0.5rem;">📎 ' + 
                         msg.files.map(f => f.name).join(', ') + '</div>';
                 }
                 
@@ -1561,20 +1516,11 @@
                 `;
             });
             
-            let ticketFilesHtml = '';
-            if (ticket.files && ticket.files.length > 0) {
-                ticketFilesHtml = '<div style="margin: 1rem 0;"><strong>📎 Attached Files:</strong><br>' + 
-                    ticket.files.map(f => f.name).join('<br>') + '</div>';
-            }
-            
             document.getElementById('modalTicketContent').innerHTML = `
                 <div class="ticket-detail">
                     <p><strong>Status:</strong> ${ticket.status}</p>
                     <p><strong>Category:</strong> ${ticket.category || 'General'}</p>
-                    <p><strong>Priority:</strong> ${ticket.priority || 'Medium'}</p>
-                    ${ticketFilesHtml}
                     <hr>
-                    <h4>Conversation</h4>
                     ${messagesHtml}
                 </div>
             `;
@@ -1594,6 +1540,12 @@
             
             if (ticketIndex === -1) return;
             
+            // SECURITY: Check if customer owns this ticket
+            if (!isAdmin && tickets[ticketIndex].createdBy !== currentUser.email) {
+                showToast('Access denied', false);
+                return;
+            }
+            
             const replyObj = {
                 sender: currentUser.name,
                 senderRole: isAdmin ? 'admin' : 'customer',
@@ -1602,11 +1554,7 @@
             };
             
             if (replyFiles.length > 0) {
-                replyObj.files = replyFiles.map(f => ({
-                    name: f.name,
-                    size: f.size,
-                    type: f.type
-                }));
+                replyObj.files = replyFiles.map(f => ({ name: f.name }));
             }
             
             tickets[ticketIndex].messages.push(replyObj);
@@ -1616,9 +1564,9 @@
             document.getElementById('replyFileList').innerHTML = '';
             replyFiles = [];
             
-            showToast('Reply sent with ' + (replyObj.files ? replyObj.files.length + ' file(s)' : ''));
+            showToast('Reply sent');
             openTicketModal(selectedTicketId);
-            loadTickets();
+            loadData();
         }
 
         function updateTicketStatus() {
@@ -1636,13 +1584,12 @@
             
             showToast('Status updated');
             openTicketModal(selectedTicketId);
-            loadTickets();
+            loadData();
         }
 
         function closeTicketModal() {
             document.getElementById('ticketModal').classList.remove('active');
             selectedTicketId = null;
-            replyFiles = [];
         }
 
         function openContactModal() {
@@ -1681,7 +1628,7 @@
                 const supportMsg = document.createElement('div');
                 supportMsg.className = 'chat-message support';
                 supportMsg.innerHTML = `
-                    <div class="message-bubble">Thank you for your message. An agent will respond shortly. For immediate help, try our WhatsApp support.</div>
+                    <div class="message-bubble">Thank you. An agent will respond shortly.</div>
                     <div class="message-time">Just now</div>
                 `;
                 chatMessages.appendChild(supportMsg);
@@ -1720,10 +1667,16 @@
             }
         }
 
-        // Initialize demo data
         function setupDemoData() {
             if (!localStorage.getItem('malcomtec_users')) {
                 const demoUsers = [
+                    {
+                        name: 'John Customer',
+                        email: 'john@example.com',
+                        password: 'customer123',
+                        role: 'customer',
+                        registeredAt: new Date().toISOString()
+                    },
                     {
                         name: 'rockygyagenda',
                         email: 'rockygyagenda@gmail.com',
@@ -1739,22 +1692,19 @@
                 const demoTickets = [
                     {
                         id: 1,
-                        title: 'Invoice Payment Question',
-                        description: 'Need help with latest invoice',
+                        title: 'Invoice Question',
+                        description: 'Need help with invoice',
                         category: 'Billing/Invoice',
-                        priority: 'Medium',
                         status: 'In Progress',
                         createdBy: 'rockygyagenda@gmail.com',
                         createdByName: 'rockygyagenda',
                         createdAt: new Date().toISOString(),
-                        files: [{ name: 'invoice-123.pdf', size: 245760, type: 'application/pdf' }],
                         messages: [
                             { 
                                 sender: 'rockygyagenda', 
                                 senderRole: 'customer', 
                                 message: 'Need help with invoice', 
-                                timestamp: new Date(Date.now() - 7200000).toISOString(),
-                                files: [{ name: 'invoice-123.pdf', size: 245760, type: 'application/pdf' }]
+                                timestamp: new Date().toISOString() 
                             }
                         ]
                     }
