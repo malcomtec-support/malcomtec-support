@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MalcomTec · Business Support</title>
+    <title>MalcomTec · Business Support with DPO Pay</title>
     <style>
         * {
             margin: 0;
@@ -106,6 +106,7 @@
             display: flex;
             gap: 1rem;
             margin-top: 1rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
@@ -268,6 +269,23 @@
             cursor: pointer;
         }
 
+        .btn-dpo {
+            background: #ff6b35;
+            border: none;
+            border-radius: 60px;
+            padding: 1rem;
+            font-weight: 700;
+            color: white;
+            cursor: pointer;
+            transition: 0.15s;
+            width: 100%;
+            font-size: 1.1rem;
+        }
+
+        .btn-dpo:hover {
+            background: #e54e2a;
+        }
+
         /* Dashboard Styles */
         .dashboard-container {
             min-height: 100vh;
@@ -362,11 +380,6 @@
             font-weight: 600;
         }
 
-        .logout-btn:hover {
-            background: #bb2d3b;
-        }
-
-        /* Dashboard Navigation */
         .dashboard-nav {
             background: white;
             padding: 0.5rem 2rem;
@@ -468,6 +481,172 @@
             padding-bottom: 0.5rem;
         }
 
+        /* DPO Pay Payment Styles */
+        .payment-plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .plan-card {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .plan-card.selected {
+            border-color: #2a7de1;
+            background: #e3f2fd;
+        }
+
+        .plan-card h3 {
+            color: #0b1a2e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #2a7de1;
+            margin-bottom: 1rem;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #5a6f88;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .plan-features li {
+            padding: 0.5rem 0;
+            color: #5a6f88;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .payment-method:hover {
+            background: #e9ecef;
+        }
+
+        .payment-method.selected {
+            border-color: #2a7de1;
+            background: #e3f2fd;
+        }
+
+        .payment-method img {
+            height: 30px;
+            width: auto;
+        }
+
+        .mobile-money-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .mobile-operator {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .mobile-operator:hover {
+            background: #e9ecef;
+        }
+
+        .mobile-operator.selected {
+            border-color: #2a7de1;
+            background: #e3f2fd;
+        }
+
+        .mobile-operator img {
+            height: 25px;
+            width: auto;
+        }
+
+        .payment-form {
+            background: #f8f9fa;
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .dpo-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .dpo-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #5a6f88;
+        }
+
+        .file-upload {
+            border: 2px dashed #e9ecef;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .file-list {
+            margin-top: 1rem;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+        }
+
         .ticket-list {
             margin-top: 1rem;
         }
@@ -511,6 +690,11 @@
             color: white;
         }
 
+        .status-paid {
+            background: #28a745;
+            color: white;
+        }
+
         .customer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -527,39 +711,6 @@
 
         .customer-card h3 {
             color: #0b1a2e;
-            margin-bottom: 0.5rem;
-        }
-
-        .customer-card p {
-            color: #5a6f88;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-
-        .file-upload {
-            border: 2px dashed #e9ecef;
-            border-radius: 10px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .file-upload:hover {
-            border-color: #2a7de1;
-            background: #f8f9fa;
-        }
-
-        .file-list {
-            margin-top: 1rem;
-        }
-
-        .file-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            background: #f8f9fa;
-            border-radius: 10px;
             margin-bottom: 0.5rem;
         }
 
@@ -582,11 +733,6 @@
         .knowledge-card:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .knowledge-card h3 {
-            color: #2a7de1;
-            margin-bottom: 0.5rem;
         }
 
         .chat-container {
@@ -713,26 +859,6 @@
         .toast.show {
             display: flex;
         }
-
-        .toast.error {
-            border-left-color: #dc3545;
-        }
-
-        .admin-note {
-            background: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
-
-        .customer-note {
-            background: #d1ecf1;
-            border-left: 4px solid #17a2b8;
-            padding: 1rem;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-        }
     </style>
 </head>
 <body>
@@ -749,8 +875,8 @@
                         </div>
                     </div>
                     <div class="brand-message">
-                        <h2>customer support portal</h2>
-                        <p>Secure access to your support tickets and account information.</p>
+                        <h2>business support with DPO Pay</h2>
+                        <p>Secure payments via Mobile Money & Cards. Choose your subscription plan below.</p>
                     </div>
                     
                     <div class="social-links">
@@ -763,7 +889,7 @@
                     </div>
                 </div>
                 <div class="support-badge">
-                    ⭐ secure · private · 24/7 support
+                    ⭐ DPO Pay · Mobile Money · Visa/Mastercard
                 </div>
             </div>
 
@@ -839,24 +965,23 @@
             </div>
         </div>
 
-        <!-- Navigation - Different for Admin vs Customer -->
+        <!-- Navigation -->
         <div class="dashboard-nav" id="dashboardNav">
             <div class="nav-item active" onclick="switchSection('overview')">📊 Overview</div>
             <div class="nav-item" onclick="switchSection('tickets')">🎫 My Tickets</div>
-            <!-- Admin-only navigation items -->
+            <div class="nav-item" onclick="switchSection('payments')">💰 DPO Pay</div>
             <div id="adminCustomersNav" class="nav-item admin-only" onclick="switchSection('customers')">👥 All Customers</div>
-            <div id="adminTeamNav" class="nav-item admin-only" onclick="switchSection('team')">👑 Team Admin</div>
             <div class="nav-item" onclick="switchSection('knowledge')">📚 Knowledge Base</div>
             <div class="nav-item" onclick="switchSection('chat')">💬 Live Chat</div>
             <div class="nav-item" onclick="openContactModal()">📞 Contact Us</div>
         </div>
         
         <div class="dashboard-content">
-            <!-- Overview Section (Different for Admin vs Customer) -->
+            <!-- Overview Section -->
             <div id="overviewSection" class="dashboard-section active">
                 <div class="welcome-card">
                     <h1 id="welcomeUserName">Welcome back!</h1>
-                    <p id="welcomeMessage">Your personal support dashboard is ready.</p>
+                    <p id="welcomeMessage">Your support dashboard with DPO Pay integration is ready.</p>
                 </div>
 
                 <div class="stats-grid">
@@ -865,12 +990,12 @@
                         <div class="number" id="myTicketsCount">0</div>
                     </div>
                     <div class="stat-card">
-                        <h3>OPEN TICKETS</h3>
-                        <div class="number" id="myOpenTicketsCount">0</div>
+                        <h3>ACTIVE PLAN</h3>
+                        <div class="number" id="activePlan">Basic</div>
                     </div>
                     <div class="stat-card">
-                        <h3>RESOLVED</h3>
-                        <div class="number" id="myResolvedTicketsCount">0</div>
+                        <h3>PAYMENTS</h3>
+                        <div class="number" id="paymentCount">0</div>
                     </div>
                     <div class="stat-card">
                         <h3>FILES SHARED</h3>
@@ -878,7 +1003,6 @@
                     </div>
                 </div>
 
-                <!-- Admin Overview Stats (Hidden from customers) -->
                 <div id="adminOverviewStats" class="admin-only">
                     <div class="stats-grid" style="margin-top: 1rem;">
                         <div class="stat-card">
@@ -886,21 +1010,15 @@
                             <div class="number" id="totalCustomersCount">0</div>
                         </div>
                         <div class="stat-card">
-                            <h3>TOTAL TICKETS</h3>
-                            <div class="number" id="totalTicketsAllCount">0</div>
+                            <h3>TOTAL PAYMENTS</h3>
+                            <div class="number" id="totalPaymentsCount">0</div>
                         </div>
                     </div>
                 </div>
-
-                <div class="support-section">
-                    <h2>Recent Activity</h2>
-                    <div id="recentActivity">Loading...</div>
-                </div>
             </div>
 
-            <!-- Tickets Section - Customers see ONLY their tickets -->
+            <!-- Tickets Section -->
             <div id="ticketsSection" class="dashboard-section">
-                <!-- Customer Ticket Creation -->
                 <div id="customerTicketCreation" class="support-section">
                     <h2>Create New Support Ticket</h2>
                     <form onsubmit="createTicket(event)">
@@ -930,8 +1048,8 @@
                                 <select id="ticketCategory" style="color: #0b1a2e;">
                                     <option>Technical Support</option>
                                     <option>Billing/Invoice</option>
+                                    <option>Payment Issue</option>
                                     <option>Account</option>
-                                    <option>Other</option>
                                 </select>
                             </div>
                         </div>
@@ -939,13 +1057,11 @@
                     </form>
                 </div>
 
-                <!-- Customer Ticket List (Their tickets only) -->
                 <div class="support-section">
                     <h2>My Tickets</h2>
                     <div class="ticket-list" id="customerTicketList"></div>
                 </div>
 
-                <!-- Admin Ticket List (All tickets) - Hidden from customers -->
                 <div id="adminTicketSection" class="admin-only">
                     <div class="support-section">
                         <h2>All Customer Tickets (Admin)</h2>
@@ -954,7 +1070,113 @@
                 </div>
             </div>
 
-            <!-- Customers Section - ADMIN ONLY -->
+            <!-- DPO Pay Section - New Payment Page -->
+            <div id="paymentsSection" class="dashboard-section">
+                <div class="support-section">
+                    <h2>💰 Choose Subscription Plan</h2>
+                    <p style="color: #5a6f88; margin-bottom: 2rem;">Get unlimited access to all support features with DPO Pay</p>
+                    
+                    <!-- Payment Plans -->
+                    <div class="payment-plans">
+                        <div class="plan-card" onclick="selectPlan('basic')" id="planBasic">
+                            <h3>Basic</h3>
+                            <div class="plan-price">UGX 30,000<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>✓ 5 Support Tickets/month</li>
+                                <li>✓ Email Support</li>
+                                <li>✓ Knowledge Base Access</li>
+                                <li>✗ Priority Queue</li>
+                                <li>✗ Phone Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card" onclick="selectPlan('pro')" id="planPro">
+                            <h3>Professional</h3>
+                            <div class="plan-price">UGX 75,000<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>✓ 20 Support Tickets/month</li>
+                                <li>✓ Email & Chat Support</li>
+                                <li>✓ Knowledge Base Access</li>
+                                <li>✓ Priority Queue</li>
+                                <li>✗ Phone Support</li>
+                            </ul>
+                        </div>
+                        <div class="plan-card" onclick="selectPlan('business')" id="planBusiness">
+                            <h3>Business</h3>
+                            <div class="plan-price">UGX 150,000<span>/month</span></div>
+                            <ul class="plan-features">
+                                <li>✓ Unlimited Tickets</li>
+                                <li>✓ 24/7 Phone Support</li>
+                                <li>✓ Knowledge Base Access</li>
+                                <li>✓ Priority Queue</li>
+                                <li>✓ Dedicated Account Manager</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods (exactly like your screenshot) -->
+                    <div class="payment-methods">
+                        <div class="payment-method" onclick="selectPaymentMethod('mobile')" id="methodMobile">
+                            <span>📱</span> MOBILE MONEY
+                        </div>
+                        <div class="payment-method" onclick="selectPaymentMethod('card')" id="methodCard">
+                            <span>💳</span> VISA/MASTERCARD
+                        </div>
+                    </div>
+
+                    <!-- Mobile Operators (Airtel/MTN) -->
+                    <div class="mobile-money-row" id="mobileOperators" style="display: none;">
+                        <div class="mobile-operator" onclick="selectOperator('airtel')" id="opAirtel">
+                            <span>📞</span> airtel money
+                        </div>
+                        <div class="mobile-operator" onclick="selectOperator('mtn')" id="opMtn">
+                            <span>📱</span> MTN Mobile Money
+                        </div>
+                    </div>
+
+                    <!-- Payment Form -->
+                    <div class="payment-form">
+                        <h3>Complete Payment</h3>
+                        <div class="input-group" style="margin-bottom: 1rem;">
+                            <label>📱 Enter number to be charged</label>
+                            <div class="input-wrapper" style="background: white; border: 1px solid #e9ecef;">
+                                <input type="tel" id="phoneNumber" placeholder="e.g., 0772 123456" style="color: #0b1a2e;">
+                            </div>
+                            <div style="color: #dc3545; font-size: 0.8rem; display: none;" id="phoneError">Number can not be empty</div>
+                        </div>
+
+                        <!-- Amount Display -->
+                        <div style="text-align: center; margin: 1.5rem 0;">
+                            <div style="font-size: 1.2rem; color: #5a6f88;">Total Amount</div>
+                            <div style="font-size: 2.5rem; font-weight: 800; color: #2a7de1;" id="displayAmount">UGX 30,000</div>
+                        </div>
+
+                        <!-- Pay Button - exactly as in screenshot -->
+                        <button class="btn-dpo" onclick="processDPOPayment()" id="payButton">
+                            PAY UGX 30,000 NOW
+                        </button>
+
+                        <!-- Terms and DPO Footer -->
+                        <div class="dpo-footer">
+                            <div>
+                                <input type="checkbox" id="acceptTerms" checked> 
+                                <label style="color: #5a6f88; font-size: 0.9rem;">I agree to DPO'S terms and conditions</label>
+                            </div>
+                            <div class="dpo-logo">
+                                <span>DPO pay</span>
+                                <span style="color: #adb5bd;">by network</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment History -->
+                    <div style="margin-top: 2rem;">
+                        <h3>Recent Payments</h3>
+                        <div class="ticket-list" id="paymentHistory"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Section - Admin Only -->
             <div id="customersSection" class="dashboard-section admin-only">
                 <div class="support-section">
                     <h2>All Registered Customers</h2>
@@ -962,23 +1184,7 @@
                 </div>
             </div>
 
-            <!-- Team Section - ADMIN ONLY -->
-            <div id="teamSection" class="dashboard-section admin-only">
-                <div class="support-section">
-                    <h2>Admin Team Panel</h2>
-                    <div class="admin-note">
-                        <strong>🔒 Admin Only:</strong> This section is only visible to administrators.
-                    </div>
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <h3>SYSTEM STATS</h3>
-                            <div class="number" id="systemStats">Active</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Knowledge Base Section (Visible to all) -->
+            <!-- Knowledge Base Section -->
             <div id="knowledgeSection" class="dashboard-section">
                 <div class="support-section">
                     <h2>Knowledge Base</h2>
@@ -986,7 +1192,7 @@
                 </div>
             </div>
 
-            <!-- Live Chat Section (Visible to all) -->
+            <!-- Live Chat Section -->
             <div id="chatSection" class="dashboard-section">
                 <div class="support-section">
                     <h2>Live Support Chat</h2>
@@ -1007,13 +1213,9 @@
         <div class="modal-content">
             <span class="close-btn" onclick="closeTicketModal()">&times;</span>
             <h2 id="modalTicketTitle">Ticket Details</h2>
-            
-            <!-- Customer info - Only visible to admin -->
             <div id="modalCustomerInfo" class="admin-only" style="background: #e3f2fd; padding: 1rem; border-radius: 10px; margin-bottom: 1rem;"></div>
-            
             <div id="modalTicketContent"></div>
             
-            <!-- Admin Controls - Only visible to admin -->
             <div id="adminControls" class="admin-only" style="margin: 1rem 0;">
                 <h3>Admin: Update Status</h3>
                 <select id="ticketStatusSelect" style="padding: 0.5rem; border-radius: 10px; margin-right: 0.5rem;">
@@ -1078,10 +1280,22 @@
         let selectedFiles = [];
         let replyFiles = [];
 
+        // Payment state
+        let selectedPlan = 'basic';
+        let selectedPaymentMethod = 'mobile';
+        let selectedOperator = 'mtn';
+
+        // Plan prices
+        const planPrices = {
+            basic: { ugx: 30000, kes: 1000, tzs: 20000, usd: 8 },
+            pro: { ugx: 75000, kes: 2500, tzs: 50000, usd: 20 },
+            business: { ugx: 150000, kes: 5000, tzs: 100000, usd: 40 }
+        };
+
         const knowledgeBase = [
-            { title: 'How to Pay Invoices', category: 'Billing', views: 1234 },
-            { title: 'Network Setup Guide', category: 'Technical', views: 2341 },
-            { title: 'Account Management', category: 'Account', views: 1876 },
+            { title: 'How to Pay with Mobile Money', category: 'Payments', views: 1234 },
+            { title: 'DPO Pay Setup Guide', category: 'Payments', views: 2341 },
+            { title: 'Understanding Subscriptions', category: 'Billing', views: 1876 },
             { title: 'WhatsApp Support', category: 'Contact', views: 987 }
         ];
 
@@ -1135,7 +1349,9 @@
                 email, 
                 password, 
                 role: 'customer', 
-                registeredAt: new Date().toISOString()
+                registeredAt: new Date().toISOString(),
+                plan: 'basic',
+                payments: []
             };
             
             let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
@@ -1170,7 +1386,6 @@
                 return;
             }
 
-            // Regular user login
             const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
             const user = users.find(u => u.email === email && u.password === password);
 
@@ -1191,11 +1406,9 @@
                 sessionStorage.setItem('currentUser', JSON.stringify(user));
             }
             
-            // Clear login form
             document.getElementById('loginEmail').value = '';
             document.getElementById('loginPassword').value = '';
             
-            // Update UI
             document.getElementById('userEmailDisplay').textContent = user.email;
             document.getElementById('welcomeUserName').textContent = `Welcome, ${user.name}!`;
             
@@ -1203,7 +1416,6 @@
             roleBadge.textContent = isAdmin ? 'Admin' : 'Customer';
             roleBadge.classList.toggle('admin', isAdmin);
             
-            // Show/hide admin-only elements
             const adminElements = document.querySelectorAll('.admin-only');
             adminElements.forEach(el => {
                 if (isAdmin) {
@@ -1212,14 +1424,6 @@
                     el.classList.remove('visible');
                 }
             });
-            
-            // Update welcome message based on role
-            const welcomeMessage = document.getElementById('welcomeMessage');
-            if (isAdmin) {
-                welcomeMessage.textContent = 'Admin Dashboard - You can view and manage all customer tickets.';
-            } else {
-                welcomeMessage.textContent = 'Your personal support dashboard - You can only see your own tickets.';
-            }
             
             document.getElementById('authContainer').style.display = 'none';
             document.getElementById('dashboardContainer').classList.add('active');
@@ -1231,21 +1435,27 @@
         function loadData() {
             const tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
             const users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+            const payments = JSON.parse(localStorage.getItem('malcomtec_payments') || '[]');
             
             if (isAdmin) {
-                // Admin sees all tickets
                 loadAdminTickets(tickets);
-                loadAllCustomers(users, tickets);
-                updateAdminStats(users, tickets);
+                loadAllCustomers(users, tickets, payments);
+                updateAdminStats(users, payments);
             } else {
-                // Customer sees only their tickets
                 const myTickets = tickets.filter(t => t.createdBy === currentUser.email);
+                const myPayments = payments.filter(p => p.email === currentUser.email);
                 loadCustomerTickets(myTickets);
-                updateCustomerStats(myTickets);
+                updateCustomerStats(myTickets, myPayments);
+                loadPaymentHistory(myPayments);
+                
+                // Set active plan display
+                document.getElementById('activePlan').textContent = 
+                    currentUser.plan ? currentUser.plan.charAt(0).toUpperCase() + currentUser.plan.slice(1) : 'Basic';
             }
             
             loadKnowledgeBase();
             loadChat();
+            updatePaymentDisplay();
         }
 
         function loadCustomerTickets(myTickets) {
@@ -1259,7 +1469,23 @@
             
             ticketList.innerHTML = '';
             myTickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = createTicketElement(ticket);
+                const ticketEl = document.createElement('div');
+                ticketEl.className = 'ticket-item';
+                ticketEl.onclick = () => openTicketModal(ticket.id);
+                
+                const statusClass = ticket.status === 'Open' ? 'status-open' : 
+                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
+                
+                ticketEl.innerHTML = `
+                    <div>
+                        <strong>${ticket.title}</strong>
+                        <div style="color: #5a6f88; font-size: 0.8rem;">
+                            ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
+                        </div>
+                    </div>
+                    <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
+                `;
+                
                 ticketList.appendChild(ticketEl);
             });
         }
@@ -1275,42 +1501,29 @@
             
             adminTicketList.innerHTML = '';
             tickets.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).forEach(ticket => {
-                const ticketEl = createTicketElement(ticket, true);
+                const ticketEl = document.createElement('div');
+                ticketEl.className = 'ticket-item';
+                ticketEl.onclick = () => openTicketModal(ticket.id);
+                
+                const statusClass = ticket.status === 'Open' ? 'status-open' : 
+                                   ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
+                
+                ticketEl.innerHTML = `
+                    <div>
+                        <strong>${ticket.title}</strong>
+                        <div style="color: #2a7de1; font-size: 0.8rem;">Customer: ${ticket.createdByName}</div>
+                        <div style="color: #5a6f88; font-size: 0.8rem;">
+                            ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
+                        </div>
+                    </div>
+                    <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
+                `;
+                
                 adminTicketList.appendChild(ticketEl);
             });
         }
 
-        function createTicketElement(ticket, isAdmin = false) {
-            const ticketEl = document.createElement('div');
-            ticketEl.className = 'ticket-item';
-            ticketEl.onclick = () => openTicketModal(ticket.id);
-            
-            const statusClass = ticket.status === 'Open' ? 'status-open' : 
-                               ticket.status === 'In Progress' ? 'status-progress' : 'status-resolved';
-            
-            let title = ticket.title;
-            if (ticket.files?.length > 0) title = '📎 ' + title;
-            
-            let customerInfo = '';
-            if (isAdmin) {
-                customerInfo = `<div style="color: #2a7de1; font-size: 0.8rem;">Customer: ${ticket.createdByName}</div>`;
-            }
-            
-            ticketEl.innerHTML = `
-                <div>
-                    <strong>${title}</strong>
-                    ${customerInfo}
-                    <div style="color: #5a6f88; font-size: 0.8rem;">
-                        ${ticket.category || 'General'} · ${new Date(ticket.createdAt).toLocaleDateString()}
-                    </div>
-                </div>
-                <span class="ticket-status ${statusClass}">${ticket.status || 'Open'}</span>
-            `;
-            
-            return ticketEl;
-        }
-
-        function loadAllCustomers(users, tickets) {
+        function loadAllCustomers(users, tickets, payments) {
             const customerGrid = document.getElementById('customerGrid');
             if (!customerGrid) return;
             
@@ -1324,25 +1537,26 @@
             customerGrid.innerHTML = '';
             customers.forEach(user => {
                 const userTickets = tickets.filter(t => t.createdBy === user.email);
+                const userPayments = payments.filter(p => p.email === user.email);
                 
                 const card = document.createElement('div');
                 card.className = 'customer-card';
                 card.innerHTML = `
                     <h3>${user.name}</h3>
                     <p>${user.email}</p>
-                    <div class="customer-stats">
-                        <span>🎫 Tickets: ${userTickets.length}</span>
-                        <span>📅 ${new Date(user.registeredAt).toLocaleDateString()}</span>
+                    <div style="margin-top: 0.5rem;">
+                        <div>🎫 Tickets: ${userTickets.length}</div>
+                        <div>💰 Payments: ${userPayments.length}</div>
+                        <div>📅 ${new Date(user.registeredAt).toLocaleDateString()}</div>
                     </div>
                 `;
                 customerGrid.appendChild(card);
             });
         }
 
-        function updateCustomerStats(myTickets) {
+        function updateCustomerStats(myTickets, myPayments) {
             document.getElementById('myTicketsCount').textContent = myTickets.length;
-            document.getElementById('myOpenTicketsCount').textContent = myTickets.filter(t => t.status === 'Open').length;
-            document.getElementById('myResolvedTicketsCount').textContent = myTickets.filter(t => t.status === 'Resolved').length;
+            document.getElementById('paymentCount').textContent = myPayments.length;
             
             let fileCount = 0;
             myTickets.forEach(t => {
@@ -1352,29 +1566,37 @@
                 });
             });
             document.getElementById('myFilesCount').textContent = fileCount;
-            
-            updateRecentActivity(myTickets);
         }
 
-        function updateAdminStats(users, tickets) {
+        function updateAdminStats(users, payments) {
             document.getElementById('totalCustomersCount').textContent = users.filter(u => u.role !== 'admin').length;
-            document.getElementById('totalTicketsAllCount').textContent = tickets.length;
-            document.getElementById('systemStats').textContent = 'Online';
+            document.getElementById('totalPaymentsCount').textContent = payments.length;
         }
 
-        function updateRecentActivity(tickets) {
-            const recentDiv = document.getElementById('recentActivity');
-            if (tickets.length === 0) {
-                recentDiv.innerHTML = '<p>No recent activity</p>';
+        function loadPaymentHistory(myPayments) {
+            const historyDiv = document.getElementById('paymentHistory');
+            if (!historyDiv) return;
+            
+            if (myPayments.length === 0) {
+                historyDiv.innerHTML = '<p style="color: #5a6f88;">No payment history yet.</p>';
                 return;
             }
             
-            const recent = tickets.slice(0, 3);
-            let html = '';
-            recent.forEach(t => {
-                html += `<div>📌 ${t.title} - ${new Date(t.createdAt).toLocaleDateString()}</div>`;
+            historyDiv.innerHTML = '';
+            myPayments.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(payment => {
+                const div = document.createElement('div');
+                div.className = 'ticket-item';
+                div.innerHTML = `
+                    <div>
+                        <strong>${payment.plan} Plan</strong>
+                        <div style="color: #5a6f88; font-size: 0.8rem;">
+                            ${payment.method} · ${new Date(payment.date).toLocaleDateString()}
+                        </div>
+                    </div>
+                    <span class="ticket-status status-paid">UGX ${payment.amount.toLocaleString()}</span>
+                `;
+                historyDiv.appendChild(div);
             });
-            recentDiv.innerHTML = html;
         }
 
         function loadKnowledgeBase() {
@@ -1401,10 +1623,130 @@
             
             chatMessages.innerHTML = `
                 <div class="chat-message support">
-                    <div class="message-bubble">Welcome! How can we help?</div>
+                    <div class="message-bubble">Welcome to MalcomTec! How can we help?</div>
                     <div class="message-time">Just now</div>
                 </div>
             `;
+        }
+
+        // Payment Functions
+        function selectPlan(plan) {
+            selectedPlan = plan;
+            document.querySelectorAll('.plan-card').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`plan${plan.charAt(0).toUpperCase() + plan.slice(1)}`).classList.add('selected');
+            updatePaymentDisplay();
+        }
+
+        function selectPaymentMethod(method) {
+            selectedPaymentMethod = method;
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`method${method === 'mobile' ? 'Mobile' : 'Card'}`).classList.add('selected');
+            
+            const mobileOperators = document.getElementById('mobileOperators');
+            if (method === 'mobile') {
+                mobileOperators.style.display = 'grid';
+            } else {
+                mobileOperators.style.display = 'none';
+            }
+        }
+
+        function selectOperator(operator) {
+            selectedOperator = operator;
+            document.querySelectorAll('.mobile-operator').forEach(el => el.classList.remove('selected'));
+            document.getElementById(`op${operator === 'airtel' ? 'Airtel' : 'Mtn'}`).classList.add('selected');
+        }
+
+        function updatePaymentDisplay() {
+            const amount = planPrices[selectedPlan].ugx;
+            document.getElementById('displayAmount').textContent = `UGX ${amount.toLocaleString()}`;
+            document.getElementById('payButton').textContent = `PAY UGX ${amount.toLocaleString()} NOW`;
+        }
+
+        function processDPOPayment() {
+            if (!currentUser) {
+                showToast('Please login first', false);
+                return;
+            }
+
+            const phone = document.getElementById('phoneNumber').value.trim();
+            const phoneError = document.getElementById('phoneError');
+            
+            if (!phone) {
+                phoneError.style.display = 'block';
+                showToast('Phone number is required', false);
+                return;
+            }
+            phoneError.style.display = 'none';
+
+            // Simulate DPO payment processing [citation:1]
+            const amount = planPrices[selectedPlan].ugx;
+            const transactionRef = 'DPO' + Date.now();
+            
+            showToast(`🔄 Processing DPO payment for UGX ${amount.toLocaleString()}...`);
+            
+            // Simulate payment verification [citation:3]
+            setTimeout(() => {
+                const payment = {
+                    id: transactionRef,
+                    email: currentUser.email,
+                    name: currentUser.name,
+                    plan: selectedPlan,
+                    amount: amount,
+                    method: selectedPaymentMethod === 'mobile' ? 'Mobile Money' : 'Card',
+                    operator: selectedOperator,
+                    phone: phone,
+                    date: new Date().toISOString(),
+                    status: 'completed',
+                    transactionRef: transactionRef
+                };
+                
+                // Save payment
+                let payments = JSON.parse(localStorage.getItem('malcomtec_payments') || '[]');
+                payments.push(payment);
+                localStorage.setItem('malcomtec_payments', JSON.stringify(payments));
+                
+                // Update user's plan
+                let users = JSON.parse(localStorage.getItem('malcomtec_users') || '[]');
+                const userIndex = users.findIndex(u => u.email === currentUser.email);
+                if (userIndex !== -1) {
+                    users[userIndex].plan = selectedPlan;
+                    users[userIndex].lastPayment = payment.date;
+                    localStorage.setItem('malcomtec_users', JSON.stringify(users));
+                    currentUser.plan = selectedPlan;
+                }
+                
+                showToast(`✅ Payment successful! UGX ${amount.toLocaleString()} paid via DPO`);
+                
+                // Create payment confirmation ticket automatically [citation:2]
+                createPaymentTicket(payment);
+                
+                // Reload data
+                loadData();
+                
+            }, 2000);
+        }
+
+        function createPaymentTicket(payment) {
+            const ticket = {
+                id: Date.now(),
+                title: `Payment Confirmation - ${payment.plan} Plan`,
+                description: `Payment of UGX ${payment.amount.toLocaleString()} for ${payment.plan} plan completed via ${payment.method}. Transaction Ref: ${payment.transactionRef}`,
+                category: 'Payment Issue',
+                status: 'Resolved',
+                createdBy: currentUser.email,
+                createdByName: currentUser.name,
+                createdAt: new Date().toISOString(),
+                messages: [{
+                    sender: 'System',
+                    senderRole: 'admin',
+                    message: `✅ Payment received. Your ${payment.plan} plan is now active. Thank you for choosing MalcomTec!`,
+                    timestamp: new Date().toISOString()
+                }]
+            };
+            
+            let tickets = JSON.parse(localStorage.getItem('malcomtec_tickets') || '[]');
+            tickets.push(ticket);
+            localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
         }
 
         function handleFileSelect(event) {
@@ -1466,7 +1808,6 @@
             tickets.push(ticket);
             localStorage.setItem('malcomtec_tickets', JSON.stringify(tickets));
             
-            // Clear form
             document.getElementById('ticketTitle').value = '';
             document.getElementById('ticketDescription').value = '';
             document.getElementById('fileList').innerHTML = '';
@@ -1483,15 +1824,13 @@
             
             if (!ticket) return;
             
-            // SECURITY: Check if customer owns this ticket
             if (!isAdmin && ticket.createdBy !== currentUser.email) {
-                showToast('Access denied: You can only view your own tickets', false);
+                showToast('Access denied', false);
                 return;
             }
             
             document.getElementById('modalTicketTitle').textContent = ticket.title;
             
-            // Show customer info for admin only
             if (isAdmin) {
                 document.getElementById('modalCustomerInfo').innerHTML = `
                     <strong>Customer:</strong> ${ticket.createdByName} (${ticket.createdBy})
@@ -1540,7 +1879,6 @@
             
             if (ticketIndex === -1) return;
             
-            // SECURITY: Check if customer owns this ticket
             if (!isAdmin && tickets[ticketIndex].createdBy !== currentUser.email) {
                 showToast('Access denied', false);
                 return;
@@ -1675,6 +2013,7 @@
                         email: 'john@example.com',
                         password: 'customer123',
                         role: 'customer',
+                        plan: 'basic',
                         registeredAt: new Date().toISOString()
                     },
                     {
@@ -1682,20 +2021,39 @@
                         email: 'rockygyagenda@gmail.com',
                         password: 'Camera@02',
                         role: 'customer',
+                        plan: 'pro',
                         registeredAt: new Date().toISOString()
                     }
                 ];
                 localStorage.setItem('malcomtec_users', JSON.stringify(demoUsers));
             }
             
+            if (!localStorage.getItem('malcomtec_payments')) {
+                const demoPayments = [
+                    {
+                        id: 'DPO123456',
+                        email: 'rockygyagenda@gmail.com',
+                        name: 'rockygyagenda',
+                        plan: 'pro',
+                        amount: 75000,
+                        method: 'Mobile Money',
+                        operator: 'mtn',
+                        phone: '0772123456',
+                        date: new Date().toISOString(),
+                        status: 'completed'
+                    }
+                ];
+                localStorage.setItem('malcomtec_payments', JSON.stringify(demoPayments));
+            }
+            
             if (!localStorage.getItem('malcomtec_tickets')) {
                 const demoTickets = [
                     {
                         id: 1,
-                        title: 'Invoice Question',
-                        description: 'Need help with invoice',
-                        category: 'Billing/Invoice',
-                        status: 'In Progress',
+                        title: 'Payment Issue - Pro Plan',
+                        description: 'Need help with my subscription',
+                        category: 'Payment Issue',
+                        status: 'Resolved',
                         createdBy: 'rockygyagenda@gmail.com',
                         createdByName: 'rockygyagenda',
                         createdAt: new Date().toISOString(),
@@ -1703,8 +2061,14 @@
                             { 
                                 sender: 'rockygyagenda', 
                                 senderRole: 'customer', 
-                                message: 'Need help with invoice', 
-                                timestamp: new Date().toISOString() 
+                                message: 'I just paid for Pro plan but not reflecting', 
+                                timestamp: new Date(Date.now() - 7200000).toISOString() 
+                            },
+                            { 
+                                sender: 'Support Admin', 
+                                senderRole: 'admin', 
+                                message: 'Payment confirmed via DPO. Your Pro plan is now active!', 
+                                timestamp: new Date(Date.now() - 3600000).toISOString() 
                             }
                         ]
                     }
@@ -1713,9 +2077,15 @@
             }
         }
 
+        // Initialize
         window.onload = function() {
             setupDemoData();
             checkLoggedIn();
+            
+            // Set default selected plan
+            document.getElementById('planBasic').classList.add('selected');
+            document.getElementById('methodMobile').classList.add('selected');
+            document.getElementById('opMtn').classList.add('selected');
         };
     </script>
 </body>
