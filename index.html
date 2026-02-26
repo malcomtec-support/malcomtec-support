@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MALCOMTEC · Business Solutions</title>
+    <title>MALCOMTEC · Security & Solar Solutions</title>
     <style>
         * {
             margin: 0;
@@ -75,6 +75,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -163,21 +164,55 @@
             font-size: 1.2rem;
         }
 
+        /* Category Tabs */
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        .category-tab {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category-tab:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .category-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Services Grid */
         .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: none;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
+        .services-grid.active {
+            display: grid;
+        }
+
         .service-card {
             background: white;
-            padding: 2.5rem 2rem;
             border-radius: 20px;
+            overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: 0.3s;
-            text-align: center;
         }
 
         .service-card:hover {
@@ -185,20 +220,47 @@
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .service-icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
+        .service-image {
+            height: 200px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-content {
+            padding: 1.5rem;
+        }
+
+        .service-content h3 {
+            font-size: 1.3rem;
             color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .service-content p {
+            color: #666;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
+        .service-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--light);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         /* About Section */
@@ -260,19 +322,6 @@
             color: #666;
             font-size: 0.9rem;
             text-transform: uppercase;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 30px;
-            padding: 3rem;
-            color: white;
-            text-align: center;
-        }
-
-        .about-image h3 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
         }
 
         /* Contact Section */
@@ -412,6 +461,7 @@
             display: flex;
             justify-content: center;
             gap: 2rem;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
         }
 
@@ -614,6 +664,16 @@
             .contact-container {
                 grid-template-columns: 1fr;
             }
+
+            .category-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-tab {
+                width: 100%;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -640,38 +700,212 @@
     <section id="home" class="hero">
         <h1>MALCOMTEC</h1>
         <div class="tagline">innovate · connect · inspire</div>
-        <p>Your trusted partner for business solutions, customer support, and digital innovation. We help businesses grow through technology and exceptional service.</p>
+        <p>Your trusted partner for security systems, solar energy, and electrical solutions. We provide professional installation and 24/7 support.</p>
         <div>
-            <a href="#contact" class="btn">Get Started</a>
+            <a href="#contact" class="btn">Get a Quote</a>
             <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank" class="btn btn-outline">Customer Portal</a>
         </div>
     </section>
 
-    <!-- Services Section -->
+    <!-- Services Section with Categories -->
     <section id="services" class="services">
-        <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Comprehensive solutions for your business needs</p>
-        
-        <div class="services-grid">
+        <h2 class="section-title">Our Services & Products</h2>
+        <p class="section-subtitle">Professional security, solar, and electrical solutions</p>
+
+        <!-- Category Tabs -->
+        <div class="category-tabs">
+            <div class="category-tab active" onclick="showCategory('security')">🔒 Security Systems</div>
+            <div class="category-tab" onclick="showCategory('solar')">☀️ Solar Energy</div>
+            <div class="category-tab" onclick="showCategory('electrical')">🔧 Electrical Services</div>
+            <div class="category-tab" onclick="showCategory('networking')">🌐 Networking</div>
+            <div class="category-tab" onclick="showCategory('cctv')">📡 CCTV & Surveillance</div>
+        </div>
+
+        <!-- Security Systems Category -->
+        <div id="security-grid" class="services-grid active">
             <div class="service-card">
-                <div class="service-icon">💼</div>
-                <h3>Business Support</h3>
-                <p>24/7 customer support, ticket system, and dedicated account management for your business.</p>
+                <div class="service-image">🔒</div>
+                <div class="service-content">
+                    <h3>CCTV Security Systems</h3>
+                    <p>Professional CCTV installation with HIKVISION cameras. HD quality, night vision, and remote monitoring.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon">💳</div>
-                <h3>DPO Pay Integration</h3>
-                <p>Secure payment processing with mobile money (MTN, Airtel) and card payments.</p>
+                <div class="service-image">🔐</div>
+                <div class="service-content">
+                    <h3>Biometric Systems</h3>
+                    <p>Fingerprint and facial recognition access control systems for offices and homes.</p>
+                    <span class="service-tag">Access Control</span>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon">📱</div>
-                <h3>WhatsApp Business</h3>
-                <p>Instant customer communication via WhatsApp. Typically replies within 10 minutes.</p>
+                <div class="service-image">🚧</div>
+                <div class="service-content">
+                    <h3>Razor Wire & Electric Fence</h3>
+                    <p>Perimeter security with razor wire and electric fencing installations.</p>
+                    <span class="service-tag">Perimeter Security</span>
+                </div>
             </div>
             <div class="service-card">
-                <div class="service-icon">🔧</div>
-                <h3>Technical Support</h3>
-                <p>Expert technical assistance, troubleshooting, and IT consulting for your business.</p>
+                <div class="service-image">⚠️</div>
+                <div class="service-content">
+                    <h3>Alarm Systems</h3>
+                    <p>HIKVISION AX HYBRID PRO™ alarm systems with motion detectors and 24/7 monitoring.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📊</div>
+                <div class="service-content">
+                    <h3>Attendance Systems</h3>
+                    <p>Biometric and card-based time attendance tracking for employees.</p>
+                    <span class="service-tag">Time Management</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">🎤</div>
+                <div class="service-content">
+                    <h3>Intercoms & Background Sound</h3>
+                    <p>Audio/video intercom systems and background sound installation.</p>
+                    <span class="service-tag">Communication</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📡</div>
+                <div class="service-content">
+                    <h3>Wired Indoor PIR Detector</h3>
+                    <p>HIKVISION motion sensors for indoor security and automation.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">🎛️</div>
+                <div class="service-content">
+                    <h3>Control Panels & Keypads</h3>
+                    <p>HIKVISION AX HYBRID PRO™ control panels and LCD keypads.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solar Energy Category -->
+        <div id="solar-grid" class="services-grid">
+            <div class="service-card">
+                <div class="service-image">☀️</div>
+                <div class="service-content">
+                    <h3>Solar Lighting</h3>
+                    <p>Complete solar lighting solutions for homes and businesses. Energy-efficient and reliable.</p>
+                    <span class="service-tag">Solar</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">🔋</div>
+                <div class="service-content">
+                    <h3>Lithium Iron Phosphate Battery</h3>
+                    <p>Model: FLA24100 | 25.6V, 2.56kWh, 6000+ cycle life. Scalable up to 15 units in parallel.</p>
+                    <span class="service-tag">elicitysolar®</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">⚡</div>
+                <div class="service-content">
+                    <h3>Solar Power Systems</h3>
+                    <p>Complete solar installation with batteries, inverters, and panels.</p>
+                    <span class="service-tag">Renewable Energy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Electrical Services Category -->
+        <div id="electrical-grid" class="services-grid">
+            <div class="service-card">
+                <div class="service-image">🔧</div>
+                <div class="service-content">
+                    <h3>Electrical Services</h3>
+                    <p>Professional electrical installation, repairs, and maintenance.</p>
+                    <span class="service-tag">Licensed</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">🔌</div>
+                <div class="service-content">
+                    <h3>Wiring and Installation</h3>
+                    <p>Complete electrical wiring for homes, offices, and industrial buildings.</p>
+                    <span class="service-tag">Certified</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">⚡</div>
+                <div class="service-content">
+                    <h3>CCTV Power Supply</h3>
+                    <p>12V 5A and 12V 10A power supplies for CCTV systems. Input: 100-240V 50-60Hz.</p>
+                    <span class="service-tag">RS110-60-12</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Networking Category -->
+        <div id="networking-grid" class="services-grid">
+            <div class="service-card">
+                <div class="service-image">🌐</div>
+                <div class="service-content">
+                    <h3>Internet Services</h3>
+                    <p>High-speed internet installation and configuration for homes and businesses.</p>
+                    <span class="service-tag">ISP</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📶</div>
+                <div class="service-content">
+                    <h3>Internet Configurations</h3>
+                    <p>Network setup, router configuration, and troubleshooting.</p>
+                    <span class="service-tag">Technical</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📡</div>
+                <div class="service-content">
+                    <h3>Wi-Fi 6 Access Points</h3>
+                    <p>HIKVISION MARTPLUS LINK SYSTEM with Wi-Fi 6 technology. 3000 Mbps throughput, seamless roaming.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- CCTV Category -->
+        <div id="cctv-grid" class="services-grid">
+            <div class="service-card">
+                <div class="service-image">📹</div>
+                <div class="service-content">
+                    <h3>HIKVISION Network Camera</h3>
+                    <p>AcuSense technology with human/vehicle detection. EXIR night vision, weatherproof.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📼</div>
+                <div class="service-content">
+                    <h3>Hybrid Digital Video Recorder</h3>
+                    <p>Turbo HD Technology DVRs. 1200 Series and 7200 Series available. Smart motion detection.</p>
+                    <span class="service-tag">HIKVISION</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">🔌</div>
+                <div class="service-content">
+                    <h3>RG59+2C Coaxial Cable</h3>
+                    <p>High-quality CCTV cable with excellent anti-interference and anti-aging performance.</p>
+                    <span class="service-tag">U-FINITY®</span>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-image">📷</div>
+                <div class="service-content">
+                    <h3>Smart WiFi Cameras</h3>
+                    <p>HONTON HD 5G™ smart WiFi cameras. Solar-powered PTZ options available.</p>
+                    <span class="service-tag">HONTON</span>
+                </div>
             </div>
         </div>
     </section>
@@ -688,39 +922,43 @@
                 <li>✓ WhatsApp Business API</li>
                 <li>✓ Custom Software Development</li>
                 <li>✓ IT Consulting Services</li>
+                <li>✓ CCTV & Security Systems</li>
+                <li>✓ Solar Energy Solutions</li>
+                <li>✓ Electrical Installations</li>
             </ul>
 
             <div class="stats">
                 <div>
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">Clients</div>
+                    <div class="stat-label">CLIENTS</div>
                 </div>
                 <div>
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">Support</div>
+                    <div class="stat-label">SUPPORT</div>
                 </div>
                 <div>
                     <div class="stat-number">98%</div>
-                    <div class="stat-label">Satisfaction</div>
+                    <div class="stat-label">SATISFACTION</div>
                 </div>
             </div>
         </div>
         <div class="about-image">
-            <h3>Customer Portal</h3>
-            <p>Access our support system, track tickets, and manage payments</p>
-            <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">Open Portal</a>
+            <h3 style="color: white;">📍 Located in Kampala</h3>
+            <p style="color: white; margin: 1rem 0;">Kawempe-Tula Road, Kampala</p>
+            <p style="color: white;">Open 24 hours · 7 days a week</p>
+            <a href="https://wa.me/256706113553" target="_blank" class="btn" style="margin-top: 1rem; background: white; color: var(--primary);">📱 WhatsApp Us</a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2 class="section-title">Contact Us</h2>
-        <p class="section-subtitle">Get in touch with our team</p>
+        <p class="section-subtitle">Get in touch for quotes, installations, and support</p>
 
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Let's work together</h3>
-                <p>Have a project in mind? We'd love to hear about it. Send us a message and we'll respond within 24 hours.</p>
+                <p>Have a project in mind? We'd love to hear about it. We respond within 24 hours.</p>
                 
                 <ul class="contact-details">
                     <li>
@@ -741,7 +979,15 @@
                         <div class="contact-icon">📍</div>
                         <div>
                             <strong>Location</strong><br>
+                            Kawempe-Tula Road, Kampala<br>
                             <a href="https://maps.app.goo.gl/SmiMTFLpmENiK9dT7" target="_blank" class="map-link">View on Google Maps</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <strong>Hours</strong><br>
+                            Open 24 hours · Every day
                         </div>
                     </li>
                 </ul>
@@ -756,10 +1002,10 @@
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Subject">
+                        <input type="text" placeholder="Service Interested In (e.g., CCTV, Solar)">
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message" required></textarea>
+                        <textarea placeholder="Tell us about your project..." required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
@@ -777,10 +1023,12 @@
                 <a href="#services">Services</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
-                <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Portal</a>
+                <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Customer Portal</a>
+                <a href="https://wa.me/256706113553" target="_blank">WhatsApp</a>
             </div>
             <div class="copyright">
-                © 2026 MALCOMTEC. All rights reserved.
+                © 2026 MALCOMTEC. All rights reserved.<br>
+                Kawempe-Tula Road, Kampala · Open 24 hours
             </div>
         </div>
     </footer>
@@ -807,7 +1055,7 @@
             <div class="popup-body" id="chatBody">
                 <div class="message received">
                     <div class="message-bubble">
-                        Hi, welcome to MALCOMTEC! How can we help you today? 😊
+                        Hi! Welcome to MALCOMTEC. Need help with CCTV, solar, or electrical services? 😊
                     </div>
                     <div class="message-time" id="currentTime"></div>
                 </div>
@@ -821,6 +1069,23 @@
     </div>
 
     <script>
+        // Category Tabs
+        function showCategory(category) {
+            // Hide all grids
+            document.querySelectorAll('.services-grid').forEach(grid => {
+                grid.classList.remove('active');
+            });
+            
+            // Show selected grid
+            document.getElementById(category + '-grid').classList.add('active');
+            
+            // Update active tab
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
         // WhatsApp Widget
         function toggleWhatsApp() {
             const popup = document.getElementById('whatsappPopup');
@@ -840,7 +1105,6 @@
             
             if (message === '') return;
             
-            // Your WhatsApp number
             const whatsappUrl = `https://wa.me/256706113553?text=${encodeURIComponent(message)}`;
             window.open(whatsappUrl, '_blank');
             
@@ -852,23 +1116,20 @@
         function handleContactForm(e) {
             e.preventDefault();
             
-            // Get form data
             const name = e.target[0].value;
             const email = e.target[1].value;
-            const subject = e.target[2].value;
+            const service = e.target[2].value;
             const message = e.target[3].value;
             
-            // Create email content
-            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(subject || 'New Contact Form Message')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(service || 'New Service Request')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nService Interest: ${service}\n\nMessage:\n${message}`)}`;
             
-            // Open email client
             window.location.href = mailtoLink;
             
-            alert('Thank you for your message! Your email client will open to send.');
+            alert('Thank you! Your email client will open to send.');
             e.target.reset();
         }
 
-        // Smooth scrolling for navigation
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -879,7 +1140,7 @@
             });
         });
 
-        // Update active nav link on scroll
+        // Active nav link on scroll
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section');
             const navLinks = document.querySelectorAll('.nav-links a');
@@ -887,7 +1148,6 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
                 if (scrollY >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
