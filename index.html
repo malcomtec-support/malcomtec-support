@@ -19,6 +19,7 @@
             --dark: #0b1a2e;
             --light: #f8f9fa;
             --whatsapp: #25D366;
+            --admin: #6f42c1;
         }
 
         body {
@@ -76,6 +77,7 @@
             display: flex;
             gap: 2rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .nav-links a {
@@ -92,6 +94,41 @@
         .nav-links a.active {
             color: var(--primary);
             font-weight: 600;
+        }
+
+        /* Admin Login Button */
+        .admin-login-btn {
+            background: var(--admin);
+            color: white !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+        }
+
+        .admin-login-btn:hover {
+            background: #5a32a3;
+            color: white !important;
+        }
+
+        /* Cart Icon */
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         /* Hero Section */
@@ -132,6 +169,8 @@
             font-weight: 600;
             transition: 0.3s;
             margin: 0 10px;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-outline {
@@ -142,6 +181,11 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .btn-small {
+            padding: 0.5rem 1.5rem;
+            font-size: 0.9rem;
         }
 
         /* Services Section */
@@ -194,33 +238,34 @@
             color: white;
         }
 
-        /* Services Grid */
-        .services-grid {
+        /* Products Grid */
+        .products-grid {
             display: none;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .services-grid.active {
+        .products-grid.active {
             display: grid;
         }
 
-        .service-card {
+        .product-card {
             background: white;
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
             transition: 0.3s;
+            position: relative;
         }
 
-        .service-card:hover {
+        .product-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
 
-        .service-image {
+        .product-image {
             height: 200px;
             background: #e9ecef;
             display: flex;
@@ -229,38 +274,412 @@
             font-size: 3rem;
             color: var(--primary);
             border-bottom: 3px solid var(--primary);
+            position: relative;
+            overflow: hidden;
         }
 
-        .service-image img {
+        .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        .service-content {
+        .product-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--accent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-content {
             padding: 1.5rem;
         }
 
-        .service-content h3 {
+        .product-content h3 {
             font-size: 1.3rem;
             color: var(--dark);
             margin-bottom: 0.5rem;
         }
 
-        .service-content p {
+        .product-content p {
             color: #666;
             font-size: 0.9rem;
             margin-bottom: 1rem;
         }
 
-        .service-tag {
-            display: inline-block;
-            padding: 0.3rem 1rem;
-            background: var(--light);
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-price span {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: normal;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #e9ecef;
             border-radius: 50px;
-            font-size: 0.8rem;
+            overflow: hidden;
+        }
+
+        .quantity-btn {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .add-to-cart {
+            flex: 1;
+            padding: 0.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: 600;
+        }
+
+        .add-to-cart:hover {
+            background: var(--secondary);
+        }
+
+        /* Admin Controls (only visible when logged in) */
+        .admin-controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            display: none;
+            gap: 0.5rem;
+        }
+
+        .admin-controls.show {
+            display: flex;
+        }
+
+        .admin-edit-btn, .admin-delete-btn {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .admin-edit-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+        .admin-delete-btn {
+            background: #dc3545;
+            color: white;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .admin-panel-content {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .admin-panel-content h2 {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-form-group {
+            margin-bottom: 1rem;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .admin-form-group input,
+        .admin-form-group select,
+        .admin-form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+        }
+
+        .admin-form-group textarea {
+            height: 100px;
+        }
+
+        .admin-form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .admin-save-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .admin-cancel-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+        }
+
+        .admin-login-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-login-panel.active {
+            display: flex;
+        }
+
+        .admin-login-content {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .admin-login-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-login-input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+        }
+
+        .admin-login-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--admin);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 1.5rem;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-header h2 {
+            font-size: 1.5rem;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            background: var(--light);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-price {
             color: var(--primary);
             font-weight: 600;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .cart-quantity-btn {
+            width: 25px;
+            height: 25px;
+            background: var(--light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .cart-item-quantity {
+            font-size: 0.9rem;
+        }
+
+        .remove-item {
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            background: var(--light);
+            border-top: 1px solid #e9ecef;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--whatsapp);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            margin-bottom: 0.5rem;
+        }
+
+        .checkout-btn:hover {
+            background: #128C7E;
+        }
+
+        .email-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
         }
 
         /* About Section */
@@ -278,12 +697,6 @@
             font-size: 2.5rem;
             color: var(--dark);
             margin-bottom: 1.5rem;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            color: #666;
-            font-size: 1.1rem;
         }
 
         .features {
@@ -375,57 +788,11 @@
             font-weight: 500;
         }
 
-        .map-link:hover {
-            text-decoration: underline;
-        }
-
         .contact-form {
             background: white;
             padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-        }
-
-        .form-group textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            background: var(--secondary);
         }
 
         /* Footer */
@@ -445,10 +812,6 @@
             font-size: 2rem;
             font-weight: 800;
             margin-bottom: 1rem;
-        }
-
-        .footer-logo span {
-            color: var(--primary);
         }
 
         .footer-tagline {
@@ -674,6 +1037,10 @@
                 width: 100%;
                 text-align: center;
             }
+
+            .cart-sidebar {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -689,10 +1056,15 @@
         </div>
         <div class="nav-links">
             <a href="#home" class="active">Home</a>
-            <a href="#services">Services</a>
+            <a href="#services">Products</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
             <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Customer Portal</a>
+            <a href="#" class="admin-login-btn" onclick="showAdminLogin()">Admin</a>
+            <div class="cart-icon" onclick="toggleCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </div>
         </div>
     </nav>
 
@@ -700,214 +1072,29 @@
     <section id="home" class="hero">
         <h1>MALCOMTEC</h1>
         <div class="tagline">innovate · connect · inspire</div>
-        <p>Your trusted partner for security systems, solar energy, and electrical solutions. We provide professional installation and 24/7 support.</p>
+        <p>Your trusted partner for security systems, solar energy, and electrical solutions. Shop our products online or request installation.</p>
         <div>
-            <a href="#contact" class="btn">Get a Quote</a>
-            <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank" class="btn btn-outline">Customer Portal</a>
+            <a href="#services" class="btn">Shop Now</a>
+            <a href="#contact" class="btn btn-outline">Get a Quote</a>
         </div>
     </section>
 
-    <!-- Services Section with Categories -->
+    <!-- Products Section with Categories -->
     <section id="services" class="services">
-        <h2 class="section-title">Our Services & Products</h2>
-        <p class="section-subtitle">Professional security, solar, and electrical solutions</p>
+        <h2 class="section-title">Our Products</h2>
+        <p class="section-subtitle">Browse our catalog and add items to cart</p>
 
         <!-- Category Tabs -->
         <div class="category-tabs">
             <div class="category-tab active" onclick="showCategory('security')">🔒 Security Systems</div>
             <div class="category-tab" onclick="showCategory('solar')">☀️ Solar Energy</div>
-            <div class="category-tab" onclick="showCategory('electrical')">🔧 Electrical Services</div>
+            <div class="category-tab" onclick="showCategory('electrical')">🔧 Electrical</div>
             <div class="category-tab" onclick="showCategory('networking')">🌐 Networking</div>
-            <div class="category-tab" onclick="showCategory('cctv')">📡 CCTV & Surveillance</div>
+            <div class="category-tab" onclick="showCategory('cctv')">📡 CCTV</div>
         </div>
 
-        <!-- Security Systems Category -->
-        <div id="security-grid" class="services-grid active">
-            <div class="service-card">
-                <div class="service-image">🔒</div>
-                <div class="service-content">
-                    <h3>CCTV Security Systems</h3>
-                    <p>Professional CCTV installation with HIKVISION cameras. HD quality, night vision, and remote monitoring.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🔐</div>
-                <div class="service-content">
-                    <h3>Biometric Systems</h3>
-                    <p>Fingerprint and facial recognition access control systems for offices and homes.</p>
-                    <span class="service-tag">Access Control</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🚧</div>
-                <div class="service-content">
-                    <h3>Razor Wire & Electric Fence</h3>
-                    <p>Perimeter security with razor wire and electric fencing installations.</p>
-                    <span class="service-tag">Perimeter Security</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">⚠️</div>
-                <div class="service-content">
-                    <h3>Alarm Systems</h3>
-                    <p>HIKVISION AX HYBRID PRO™ alarm systems with motion detectors and 24/7 monitoring.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📊</div>
-                <div class="service-content">
-                    <h3>Attendance Systems</h3>
-                    <p>Biometric and card-based time attendance tracking for employees.</p>
-                    <span class="service-tag">Time Management</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🎤</div>
-                <div class="service-content">
-                    <h3>Intercoms & Background Sound</h3>
-                    <p>Audio/video intercom systems and background sound installation.</p>
-                    <span class="service-tag">Communication</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📡</div>
-                <div class="service-content">
-                    <h3>Wired Indoor PIR Detector</h3>
-                    <p>HIKVISION motion sensors for indoor security and automation.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🎛️</div>
-                <div class="service-content">
-                    <h3>Control Panels & Keypads</h3>
-                    <p>HIKVISION AX HYBRID PRO™ control panels and LCD keypads.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Solar Energy Category -->
-        <div id="solar-grid" class="services-grid">
-            <div class="service-card">
-                <div class="service-image">☀️</div>
-                <div class="service-content">
-                    <h3>Solar Lighting</h3>
-                    <p>Complete solar lighting solutions for homes and businesses. Energy-efficient and reliable.</p>
-                    <span class="service-tag">Solar</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🔋</div>
-                <div class="service-content">
-                    <h3>Lithium Iron Phosphate Battery</h3>
-                    <p>Model: FLA24100 | 25.6V, 2.56kWh, 6000+ cycle life. Scalable up to 15 units in parallel.</p>
-                    <span class="service-tag">elicitysolar®</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">⚡</div>
-                <div class="service-content">
-                    <h3>Solar Power Systems</h3>
-                    <p>Complete solar installation with batteries, inverters, and panels.</p>
-                    <span class="service-tag">Renewable Energy</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Electrical Services Category -->
-        <div id="electrical-grid" class="services-grid">
-            <div class="service-card">
-                <div class="service-image">🔧</div>
-                <div class="service-content">
-                    <h3>Electrical Services</h3>
-                    <p>Professional electrical installation, repairs, and maintenance.</p>
-                    <span class="service-tag">Licensed</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🔌</div>
-                <div class="service-content">
-                    <h3>Wiring and Installation</h3>
-                    <p>Complete electrical wiring for homes, offices, and industrial buildings.</p>
-                    <span class="service-tag">Certified</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">⚡</div>
-                <div class="service-content">
-                    <h3>CCTV Power Supply</h3>
-                    <p>12V 5A and 12V 10A power supplies for CCTV systems. Input: 100-240V 50-60Hz.</p>
-                    <span class="service-tag">RS110-60-12</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Networking Category -->
-        <div id="networking-grid" class="services-grid">
-            <div class="service-card">
-                <div class="service-image">🌐</div>
-                <div class="service-content">
-                    <h3>Internet Services</h3>
-                    <p>High-speed internet installation and configuration for homes and businesses.</p>
-                    <span class="service-tag">ISP</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📶</div>
-                <div class="service-content">
-                    <h3>Internet Configurations</h3>
-                    <p>Network setup, router configuration, and troubleshooting.</p>
-                    <span class="service-tag">Technical</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📡</div>
-                <div class="service-content">
-                    <h3>Wi-Fi 6 Access Points</h3>
-                    <p>HIKVISION MARTPLUS LINK SYSTEM with Wi-Fi 6 technology. 3000 Mbps throughput, seamless roaming.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- CCTV Category -->
-        <div id="cctv-grid" class="services-grid">
-            <div class="service-card">
-                <div class="service-image">📹</div>
-                <div class="service-content">
-                    <h3>HIKVISION Network Camera</h3>
-                    <p>AcuSense technology with human/vehicle detection. EXIR night vision, weatherproof.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📼</div>
-                <div class="service-content">
-                    <h3>Hybrid Digital Video Recorder</h3>
-                    <p>Turbo HD Technology DVRs. 1200 Series and 7200 Series available. Smart motion detection.</p>
-                    <span class="service-tag">HIKVISION</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">🔌</div>
-                <div class="service-content">
-                    <h3>RG59+2C Coaxial Cable</h3>
-                    <p>High-quality CCTV cable with excellent anti-interference and anti-aging performance.</p>
-                    <span class="service-tag">U-FINITY®</span>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-image">📷</div>
-                <div class="service-content">
-                    <h3>Smart WiFi Cameras</h3>
-                    <p>HONTON HD 5G™ smart WiFi cameras. Solar-powered PTZ options available.</p>
-                    <span class="service-tag">HONTON</span>
-                </div>
-            </div>
-        </div>
+        <!-- Products will be loaded here by JavaScript -->
+        <div id="products-container"></div>
     </section>
 
     <!-- About Section -->
@@ -920,11 +1107,8 @@
                 <li>✓ 24/7 Customer Support</li>
                 <li>✓ DPO Pay Integration</li>
                 <li>✓ WhatsApp Business API</li>
-                <li>✓ Custom Software Development</li>
-                <li>✓ IT Consulting Services</li>
-                <li>✓ CCTV & Security Systems</li>
-                <li>✓ Solar Energy Solutions</li>
-                <li>✓ Electrical Installations</li>
+                <li>✓ Professional Installation</li>
+                <li>✓ Free Quotes & Consultation</li>
             </ul>
 
             <div class="stats">
@@ -1002,7 +1186,7 @@
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Service Interested In (e.g., CCTV, Solar)">
+                        <input type="text" placeholder="Product/Service Interested In">
                     </div>
                     <div class="form-group">
                         <textarea placeholder="Tell us about your project..." required></textarea>
@@ -1020,7 +1204,7 @@
             <div class="footer-tagline">innovate · connect · inspire</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
-                <a href="#services">Services</a>
+                <a href="#services">Products</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
                 <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Customer Portal</a>
@@ -1032,6 +1216,74 @@
             </div>
         </div>
     </footer>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2>Your Cart</h2>
+            <button class="close-cart" onclick="toggleCart()">×</button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will appear here -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">UGX 0</span>
+            </div>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">📱 Checkout via WhatsApp</button>
+            <button class="email-checkout" onclick="checkoutEmail()">📧 Checkout via Email</button>
+        </div>
+    </div>
+
+    <!-- Admin Login Panel -->
+    <div class="admin-login-panel" id="adminLoginPanel">
+        <div class="admin-login-content">
+            <h2>Admin Login</h2>
+            <input type="password" class="admin-login-input" id="adminPassword" placeholder="Enter admin password" onkeypress="checkAdminKeyPress(event)">
+            <button class="admin-login-btn" onclick="verifyAdmin()">Login</button>
+            <button class="admin-cancel-btn" style="margin-top: 1rem;" onclick="hideAdminLogin()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Admin Edit Panel -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-panel-content">
+            <h2 id="adminPanelTitle">Edit Product</h2>
+            <form id="adminEditForm">
+                <div class="admin-form-group">
+                    <label>Product Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="admin-form-group">
+                    <label>Description</label>
+                    <textarea id="editDescription" required></textarea>
+                </div>
+                <div class="admin-form-group">
+                    <label>Price (UGX)</label>
+                    <input type="number" id="editPrice" required>
+                </div>
+                <div class="admin-form-group">
+                    <label>Category</label>
+                    <select id="editCategory">
+                        <option value="security">Security Systems</option>
+                        <option value="solar">Solar Energy</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="networking">Networking</option>
+                        <option value="cctv">CCTV</option>
+                    </select>
+                </div>
+                <div class="admin-form-group">
+                    <label>Icon (emoji or image URL)</label>
+                    <input type="text" id="editIcon" placeholder="e.g., 🔒 or image URL">
+                </div>
+                <div class="admin-form-actions">
+                    <button type="submit" class="admin-save-btn">Save Changes</button>
+                    <button type="button" class="admin-cancel-btn" onclick="hideAdminPanel()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <!-- WhatsApp Widget -->
     <div class="whatsapp-widget">
@@ -1069,24 +1321,351 @@
     </div>
 
     <script>
-        // Category Tabs
-        function showCategory(category) {
-            // Hide all grids
-            document.querySelectorAll('.services-grid').forEach(grid => {
-                grid.classList.remove('active');
+        // ==================== PRODUCT DATABASE (YOU CAN EDIT THESE PRICES) ====================
+        let products = [
+            // Security Systems
+            { id: 1, name: "HIKVISION Network Camera", description: "AcuSense technology with human/vehicle detection. EXIR night vision, weatherproof.", price: 250000, category: "security", icon: "📹" },
+            { id: 2, name: "Biometric Access System", description: "Fingerprint and facial recognition access control.", price: 450000, category: "security", icon: "🔐" },
+            { id: 3, name: "HIKVISION Alarm System", description: "AX HYBRID PRO™ with motion detectors and 24/7 monitoring.", price: 350000, category: "security", icon: "⚠️" },
+            { id: 4, name: "Electric Fence Kit", description: "Complete perimeter security with energizer and wires.", price: 550000, category: "security", icon: "⚡" },
+            
+            // Solar Energy
+            { id: 5, name: "Lithium Battery FLA24100", description: "25.6V, 2.56kWh, 6000+ cycle life. Scalable up to 15 units.", price: 1800000, category: "solar", icon: "🔋" },
+            { id: 6, name: "Solar Panel Kit 300W", description: "Complete solar panel with controller and mounting.", price: 650000, category: "solar", icon: "☀️" },
+            { id: 7, name: "Solar Street Light", description: "All-in-one solar LED street light with motion sensor.", price: 350000, category: "solar", icon: "💡" },
+            
+            // Electrical
+            { id: 8, name: "CCTV Power Supply 12V 10A", description: "INPUT: 100-240V 50-60Hz, OUTPUT: 12V 10A", price: 85000, category: "electrical", icon: "🔌" },
+            { id: 9, name: "CCTV Power Supply 12V 5A", description: "RS110-60-12, Made in China", price: 45000, category: "electrical", icon: "🔌" },
+            { id: 10, name: "Electrical Installation Service", description: "Professional wiring and installation per point", price: 50000, category: "electrical", icon: "🔧" },
+            
+            // Networking
+            { id: 11, name: "Wi-Fi 6 Access Point", description: "HIKVISION MARTPLUS, 3000 Mbps, seamless roaming", price: 280000, category: "networking", icon: "📶" },
+            { id: 12, name: "Network Cable RG59+2C", description: "High-quality CCTV coaxial cable, 305m roll", price: 350000, category: "networking", icon: "🔌" },
+            { id: 13, name: "Router Configuration", description: "Professional setup and configuration", price: 75000, category: "networking", icon: "🌐" },
+            
+            // CCTV
+            { id: 14, name: "HIKVISION Turbo HD DVR", description: "7200 Series with smart motion detection", price: 320000, category: "cctv", icon: "📼" },
+            { id: 15, name: "HONTON Smart WiFi Camera", description: "HD 5G™, solar-powered PTZ option available", price: 150000, category: "cctv", icon: "📷" },
+            { id: 16, name: "Wired Indoor PIR Detector", description: "HIKVISION motion sensor for indoor security", price: 65000, category: "cctv", icon: "📡" }
+        ];
+
+        // Admin password (YOU CAN CHANGE THIS)
+        const ADMIN_PASSWORD = "malcomtec2026";
+        
+        // Cart array
+        let cart = [];
+        let isAdminLoggedIn = false;
+
+        // ==================== LOAD PRODUCTS ====================
+        function loadProducts() {
+            const container = document.getElementById('products-container');
+            if (!container) return;
+            
+            let html = '';
+            const categories = ['security', 'solar', 'electrical', 'networking', 'cctv'];
+            
+            categories.forEach(category => {
+                const categoryProducts = products.filter(p => p.category === category);
+                const categoryName = {
+                    security: 'Security Systems',
+                    solar: 'Solar Energy',
+                    electrical: 'Electrical',
+                    networking: 'Networking',
+                    cctv: 'CCTV'
+                }[category];
+                
+                html += `<div id="${category}-grid" class="products-grid ${category === 'security' ? 'active' : ''}">`;
+                
+                categoryProducts.forEach(product => {
+                    html += `
+                        <div class="product-card" data-id="${product.id}" data-category="${product.category}">
+                            ${isAdminLoggedIn ? `
+                                <div class="admin-controls show">
+                                    <button class="admin-edit-btn" onclick="editProduct(${product.id})">✏️</button>
+                                    <button class="admin-delete-btn" onclick="deleteProduct(${product.id})">🗑️</button>
+                                </div>
+                            ` : ''}
+                            <div class="product-image">
+                                <div class="product-badge">${product.category}</div>
+                                ${product.icon}
+                            </div>
+                            <div class="product-content">
+                                <h3>${product.name}</h3>
+                                <p>${product.description}</p>
+                                <div class="product-price">UGX ${product.price.toLocaleString()}</div>
+                                <div class="product-actions">
+                                    <div class="quantity-selector">
+                                        <button class="quantity-btn" onclick="decrementQuantity(this)">-</button>
+                                        <input type="text" class="quantity-input" value="1" readonly>
+                                        <button class="quantity-btn" onclick="incrementQuantity(this)">+</button>
+                                    </div>
+                                    <button class="add-to-cart" onclick="addToCart(this, ${product.id})">Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                html += `</div>`;
             });
             
-            // Show selected grid
+            container.innerHTML = html;
+        }
+
+        // ==================== CATEGORY TABS ====================
+        function showCategory(category) {
+            document.querySelectorAll('.products-grid').forEach(grid => {
+                grid.classList.remove('active');
+            });
             document.getElementById(category + '-grid').classList.add('active');
             
-            // Update active tab
             document.querySelectorAll('.category-tab').forEach(tab => {
                 tab.classList.remove('active');
             });
             event.target.classList.add('active');
         }
 
-        // WhatsApp Widget
+        // ==================== QUANTITY CONTROLS ====================
+        function incrementQuantity(btn) {
+            const input = btn.parentElement.querySelector('.quantity-input');
+            input.value = parseInt(input.value) + 1;
+        }
+
+        function decrementQuantity(btn) {
+            const input = btn.parentElement.querySelector('.quantity-input');
+            if (parseInt(input.value) > 1) {
+                input.value = parseInt(input.value) - 1;
+            }
+        }
+
+        // ==================== CART FUNCTIONS ====================
+        function addToCart(btn, productId) {
+            const product = products.find(p => p.id === productId);
+            const quantity = parseInt(btn.parentElement.querySelector('.quantity-input').value);
+            
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    icon: product.icon,
+                    quantity: quantity
+                });
+            }
+            
+            updateCartDisplay();
+            toggleCart(); // Open cart automatically
+        }
+
+        function updateCartDisplay() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = totalItems;
+            
+            // Update cart items
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p style="text-align: center; color: #999;">Your cart is empty</p>';
+                cartTotal.textContent = 'UGX 0';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                html += `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.icon}</div>
+                        <div class="cart-item-details">
+                            <div class="cart-item-title">${item.name}</div>
+                            <div class="cart-item-price">UGX ${item.price.toLocaleString()}</div>
+                            <div class="cart-item-actions">
+                                <button class="cart-quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                                <span class="cart-item-quantity">${item.quantity}</span>
+                                <button class="cart-quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                                <span class="remove-item" onclick="removeFromCart(${item.id})">Remove</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            cartItems.innerHTML = html;
+            cartTotal.textContent = `UGX ${total.toLocaleString()}`;
+        }
+
+        function updateCartQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCartDisplay();
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+        }
+
+        // ==================== CHECKOUT ====================
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            let message = "Hello MALCOMTEC, I'd like to order:\n\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `${item.icon} ${item.name}\n`;
+                message += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n`;
+                message += `Subtotal: UGX ${(item.price * item.quantity).toLocaleString()}\n\n`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `TOTAL: UGX ${total.toLocaleString()}\n\n`;
+            message += `Location: Kawempe-Tula Road, Kampala\n`;
+            message += `Please confirm availability and payment options.`;
+            
+            const whatsappUrl = `https://wa.me/256706113553?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function checkoutEmail() {
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            
+            let subject = "New Order from MALCOMTEC Website";
+            let body = "Order Details:\n\n";
+            let total = 0;
+            
+            cart.forEach(item => {
+                body += `${item.icon} ${item.name}\n`;
+                body += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n`;
+                body += `Subtotal: UGX ${(item.price * item.quantity).toLocaleString()}\n\n`;
+                total += item.price * item.quantity;
+            });
+            
+            body += `TOTAL: UGX ${total.toLocaleString()}\n\n`;
+            body += `Delivery Location: Kawempe-Tula Road, Kampala\n`;
+            body += `Please confirm availability and payment options.`;
+            
+            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoLink;
+        }
+
+        // ==================== ADMIN FUNCTIONS ====================
+        function showAdminLogin() {
+            document.getElementById('adminLoginPanel').classList.add('active');
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginPanel').classList.remove('active');
+        }
+
+        function checkAdminKeyPress(event) {
+            if (event.key === 'Enter') {
+                verifyAdmin();
+            }
+        }
+
+        function verifyAdmin() {
+            const password = document.getElementById('adminPassword').value;
+            if (password === ADMIN_PASSWORD) {
+                isAdminLoggedIn = true;
+                hideAdminLogin();
+                loadProducts(); // Reload products with admin controls
+                alert('Admin login successful! You can now edit prices.');
+            } else {
+                alert('Incorrect password');
+            }
+        }
+
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            document.getElementById('adminPanelTitle').textContent = 'Edit Product';
+            document.getElementById('editName').value = product.name;
+            document.getElementById('editDescription').value = product.description;
+            document.getElementById('editPrice').value = product.price;
+            document.getElementById('editCategory').value = product.category;
+            document.getElementById('editIcon').value = product.icon;
+            
+            // Store product ID for saving
+            document.getElementById('adminEditForm').onsubmit = function(e) {
+                e.preventDefault();
+                saveProduct(productId);
+            };
+            
+            document.getElementById('adminPanel').classList.add('active');
+        }
+
+        function saveProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            product.name = document.getElementById('editName').value;
+            product.description = document.getElementById('editDescription').value;
+            product.price = parseInt(document.getElementById('editPrice').value);
+            product.category = document.getElementById('editCategory').value;
+            product.icon = document.getElementById('editIcon').value;
+            
+            hideAdminPanel();
+            loadProducts(); // Reload with updated prices
+            alert('Product updated successfully!');
+        }
+
+        function deleteProduct(productId) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                products = products.filter(p => p.id !== productId);
+                loadProducts();
+            }
+        }
+
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('active');
+        }
+
+        // ==================== CONTACT FORM ====================
+        function handleContactForm(e) {
+            e.preventDefault();
+            
+            const name = e.target[0].value;
+            const email = e.target[1].value;
+            const product = e.target[2].value;
+            const message = e.target[3].value;
+            
+            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(product || 'New Inquiry')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            alert('Thank you! Your email client will open to send.');
+            e.target.reset();
+        }
+
+        // ==================== WHATSAPP WIDGET ====================
         function toggleWhatsApp() {
             const popup = document.getElementById('whatsappPopup');
             popup.classList.toggle('active');
@@ -1112,54 +1691,11 @@
             toggleWhatsApp();
         }
 
-        // Contact Form
-        function handleContactForm(e) {
-            e.preventDefault();
-            
-            const name = e.target[0].value;
-            const email = e.target[1].value;
-            const service = e.target[2].value;
-            const message = e.target[3].value;
-            
-            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(service || 'New Service Request')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nService Interest: ${service}\n\nMessage:\n${message}`)}`;
-            
-            window.location.href = mailtoLink;
-            
-            alert('Thank you! Your email client will open to send.');
-            e.target.reset();
-        }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
-        });
-
-        // Active nav link on scroll
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        // ==================== INITIALIZE ====================
+        window.onload = function() {
+            loadProducts();
+            updateCartDisplay();
+        };
     </script>
 </body>
 </html>
