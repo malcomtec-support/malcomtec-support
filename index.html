@@ -73,6 +73,13 @@
             letter-spacing: 2px;
         }
 
+        .mobile-menu-btn {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
         .nav-links {
             display: flex;
             gap: 2rem;
@@ -96,17 +103,23 @@
             font-weight: 600;
         }
 
-        /* Admin Login Button */
+        /* Admin Button - SUPER VISIBLE */
         .admin-login-btn {
-            background: var(--admin);
+            background: var(--admin) !important;
             color: white !important;
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
+            padding: 12px 25px !important;
+            border-radius: 50px !important;
+            font-weight: bold !important;
+            border: 2px solid white !important;
+            box-shadow: 0 4px 15px rgba(111, 66, 193, 0.4) !important;
+            text-decoration: none !important;
+            display: inline-block !important;
+            font-size: 1rem !important;
         }
 
         .admin-login-btn:hover {
-            background: #5a32a3;
-            color: white !important;
+            background: #5a32a3 !important;
+            transform: scale(1.05);
         }
 
         /* Cart Icon */
@@ -181,11 +194,6 @@
         .btn:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .btn-small {
-            padding: 0.5rem 1.5rem;
-            font-size: 0.9rem;
         }
 
         /* Services Section */
@@ -278,12 +286,6 @@
             overflow: hidden;
         }
 
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         .product-badge {
             position: absolute;
             top: 10px;
@@ -317,12 +319,6 @@
             font-weight: 800;
             color: var(--primary);
             margin-bottom: 1rem;
-        }
-
-        .product-price span {
-            font-size: 0.9rem;
-            color: #999;
-            font-weight: normal;
         }
 
         .product-actions {
@@ -377,13 +373,14 @@
             background: var(--secondary);
         }
 
-        /* Admin Controls (only visible when logged in) */
+        /* Admin Controls on Products */
         .admin-controls {
             position: absolute;
             top: 10px;
             left: 10px;
             display: none;
             gap: 0.5rem;
+            z-index: 10;
         }
 
         .admin-controls.show {
@@ -391,12 +388,13 @@
         }
 
         .admin-edit-btn, .admin-delete-btn {
-            width: 30px;
-            height: 30px;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             border: none;
             cursor: pointer;
             font-weight: bold;
+            font-size: 1rem;
         }
 
         .admin-edit-btn {
@@ -409,86 +407,7 @@
             color: white;
         }
 
-        /* Admin Panel */
-        .admin-panel {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .admin-panel.active {
-            display: flex;
-        }
-
-        .admin-panel-content {
-            background: white;
-            border-radius: 30px;
-            padding: 2rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
-
-        .admin-panel-content h2 {
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-
-        .admin-form-group {
-            margin-bottom: 1rem;
-        }
-
-        .admin-form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .admin-form-group input,
-        .admin-form-group select,
-        .admin-form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-        }
-
-        .admin-form-group textarea {
-            height: 100px;
-        }
-
-        .admin-form-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
-        }
-
-        .admin-save-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-        }
-
-        .admin-cancel-btn {
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 50px;
-            cursor: pointer;
-        }
-
+        /* Admin Panels */
         .admin-login-panel {
             position: fixed;
             top: 0;
@@ -533,6 +452,83 @@
             color: white;
             border: none;
             border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .admin-cancel-btn {
+            width: 100%;
+            padding: 1rem;
+            background: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 0.5rem;
+        }
+
+        .admin-panel {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-panel.active {
+            display: flex;
+        }
+
+        .admin-panel-content {
+            background: white;
+            border-radius: 30px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .admin-panel-content h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-form-group {
+            margin-bottom: 1rem;
+        }
+
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .admin-form-group input,
+        .admin-form-group select,
+        .admin-form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+        }
+
+        .admin-form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .admin-save-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
             cursor: pointer;
         }
 
@@ -582,64 +578,6 @@
             padding: 1.5rem;
         }
 
-        .cart-item {
-            display: flex;
-            gap: 1rem;
-            padding: 1rem 0;
-            border-bottom: 1px solid #e9ecef;
-        }
-
-        .cart-item-image {
-            width: 60px;
-            height: 60px;
-            background: var(--light);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .cart-item-details {
-            flex: 1;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .cart-item-price {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .cart-item-actions {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 0.5rem;
-        }
-
-        .cart-quantity-btn {
-            width: 25px;
-            height: 25px;
-            background: var(--light);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .cart-item-quantity {
-            font-size: 0.9rem;
-        }
-
-        .remove-item {
-            color: #dc3545;
-            cursor: pointer;
-            font-size: 0.9rem;
-        }
-
         .cart-footer {
             padding: 1.5rem;
             background: var(--light);
@@ -663,12 +601,7 @@
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
-            transition: 0.2s;
             margin-bottom: 0.5rem;
-        }
-
-        .checkout-btn:hover {
-            background: #128C7E;
         }
 
         .email-checkout {
@@ -693,48 +626,36 @@
             margin: 0 auto;
         }
 
-        .about-content h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-
         .features {
             list-style: none;
+            margin-top: 1rem;
         }
 
         .features li {
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.5rem;
         }
 
         .features li:before {
             content: "✓";
             color: var(--primary);
             font-weight: bold;
-            font-size: 1.2rem;
         }
 
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            gap: 1rem;
             margin-top: 2rem;
             text-align: center;
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--primary);
-        }
-
-        .stat-label {
-            color: #666;
-            font-size: 0.9rem;
-            text-transform: uppercase;
         }
 
         /* Contact Section */
@@ -751,48 +672,59 @@
             margin: 0 auto;
         }
 
-        .contact-info h3 {
-            font-size: 2rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-        }
-
         .contact-details {
             list-style: none;
+            margin-top: 1rem;
         }
 
         .contact-details li {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 1rem;
         }
 
         .contact-icon {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             background: var(--primary);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.5rem;
-        }
-
-        .map-link {
-            display: inline-block;
-            margin-top: 1rem;
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
         }
 
         .contact-form {
             background: white;
             padding: 2rem;
             border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
         }
 
         /* Footer */
@@ -803,44 +735,17 @@
             text-align: center;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-size: 2rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-
-        .footer-tagline {
-            color: #a0b8d0;
-            margin-bottom: 2rem;
-            letter-spacing: 2px;
-        }
-
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
             flex-wrap: wrap;
-            margin-bottom: 2rem;
+            margin: 1.5rem 0;
         }
 
         .footer-links a {
             color: white;
             text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .copyright {
-            color: #5a6f88;
-            font-size: 0.9rem;
         }
 
         /* WhatsApp Widget */
@@ -860,182 +765,76 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-            transition: 0.3s;
             font-size: 2rem;
-        }
-
-        .whatsapp-button:hover {
-            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
         }
 
         .whatsapp-popup {
             position: absolute;
             bottom: 80px;
             right: 0;
-            width: 350px;
+            width: 300px;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
             overflow: hidden;
             display: none;
         }
 
         .whatsapp-popup.active {
             display: block;
-            animation: slideUp 0.3s ease;
-        }
-
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
         }
 
         .popup-header {
             background: #075E54;
             color: white;
-            padding: 20px;
+            padding: 1rem;
             display: flex;
             align-items: center;
-            gap: 15px;
-        }
-
-        .company-avatar {
-            width: 50px;
-            height: 50px;
-            background: #128C7E;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .company-info h3 {
-            margin: 0;
-            font-size: 16px;
-        }
-
-        .company-info p {
-            margin: 5px 0 0;
-            font-size: 12px;
-            opacity: 0.9;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .online-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--whatsapp);
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .close-popup {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .popup-body {
-            padding: 20px;
-            background: #E5DDD5;
-            min-height: 150px;
-        }
-
-        .message {
-            margin-bottom: 15px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .message.received {
-            align-items: flex-start;
-        }
-
-        .message.received .message-bubble {
-            background: white;
-            border-radius: 0 10px 10px 10px;
-        }
-
-        .message-bubble {
-            max-width: 80%;
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .message-time {
-            font-size: 10px;
-            color: #999;
-            margin-top: 5px;
+            gap: 1rem;
         }
 
         .popup-footer {
-            padding: 15px;
-            background: #F0F0F0;
             display: flex;
-            gap: 10px;
+            padding: 1rem;
+            background: #f0f0f0;
         }
 
         .popup-footer input {
             flex: 1;
-            padding: 12px 15px;
+            padding: 0.5rem;
             border: none;
-            border-radius: 25px;
-            outline: none;
+            border-radius: 5px;
         }
 
-        .popup-footer button {
-            width: 45px;
-            height: 45px;
-            background: var(--whatsapp);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        /* Responsive */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
             .nav-links {
                 display: none;
-            }
-            
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .about {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-
-            .category-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .category-tab {
+                position: absolute;
+                top: 80px;
+                left: 0;
                 width: 100%;
-                text-align: center;
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 99;
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .nav-links a, .nav-links .admin-login-btn, .nav-links .cart-icon {
+                margin: 10px 0;
+            }
+
+            .about, .contact-container {
+                grid-template-columns: 1fr;
             }
 
             .cart-sidebar {
@@ -1045,7 +844,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+    <!-- Navigation with VISIBLE Admin Button -->
     <nav class="navbar">
         <div class="logo">
             <div class="logo-icon">MT</div>
@@ -1054,13 +853,22 @@
                 <span>innovate · connect · inspire</span>
             </div>
         </div>
-        <div class="nav-links">
+        
+        <!-- Mobile menu button -->
+        <div class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</div>
+        
+        <div class="nav-links" id="navLinks">
             <a href="#home" class="active">Home</a>
             <a href="#services">Products</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Customer Portal</a>
-            <a href="#" class="admin-login-btn" onclick="showAdminLogin()">Admin</a>
+            <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Portal</a>
+            
+            <!-- ADMIN BUTTON - SUPER VISIBLE! -->
+            <a href="#" class="admin-login-btn" onclick="showAdminLogin()">
+                👑 ADMIN LOGIN
+            </a>
+            
             <div class="cart-icon" onclick="toggleCart()">
                 🛒
                 <span class="cart-count" id="cartCount">0</span>
@@ -1079,21 +887,21 @@
         </div>
     </section>
 
-    <!-- Products Section with Categories -->
+    <!-- Products Section -->
     <section id="services" class="services">
         <h2 class="section-title">Our Products</h2>
         <p class="section-subtitle">Browse our catalog and add items to cart</p>
 
         <!-- Category Tabs -->
         <div class="category-tabs">
-            <div class="category-tab active" onclick="showCategory('security')">🔒 Security Systems</div>
-            <div class="category-tab" onclick="showCategory('solar')">☀️ Solar Energy</div>
+            <div class="category-tab active" onclick="showCategory('security')">🔒 Security</div>
+            <div class="category-tab" onclick="showCategory('solar')">☀️ Solar</div>
             <div class="category-tab" onclick="showCategory('electrical')">🔧 Electrical</div>
             <div class="category-tab" onclick="showCategory('networking')">🌐 Networking</div>
             <div class="category-tab" onclick="showCategory('cctv')">📡 CCTV</div>
         </div>
 
-        <!-- Products will be loaded here by JavaScript -->
+        <!-- Products Container -->
         <div id="products-container"></div>
     </section>
 
@@ -1106,7 +914,6 @@
             <ul class="features">
                 <li>✓ 24/7 Customer Support</li>
                 <li>✓ DPO Pay Integration</li>
-                <li>✓ WhatsApp Business API</li>
                 <li>✓ Professional Installation</li>
                 <li>✓ Free Quotes & Consultation</li>
             </ul>
@@ -1114,65 +921,44 @@
             <div class="stats">
                 <div>
                     <div class="stat-number">500+</div>
-                    <div class="stat-label">CLIENTS</div>
+                    <div>Clients</div>
                 </div>
                 <div>
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">SUPPORT</div>
+                    <div>Support</div>
                 </div>
                 <div>
                     <div class="stat-number">98%</div>
-                    <div class="stat-label">SATISFACTION</div>
+                    <div>Satisfaction</div>
                 </div>
             </div>
         </div>
         <div class="about-image">
-            <h3 style="color: white;">📍 Located in Kampala</h3>
-            <p style="color: white; margin: 1rem 0;">Kawempe-Tula Road, Kampala</p>
-            <p style="color: white;">Open 24 hours · 7 days a week</p>
-            <a href="https://wa.me/256706113553" target="_blank" class="btn" style="margin-top: 1rem; background: white; color: var(--primary);">📱 WhatsApp Us</a>
+            <h3>📍 Kawempe-Tula Road</h3>
+            <p>Kampala, Uganda</p>
+            <p>Open 24/7</p>
+            <a href="https://wa.me/256706113553" target="_blank" class="btn" style="margin-top: 1rem;">WhatsApp Us</a>
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <h2 class="section-title">Contact Us</h2>
-        <p class="section-subtitle">Get in touch for quotes, installations, and support</p>
-
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Let's work together</h3>
-                <p>Have a project in mind? We'd love to hear about it. We respond within 24 hours.</p>
-                
+                <h3>Get in Touch</h3>
                 <ul class="contact-details">
                     <li>
-                        <div class="contact-icon">📧</div>
-                        <div>
-                            <strong>Email</strong><br>
-                            rockygyagenda@gmail.com
-                        </div>
+                        <span class="contact-icon">📧</span>
+                        <span>rockygyagenda@gmail.com</span>
                     </li>
                     <li>
-                        <div class="contact-icon">📱</div>
-                        <div>
-                            <strong>Phone/WhatsApp</strong><br>
-                            <a href="https://wa.me/256706113553" target="_blank" style="color: var(--primary); text-decoration: none;">+256 706 113553</a>
-                        </div>
+                        <span class="contact-icon">📱</span>
+                        <span>+256 706 113553</span>
                     </li>
                     <li>
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <strong>Location</strong><br>
-                            Kawempe-Tula Road, Kampala<br>
-                            <a href="https://maps.app.goo.gl/SmiMTFLpmENiK9dT7" target="_blank" class="map-link">View on Google Maps</a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="contact-icon">⏰</div>
-                        <div>
-                            <strong>Hours</strong><br>
-                            Open 24 hours · Every day
-                        </div>
+                        <span class="contact-icon">📍</span>
+                        <span>Kawempe-Tula Road, Kampala</span>
                     </li>
                 </ul>
             </div>
@@ -1186,10 +972,7 @@
                         <input type="email" placeholder="Your Email" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Product/Service Interested In">
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="Tell us about your project..." required></textarea>
+                        <textarea placeholder="Your Message" required></textarea>
                     </div>
                     <button type="submit" class="submit-btn">Send Message</button>
                 </form>
@@ -1200,19 +983,16 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-logo">MALCOMTEC<span>.</span></div>
+            <div class="footer-logo">MALCOMTEC</div>
             <div class="footer-tagline">innovate · connect · inspire</div>
             <div class="footer-links">
                 <a href="#home">Home</a>
                 <a href="#services">Products</a>
                 <a href="#about">About</a>
                 <a href="#contact">Contact</a>
-                <a href="https://malcomtec-support.github.io/malcomtec-support/" target="_blank">Customer Portal</a>
-                <a href="https://wa.me/256706113553" target="_blank">WhatsApp</a>
             </div>
             <div class="copyright">
-                © 2026 MALCOMTEC. All rights reserved.<br>
-                Kawempe-Tula Road, Kampala · Open 24 hours
+                © 2026 MALCOMTEC. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1224,15 +1004,15 @@
             <button class="close-cart" onclick="toggleCart()">×</button>
         </div>
         <div class="cart-items" id="cartItems">
-            <!-- Cart items will appear here -->
+            <p style="text-align: center; color: #999;">Your cart is empty</p>
         </div>
         <div class="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
                 <span id="cartTotal">UGX 0</span>
             </div>
-            <button class="checkout-btn" onclick="checkoutWhatsApp()">📱 Checkout via WhatsApp</button>
-            <button class="email-checkout" onclick="checkoutEmail()">📧 Checkout via Email</button>
+            <button class="checkout-btn" onclick="checkoutWhatsApp()">📱 WhatsApp Order</button>
+            <button class="email-checkout" onclick="checkoutEmail()">📧 Email Order</button>
         </div>
     </div>
 
@@ -1240,9 +1020,9 @@
     <div class="admin-login-panel" id="adminLoginPanel">
         <div class="admin-login-content">
             <h2>Admin Login</h2>
-            <input type="password" class="admin-login-input" id="adminPassword" placeholder="Enter admin password" onkeypress="checkAdminKeyPress(event)">
+            <input type="password" class="admin-login-input" id="adminPassword" placeholder="Enter admin password">
             <button class="admin-login-btn" onclick="verifyAdmin()">Login</button>
-            <button class="admin-cancel-btn" style="margin-top: 1rem;" onclick="hideAdminLogin()">Cancel</button>
+            <button class="admin-cancel-btn" onclick="hideAdminLogin()">Cancel</button>
         </div>
     </div>
 
@@ -1266,16 +1046,16 @@
                 <div class="admin-form-group">
                     <label>Category</label>
                     <select id="editCategory">
-                        <option value="security">Security Systems</option>
-                        <option value="solar">Solar Energy</option>
+                        <option value="security">Security</option>
+                        <option value="solar">Solar</option>
                         <option value="electrical">Electrical</option>
                         <option value="networking">Networking</option>
                         <option value="cctv">CCTV</option>
                     </select>
                 </div>
                 <div class="admin-form-group">
-                    <label>Icon (emoji or image URL)</label>
-                    <input type="text" id="editIcon" placeholder="e.g., 🔒 or image URL">
+                    <label>Icon (emoji)</label>
+                    <input type="text" id="editIcon" placeholder="e.g., 🔒">
                 </div>
                 <div class="admin-form-actions">
                     <button type="submit" class="admin-save-btn">Save Changes</button>
@@ -1290,72 +1070,47 @@
         <div class="whatsapp-button" onclick="toggleWhatsApp()">
             📱
         </div>
-
         <div class="whatsapp-popup" id="whatsappPopup">
             <div class="popup-header">
-                <div class="company-avatar">MT</div>
-                <div class="company-info">
-                    <h3>MALCOMTEC Support</h3>
-                    <p>
-                        <span class="online-dot"></span>
-                        Typically replies within 10 minutes
-                    </p>
-                </div>
-                <div class="close-popup" onclick="toggleWhatsApp()">×</div>
+                <span>MALCOMTEC Support</span>
             </div>
-            
-            <div class="popup-body" id="chatBody">
-                <div class="message received">
-                    <div class="message-bubble">
-                        Hi! Welcome to MALCOMTEC. Need help with CCTV, solar, or electrical services? 😊
-                    </div>
-                    <div class="message-time" id="currentTime"></div>
-                </div>
-            </div>
-            
             <div class="popup-footer">
                 <input type="text" id="whatsappInput" placeholder="Type your message...">
-                <button onclick="sendWhatsAppMessage()">➤</button>
+                <button onclick="sendWhatsAppMessage()">Send</button>
             </div>
         </div>
     </div>
 
     <script>
-        // ==================== PRODUCT DATABASE (YOU CAN EDIT THESE PRICES) ====================
+        // ==================== PRODUCT DATABASE ====================
         let products = [
-            // Security Systems
-            { id: 1, name: "HIKVISION Network Camera", description: "AcuSense technology with human/vehicle detection. EXIR night vision, weatherproof.", price: 250000, category: "security", icon: "📹" },
-            { id: 2, name: "Biometric Access System", description: "Fingerprint and facial recognition access control.", price: 450000, category: "security", icon: "🔐" },
-            { id: 3, name: "HIKVISION Alarm System", description: "AX HYBRID PRO™ with motion detectors and 24/7 monitoring.", price: 350000, category: "security", icon: "⚠️" },
-            { id: 4, name: "Electric Fence Kit", description: "Complete perimeter security with energizer and wires.", price: 550000, category: "security", icon: "⚡" },
+            // Security
+            { id: 1, name: "HIKVISION Network Camera", description: "AcuSense technology with human/vehicle detection", price: 250000, category: "security", icon: "📹" },
+            { id: 2, name: "Biometric Access System", description: "Fingerprint and facial recognition", price: 450000, category: "security", icon: "🔐" },
+            { id: 3, name: "Electric Fence Kit", description: "Complete perimeter security", price: 550000, category: "security", icon: "⚡" },
             
-            // Solar Energy
-            { id: 5, name: "Lithium Battery FLA24100", description: "25.6V, 2.56kWh, 6000+ cycle life. Scalable up to 15 units.", price: 1800000, category: "solar", icon: "🔋" },
-            { id: 6, name: "Solar Panel Kit 300W", description: "Complete solar panel with controller and mounting.", price: 650000, category: "solar", icon: "☀️" },
-            { id: 7, name: "Solar Street Light", description: "All-in-one solar LED street light with motion sensor.", price: 350000, category: "solar", icon: "💡" },
+            // Solar
+            { id: 4, name: "Lithium Battery FLA24100", description: "25.6V, 2.56kWh, 6000+ cycles", price: 1800000, category: "solar", icon: "🔋" },
+            { id: 5, name: "Solar Panel Kit 300W", description: "Complete with controller", price: 650000, category: "solar", icon: "☀️" },
             
             // Electrical
-            { id: 8, name: "CCTV Power Supply 12V 10A", description: "INPUT: 100-240V 50-60Hz, OUTPUT: 12V 10A", price: 85000, category: "electrical", icon: "🔌" },
-            { id: 9, name: "CCTV Power Supply 12V 5A", description: "RS110-60-12, Made in China", price: 45000, category: "electrical", icon: "🔌" },
-            { id: 10, name: "Electrical Installation Service", description: "Professional wiring and installation per point", price: 50000, category: "electrical", icon: "🔧" },
+            { id: 6, name: "CCTV Power Supply 12V 10A", description: "INPUT: 100-240V", price: 85000, category: "electrical", icon: "🔌" },
             
             // Networking
-            { id: 11, name: "Wi-Fi 6 Access Point", description: "HIKVISION MARTPLUS, 3000 Mbps, seamless roaming", price: 280000, category: "networking", icon: "📶" },
-            { id: 12, name: "Network Cable RG59+2C", description: "High-quality CCTV coaxial cable, 305m roll", price: 350000, category: "networking", icon: "🔌" },
-            { id: 13, name: "Router Configuration", description: "Professional setup and configuration", price: 75000, category: "networking", icon: "🌐" },
+            { id: 7, name: "Wi-Fi 6 Access Point", description: "HIKVISION MARTPLUS, 3000 Mbps", price: 280000, category: "networking", icon: "📶" },
             
             // CCTV
-            { id: 14, name: "HIKVISION Turbo HD DVR", description: "7200 Series with smart motion detection", price: 320000, category: "cctv", icon: "📼" },
-            { id: 15, name: "HONTON Smart WiFi Camera", description: "HD 5G™, solar-powered PTZ option available", price: 150000, category: "cctv", icon: "📷" },
-            { id: 16, name: "Wired Indoor PIR Detector", description: "HIKVISION motion sensor for indoor security", price: 65000, category: "cctv", icon: "📡" }
+            { id: 8, name: "HIKVISION Turbo HD DVR", description: "7200 Series with motion detection", price: 320000, category: "cctv", icon: "📼" },
+            { id: 9, name: "HONTON Smart WiFi Camera", description: "HD 5G™, solar-powered option", price: 150000, category: "cctv", icon: "📷" }
         ];
 
-        // Admin password (YOU CAN CHANGE THIS)
+        // Admin password
         const ADMIN_PASSWORD = "malcomtec2026";
         
-        // Cart array
+        // Cart
         let cart = [];
         let isAdminLoggedIn = false;
+        let currentEditId = null;
 
         // ==================== LOAD PRODUCTS ====================
         function loadProducts() {
@@ -1367,19 +1122,12 @@
             
             categories.forEach(category => {
                 const categoryProducts = products.filter(p => p.category === category);
-                const categoryName = {
-                    security: 'Security Systems',
-                    solar: 'Solar Energy',
-                    electrical: 'Electrical',
-                    networking: 'Networking',
-                    cctv: 'CCTV'
-                }[category];
                 
                 html += `<div id="${category}-grid" class="products-grid ${category === 'security' ? 'active' : ''}">`;
                 
                 categoryProducts.forEach(product => {
                     html += `
-                        <div class="product-card" data-id="${product.id}" data-category="${product.category}">
+                        <div class="product-card" data-id="${product.id}">
                             ${isAdminLoggedIn ? `
                                 <div class="admin-controls show">
                                     <button class="admin-edit-btn" onclick="editProduct(${product.id})">✏️</button>
@@ -1426,7 +1174,7 @@
             event.target.classList.add('active');
         }
 
-        // ==================== QUANTITY CONTROLS ====================
+        // ==================== QUANTITY ====================
         function incrementQuantity(btn) {
             const input = btn.parentElement.querySelector('.quantity-input');
             input.value = parseInt(input.value) + 1;
@@ -1439,7 +1187,7 @@
             }
         }
 
-        // ==================== CART FUNCTIONS ====================
+        // ==================== CART ====================
         function addToCart(btn, productId) {
             const product = products.find(p => p.id === productId);
             const quantity = parseInt(btn.parentElement.querySelector('.quantity-input').value);
@@ -1459,15 +1207,13 @@
             }
             
             updateCartDisplay();
-            toggleCart(); // Open cart automatically
+            toggleCart();
         }
 
         function updateCartDisplay() {
-            // Update cart count
             const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
             document.getElementById('cartCount').textContent = totalItems;
             
-            // Update cart items
             const cartItems = document.getElementById('cartItems');
             const cartTotal = document.getElementById('cartTotal');
             
@@ -1486,15 +1232,17 @@
                 
                 html += `
                     <div class="cart-item">
-                        <div class="cart-item-image">${item.icon}</div>
-                        <div class="cart-item-details">
-                            <div class="cart-item-title">${item.name}</div>
-                            <div class="cart-item-price">UGX ${item.price.toLocaleString()}</div>
-                            <div class="cart-item-actions">
-                                <button class="cart-quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                                <span class="cart-item-quantity">${item.quantity}</span>
-                                <button class="cart-quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                                <span class="remove-item" onclick="removeFromCart(${item.id})">Remove</span>
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1rem; border-bottom: 1px solid #eee; padding-bottom: 1rem;">
+                            <div style="font-size: 2rem;">${item.icon}</div>
+                            <div style="flex: 1;">
+                                <div style="font-weight: bold;">${item.name}</div>
+                                <div>UGX ${item.price.toLocaleString()} x ${item.quantity}</div>
+                                <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+                                    <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
+                                    <button onclick="removeFromCart(${item.id})" style="color: red;">Remove</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -1529,7 +1277,7 @@
         // ==================== CHECKOUT ====================
         function checkoutWhatsApp() {
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                alert('Cart is empty!');
                 return;
             }
             
@@ -1538,42 +1286,33 @@
             
             cart.forEach(item => {
                 message += `${item.icon} ${item.name}\n`;
-                message += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n`;
-                message += `Subtotal: UGX ${(item.price * item.quantity).toLocaleString()}\n\n`;
+                message += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n\n`;
                 total += item.price * item.quantity;
             });
             
-            message += `TOTAL: UGX ${total.toLocaleString()}\n\n`;
-            message += `Location: Kawempe-Tula Road, Kampala\n`;
-            message += `Please confirm availability and payment options.`;
+            message += `TOTAL: UGX ${total.toLocaleString()}`;
             
-            const whatsappUrl = `https://wa.me/256706113553?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
+            window.open(`https://wa.me/256706113553?text=${encodeURIComponent(message)}`, '_blank');
         }
 
         function checkoutEmail() {
             if (cart.length === 0) {
-                alert('Your cart is empty!');
+                alert('Cart is empty!');
                 return;
             }
             
-            let subject = "New Order from MALCOMTEC Website";
             let body = "Order Details:\n\n";
             let total = 0;
             
             cart.forEach(item => {
                 body += `${item.icon} ${item.name}\n`;
-                body += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n`;
-                body += `Subtotal: UGX ${(item.price * item.quantity).toLocaleString()}\n\n`;
+                body += `Quantity: ${item.quantity} x UGX ${item.price.toLocaleString()}\n\n`;
                 total += item.price * item.quantity;
             });
             
-            body += `TOTAL: UGX ${total.toLocaleString()}\n\n`;
-            body += `Delivery Location: Kawempe-Tula Road, Kampala\n`;
-            body += `Please confirm availability and payment options.`;
+            body += `TOTAL: UGX ${total.toLocaleString()}`;
             
-            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            window.location.href = mailtoLink;
+            window.location.href = `mailto:rockygyagenda@gmail.com?subject=New Order&body=${encodeURIComponent(body)}`;
         }
 
         // ==================== ADMIN FUNCTIONS ====================
@@ -1585,18 +1324,12 @@
             document.getElementById('adminLoginPanel').classList.remove('active');
         }
 
-        function checkAdminKeyPress(event) {
-            if (event.key === 'Enter') {
-                verifyAdmin();
-            }
-        }
-
         function verifyAdmin() {
             const password = document.getElementById('adminPassword').value;
             if (password === ADMIN_PASSWORD) {
                 isAdminLoggedIn = true;
                 hideAdminLogin();
-                loadProducts(); // Reload products with admin controls
+                loadProducts();
                 alert('Admin login successful! You can now edit prices.');
             } else {
                 alert('Incorrect password');
@@ -1607,24 +1340,26 @@
             const product = products.find(p => p.id === productId);
             if (!product) return;
             
-            document.getElementById('adminPanelTitle').textContent = 'Edit Product';
+            currentEditId = productId;
             document.getElementById('editName').value = product.name;
             document.getElementById('editDescription').value = product.description;
             document.getElementById('editPrice').value = product.price;
             document.getElementById('editCategory').value = product.category;
             document.getElementById('editIcon').value = product.icon;
             
-            // Store product ID for saving
-            document.getElementById('adminEditForm').onsubmit = function(e) {
-                e.preventDefault();
-                saveProduct(productId);
-            };
-            
             document.getElementById('adminPanel').classList.add('active');
         }
 
-        function saveProduct(productId) {
-            const product = products.find(p => p.id === productId);
+        function hideAdminPanel() {
+            document.getElementById('adminPanel').classList.remove('active');
+            currentEditId = null;
+        }
+
+        // Save edited product
+        document.getElementById('adminEditForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const product = products.find(p => p.id === currentEditId);
             if (!product) return;
             
             product.name = document.getElementById('editName').value;
@@ -1634,61 +1369,43 @@
             product.icon = document.getElementById('editIcon').value;
             
             hideAdminPanel();
-            loadProducts(); // Reload with updated prices
+            loadProducts();
             alert('Product updated successfully!');
-        }
+        };
 
         function deleteProduct(productId) {
-            if (confirm('Are you sure you want to delete this product?')) {
+            if (confirm('Delete this product?')) {
                 products = products.filter(p => p.id !== productId);
                 loadProducts();
             }
         }
 
-        function hideAdminPanel() {
-            document.getElementById('adminPanel').classList.remove('active');
-        }
-
         // ==================== CONTACT FORM ====================
         function handleContactForm(e) {
             e.preventDefault();
-            
-            const name = e.target[0].value;
-            const email = e.target[1].value;
-            const product = e.target[2].value;
-            const message = e.target[3].value;
-            
-            const mailtoLink = `mailto:rockygyagenda@gmail.com?subject=${encodeURIComponent(product || 'New Inquiry')}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
-            
-            window.location.href = mailtoLink;
-            alert('Thank you! Your email client will open to send.');
+            alert('Thank you! We will contact you soon.');
             e.target.reset();
         }
 
         // ==================== WHATSAPP WIDGET ====================
         function toggleWhatsApp() {
-            const popup = document.getElementById('whatsappPopup');
-            popup.classList.toggle('active');
-            
-            if (popup.classList.contains('active')) {
-                const now = new Date();
-                const timeStr = now.getHours().toString().padStart(2, '0') + ':' + 
-                               now.getMinutes().toString().padStart(2, '0');
-                document.getElementById('currentTime').textContent = timeStr;
-            }
+            document.getElementById('whatsappPopup').classList.toggle('active');
         }
 
         function sendWhatsAppMessage() {
             const input = document.getElementById('whatsappInput');
             const message = input.value.trim();
             
-            if (message === '') return;
-            
-            const whatsappUrl = `https://wa.me/256706113553?text=${encodeURIComponent(message)}`;
-            window.open(whatsappUrl, '_blank');
-            
-            input.value = '';
-            toggleWhatsApp();
+            if (message) {
+                window.open(`https://wa.me/256706113553?text=${encodeURIComponent(message)}`, '_blank');
+                input.value = '';
+                toggleWhatsApp();
+            }
+        }
+
+        // ==================== MOBILE MENU ====================
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('show');
         }
 
         // ==================== INITIALIZE ====================
